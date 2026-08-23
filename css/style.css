@@ -699,6 +699,10 @@ section[id]{scroll-margin-top:96px;}
 .cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
 .cta-final__text h2.light{color:var(--white);}
 .cta-final__text .section__desc{margin-bottom:34px;}
+/* .section__desc--light's margin-inline:auto centers it correctly in
+   #szolgaltatasok's centered header, but this column is left-aligned —
+   override just here so it lines up with the eyebrow/h2 above it. */
+.cta-final__text .section__desc--light{margin-inline:0;}
 .cta-final__contacts{display:flex;flex-direction:column;gap:16px;}
 .cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#dfe3ee;font-weight:500;}
 .cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
