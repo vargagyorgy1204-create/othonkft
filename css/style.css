@@ -223,9 +223,13 @@ section[id]{scroll-margin-top:96px;}
 
 .section{padding:110px 0;}
 .section--cream{background:var(--cream-2);}
-.section__head{margin-bottom:52px;max-width:760px;}
+.section__head{margin-bottom:52px;}
 .section__head--center{max-width:640px;margin-inline:auto;text-align:center;}
-.section__head-row{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;max-width:none;}
+/* #ingatlanok's header: heading stacked above its paragraph, both full
+   section width, instead of the old side-by-side two-column layout. */
+.section__head-row{display:flex;flex-direction:column;gap:18px;}
+#ingatlanok .section__head-row h2{font-size:clamp(1.8rem,3.2vw,2.8rem);white-space:nowrap;}
+#ingatlanok .section__head-row .section__desc{max-width:640px;}
 .section__head h2{font-size:clamp(1.9rem,3vw,2.7rem);color:var(--ink-900);}
 .section__head h2.light{color:var(--white);}
 .section__desc{color:var(--ink-500);font-size:1.02rem;line-height:1.7;max-width:440px;}
@@ -235,6 +239,10 @@ section[id]{scroll-margin-top:96px;}
 @media (max-width:860px){
   .section__head-row{flex-direction:column;align-items:flex-start;}
   .section__desc{max-width:none;}
+  /* Below common desktop widths, let the heading wrap again rather than
+     force a single line that would overflow narrow viewports. */
+  #ingatlanok .section__head-row h2{white-space:normal;font-size:clamp(1.6rem,5vw,2.2rem);}
+  #ingatlanok .section__head-row .section__desc{max-width:none;}
 }
 
 /* ==========================================================================
