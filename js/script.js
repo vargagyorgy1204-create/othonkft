@@ -262,8 +262,9 @@
 
     function goTo(i) {
       index = (i + slides) % slides;
-      track.style.transition = reduceMotion ? "none" : "transform .6s cubic-bezier(.22,1,.36,1)";
-      track.style.transform = "translateX(-" + (index * 100) + "%)";
+      Array.prototype.forEach.call(track.children, function (slide, i2) {
+        slide.classList.toggle("is-active", i2 === index);
+      });
     }
     if (prevBtn) prevBtn.addEventListener("click", function () { goTo(index - 1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { goTo(index + 1); });
