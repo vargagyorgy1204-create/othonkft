@@ -252,61 +252,75 @@ section[id]{scroll-margin-top:96px;}
   box-shadow:0 8px 30px -12px rgba(0,0,0,.35);
 }
 
-.brand{display:flex;align-items:center;gap:10px;color:var(--white);}
+/* Default (transparent) header state now sits over the bright, light hero —
+   dark text for contrast. Once .is-scrolled adds its dark pill background,
+   everything switches back to light (see overrides below). */
+.brand{display:flex;align-items:center;gap:10px;color:var(--navy-950);transition:color .3s ease;}
 .brand__mark{
   width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,var(--gold-400),var(--gold-600));color:var(--navy-950);
   flex-shrink:0;
 }
 .brand__name{font-family:var(--font-head);font-size:1.3rem;font-weight:700;letter-spacing:-.01em;}
-.brand__name em{font-style:normal;color:var(--gold-400);font-weight:500;margin-left:2px;}
+.brand__name em{font-style:normal;color:var(--gold-600);font-weight:500;margin-left:2px;}
 .brand--footer{color:var(--white);}
 .brand--footer .brand__name em{color:var(--gold-400);}
 
 .nav{display:flex;align-items:center;gap:34px;}
-.nav a{color:#dfe3ee;font-size:.94rem;font-weight:500;position:relative;padding:4px 0;transition:color .25s ease;}
+.nav a{color:var(--ink-800);font-size:.94rem;font-weight:500;position:relative;padding:4px 0;transition:color .25s ease;}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--gold-400);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease);}
-.nav a:hover{color:var(--white);}
+.nav a:hover{color:var(--navy-950);}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left;}
 
 .header__actions{display:flex;align-items:center;gap:20px;}
-.header__phone{display:flex;align-items:center;gap:8px;color:var(--white);font-weight:600;font-size:.9rem;}
-.header__phone svg{color:var(--gold-400);}
+.header__phone{display:flex;align-items:center;gap:8px;color:var(--navy-950);font-weight:600;font-size:.9rem;transition:color .3s ease;}
+.header__phone svg{color:var(--gold-600);}
 
 .hamburger{display:none;flex-direction:column;gap:5px;width:26px;padding:6px 0;}
-.hamburger span{display:block;width:100%;height:2px;background:var(--white);transition:transform .35s var(--ease), opacity .3s ease;}
+.hamburger span{display:block;width:100%;height:2px;background:var(--navy-950);transition:background-color .3s ease, transform .35s var(--ease), opacity .3s ease;}
 .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
 .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* .is-scrolled brings in a dark translucent pill — switch text back to light */
+.header.is-scrolled .brand,
+.header.is-scrolled .header__phone{color:var(--white);}
+.header.is-scrolled .brand__name em{color:var(--gold-400);}
+.header.is-scrolled .header__phone svg{color:var(--gold-400);}
+.header.is-scrolled .nav a{color:#dfe3ee;}
+.header.is-scrolled .nav a:hover{color:var(--white);}
+.header.is-scrolled .hamburger span{background:var(--white);}
 
 /* ==========================================================================
    Hero
    ========================================================================== */
 .hero{
   position:relative;min-height:100vh;display:flex;align-items:center;
-  overflow:hidden;background:var(--navy-950);padding-top:120px;padding-bottom:80px;
+  overflow:hidden;background:var(--cream);padding-top:120px;padding-bottom:80px;
 }
 .hero__bg{
   position:absolute;inset:0;background-size:cover;background-position:center;
   transform:scale(1.08);will-change:transform;
+  filter:brightness(1.06) saturate(1.12);
 }
 .hero__overlay{
   position:absolute;inset:0;
   background:
-    linear-gradient(180deg, rgba(6,10,20,.55) 0%, rgba(6,10,20,.72) 55%, rgba(6,10,20,.94) 100%),
-    linear-gradient(90deg, rgba(6,10,20,.75) 0%, rgba(6,10,20,.25) 55%, rgba(6,10,20,.55) 100%);
+    linear-gradient(180deg, rgba(255,252,245,.08) 0%, rgba(255,248,235,.4) 60%, rgba(250,241,224,.72) 100%),
+    linear-gradient(90deg, rgba(255,250,240,.52) 0%, rgba(255,250,240,.06) 55%, rgba(255,250,240,.38) 100%);
 }
 .hero__grain{position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 .hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
 .hero__content{max-width:660px;}
-.hero__title{font-size:clamp(2.6rem,5.6vw,4.4rem);color:var(--white);margin-bottom:22px;}
+.hero__title{font-size:clamp(2.6rem,5.6vw,4.4rem);color:var(--navy-950);margin-bottom:22px;}
 .hero__title em{font-style:italic;background:linear-gradient(135deg,var(--gold-300),var(--gold-500));-webkit-background-clip:text;background-clip:text;color:transparent;}
-.hero__lead{color:#cbd2e1;font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
+.hero__lead{color:#4a4f5c;font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
+.hero .eyebrow--light{color:var(--gold-700);}
 
 /* search card */
 .search-card{
-  background:rgba(255,255,255,.08);
+  background:rgba(8,14,28,.5);
   border:1px solid rgba(255,255,255,.16);
   backdrop-filter:blur(20px) saturate(140%);
   -webkit-backdrop-filter:blur(20px) saturate(140%);
@@ -343,7 +357,7 @@ section[id]{scroll-margin-top:96px;}
 .search-card__submit{flex-shrink:0;margin:4px;}
 
 .hero__trust{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;}
-.hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:#dfe3ee;font-weight:500;}
+.hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-800);font-weight:500;}
 
 .hero__float-card{
   width:270px;background:rgba(255,255,255,.96);border-radius:var(--radius-lg);overflow:hidden;
@@ -366,7 +380,7 @@ section[id]{scroll-margin-top:96px;}
 
 .hero__scroll{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:8px;color:#c7cde0;
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink-600);
 }
 .hero__scroll span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;}
 .hero__scroll-dot{animation:scrollDot 1.8s ease-in-out infinite;}
@@ -677,7 +691,11 @@ section[id]{scroll-margin-top:96px;}
     transform:translateX(100%);transition:transform .45s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);
   }
   .nav.is-open{transform:translateX(0);}
-  .nav a{font-size:1.1rem;}
+  /* The drawer's own background is always dark navy, regardless of header
+     scroll state, so its links stay light — overrides the transparent-
+     header dark-text default above. */
+  .nav a{font-size:1.1rem;color:#dfe3ee;}
+  .nav a:hover{color:var(--white);}
   .header__phone{display:none;}
   .hamburger{display:flex;}
 }
