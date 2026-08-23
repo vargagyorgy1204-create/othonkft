@@ -341,7 +341,7 @@ section[id]{scroll-margin-top:96px;}
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)) drop-shadow(0 1px 3px rgba(0,0,0,.6));
 }
-.hero__lead{color:#4a4f5c;font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
+.hero__lead{color:var(--ink-800);font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
 .hero .eyebrow--light{color:var(--gold-700);}
 
 /* search card — light warm frosted glass, matching the bright hero */
