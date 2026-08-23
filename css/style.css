@@ -359,29 +359,38 @@ section[id]{scroll-margin-top:96px;}
 .hero__trust{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;}
 .hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-800);font-weight:500;}
 
-.hero__float-stack{position:relative;width:270px;margin-top:8px;}
+.hero__float-stack{position:relative;width:270px;margin-top:133px;}
 .hero__float-card{
   width:270px;background:rgba(255,255,255,.96);border-radius:var(--radius-lg);overflow:hidden;
   box-shadow:var(--shadow-lg);position:relative;
   animation:floatCard 5s ease-in-out infinite;
 }
-/* Front card anchors the stack's footprint; back card fans out behind it,
-   slightly smaller, dimmer and with a softer shadow, offset on its own
-   animation delay so the pair doesn't move in lockstep. */
-.hero__float-card--front{z-index:2;}
+/* Front card anchors the stack's footprint; middle and back cards fan out
+   behind it, each a step smaller/dimmer with a softer shadow, so all three
+   edges stay visible. The fan offset lives in the independent translate/
+   rotate properties (not `transform`), so the floatCard keyframes — which
+   only animate `transform` — can bob all three without ever overwriting
+   their static offset, and the offset can be re-tuned per breakpoint
+   without touching the animation at all. Each layer runs on its own
+   animation-delay so the trio doesn't move in lockstep. */
+.hero__float-card--front{z-index:3;}
+.hero__float-card--middle{
+  position:absolute;top:0;left:0;z-index:2;
+  width:252px;opacity:.95;
+  box-shadow:0 18px 40px -12px rgba(10,20,40,.26);
+  translate:-16px -12px;
+  rotate:-3deg;
+  animation-delay:.25s;
+}
 .hero__float-card--back{
   position:absolute;top:0;left:0;z-index:1;
-  width:240px;opacity:.9;
-  box-shadow:0 14px 30px -10px rgba(10,20,40,.22);
-  transform:translate(-18px,-14px) rotate(-4deg);
-  animation-delay:.4s;
+  width:234px;opacity:.88;
+  box-shadow:0 12px 26px -10px rgba(10,20,40,.2);
+  translate:-32px -24px;
+  rotate:-6deg;
+  animation-delay:.5s;
 }
 @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
-.hero__float-card--back{animation-name:floatCardBack;}
-@keyframes floatCardBack{
-  0%,100%{transform:translate(-18px,-14px) rotate(-4deg) translateY(0);}
-  50%{transform:translate(-18px,-14px) rotate(-4deg) translateY(-14px);}
-}
 .hero__float-card img{height:150px;object-fit:cover;width:100%;}
 .hero__float-card-body{padding:16px 18px 18px;}
 .hero__float-card-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-600);margin-bottom:6px;}
@@ -405,9 +414,15 @@ section[id]{scroll-margin-top:96px;}
 
 @media (max-width:980px){
   .hero__inner{grid-template-columns:1fr;}
-  .hero__float-stack{width:100%;max-width:320px;}
+  /* Below 980px the stack drops under hero__content in normal flow (not
+     beside it), so the desktop margin-top used to line it up with
+     .hero__lead no longer applies — back to a small natural gap. */
+  .hero__float-stack{width:100%;max-width:320px;margin-top:8px;}
   .hero__float-card{width:100%;}
-  .hero__float-card--back{width:220px;}
+  /* Smaller fan offset so the back/middle cards stay within the
+     container's padding instead of clipping past the viewport edge. */
+  .hero__float-card--middle{width:88%;translate:-8px -6px;rotate:-2deg;}
+  .hero__float-card--back{width:78%;translate:-14px -10px;rotate:-3deg;}
 }
 
 /* ==========================================================================
