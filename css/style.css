@@ -546,18 +546,35 @@ section[id]{scroll-margin-top:96px;}
   content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;
   background:radial-gradient(circle,rgba(205,164,94,.14),transparent 70%);
 }
-.services__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:80px;position:relative;z-index:1;}
+.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-bottom:80px;position:relative;z-index:1;}
 .service-card{
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);
-  padding:34px 26px;transition:transform .4s var(--ease), background-color .4s ease, border-color .4s ease;
+  padding:34px 26px;min-height:196px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  transition:transform .4s var(--ease), background-color .4s ease, border-color .4s ease, min-height .35s ease;
 }
-.service-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.07);border-color:rgba(205,164,94,.4);}
+.service-card:hover{
+  transform:translateY(-6px);background:rgba(255,255,255,.07);border-color:rgba(205,164,94,.4);
+  min-height:216px;
+}
 .service-card__icon{
-  width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,rgba(222,186,118,.18),rgba(184,135,60,.1));color:var(--gold-400);margin-bottom:22px;
+  width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background-image:linear-gradient(90deg, var(--gold-400) 0%, var(--gold-600) 40%, rgba(0,0,0,.28) 60%);
+  background-size:200px 100%;background-position:0 0;
+  color:var(--white);margin-bottom:22px;
+  transition:background-position .8s ease;
 }
-.service-card h3{color:var(--white);font-size:1.08rem;margin-bottom:10px;font-weight:600;}
-.service-card p{color:#a9b0c2;font-size:.9rem;line-height:1.65;}
+.service-card:hover .service-card__icon{background-position:-120px 0;}
+.service-card h3{
+  color:var(--white);font-size:.92rem;font-weight:600;margin-bottom:0;
+  text-transform:uppercase;letter-spacing:.18em;
+}
+.service-card p{
+  color:rgba(255,255,255,.72);font-size:.85rem;line-height:1.6;letter-spacing:.02em;
+  opacity:0;max-height:0;overflow:hidden;margin-top:0;
+  transition:opacity .3s ease, max-height .3s ease, margin-top .3s ease;
+}
+.service-card:hover p{opacity:1;max-height:120px;margin-top:16px;}
 
 .stats{
   display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
