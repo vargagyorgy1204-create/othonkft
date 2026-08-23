@@ -206,7 +206,7 @@ section[id]{scroll-margin-top:96px;}
 .btn--dark{background:var(--navy-900);color:var(--white);}
 .btn--dark:hover{background:var(--navy-700);transform:translateY(-2px);}
 .btn--sm{padding:10px 20px;font-size:.85rem;}
-.btn--block{width:100%;}
+.btn--block{width:50%;align-self:center;}
 
 /* ==========================================================================
    Eyebrow / section heads
@@ -668,9 +668,9 @@ section[id]{scroll-margin-top:96px;}
    Final CTA / Contact
    ========================================================================== */
 .cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--navy-950);}
-.cta-final__bg{position:absolute;inset:0;background-size:cover;background-position:center;}
 .cta-final__overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,20,.96) 30%, rgba(6,10,20,.75) 100%);}
-.cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start;}
+.cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
+.cta-final__text h2.light{color:var(--white);}
 .cta-final__text .section__desc{margin-bottom:34px;}
 .cta-final__contacts{display:flex;flex-direction:column;gap:16px;}
 .cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#dfe3ee;font-weight:500;}
