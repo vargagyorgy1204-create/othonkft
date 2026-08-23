@@ -162,6 +162,109 @@
   });
 
   /* -------------------------------------------------
+     Custom-styled select dropdowns (Helyszín / Ingatlantípus /
+     Árkategória). Trigger button + role="listbox" panel, synced to a
+     hidden native <select> for fallback. Mouse, keyboard (Enter/Space
+     to open, Up/Down to move, Enter to pick, Escape to close) and
+     click-outside are all supported.
+  ------------------------------------------------- */
+  var openCustomSelect = null;
+
+  function closeCustomSelect(instance, focusTrigger) {
+    if (!instance || !instance.root.classList.contains("is-open")) return;
+    instance.root.classList.remove("is-open");
+    instance.trigger.setAttribute("aria-expanded", "false");
+    instance.trigger.removeAttribute("aria-activedescendant");
+    if (openCustomSelect === instance) openCustomSelect = null;
+    if (focusTrigger) instance.trigger.focus();
+  }
+
+  function setActiveOption(instance, index) {
+    instance.options.forEach(function (opt, i) {
+      opt.classList.toggle("is-active", i === index);
+    });
+    instance.activeIndex = index;
+    instance.trigger.setAttribute("aria-activedescendant", instance.options[index].id);
+    instance.options[index].scrollIntoView({ block: "nearest" });
+  }
+
+  function chooseOption(instance, index, opts) {
+    opts = opts || {};
+    var option = instance.options[index];
+    instance.options.forEach(function (opt) {
+      opt.classList.remove("is-selected");
+      opt.setAttribute("aria-selected", "false");
+    });
+    option.classList.add("is-selected");
+    option.setAttribute("aria-selected", "true");
+    instance.valueEl.textContent = option.textContent;
+    if (instance.native) instance.native.selectedIndex = index;
+    instance.selectedIndex = index;
+    if (!opts.silent) closeCustomSelect(instance, true);
+  }
+
+  function initCustomSelects() {
+    document.querySelectorAll("[data-custom-select]").forEach(function (root) {
+      var trigger = root.querySelector(".custom-select__trigger");
+      var panel = root.querySelector(".custom-select__panel");
+      var valueEl = root.querySelector(".custom-select__value");
+      var native = root.querySelector(".custom-select__native");
+      var options = Array.prototype.slice.call(panel.querySelectorAll(".custom-select__option"));
+      if (!trigger || !panel || !options.length) return;
+
+      var instance = {
+        root: root, trigger: trigger, panel: panel, valueEl: valueEl,
+        native: native, options: options, activeIndex: 0, selectedIndex: 0
+      };
+      options.forEach(function (opt, i) { if (opt.classList.contains("is-selected")) instance.selectedIndex = i; });
+
+      function open() {
+        if (openCustomSelect && openCustomSelect !== instance) closeCustomSelect(openCustomSelect, false);
+        root.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        setActiveOption(instance, instance.selectedIndex);
+        openCustomSelect = instance;
+      }
+
+      trigger.addEventListener("click", function () {
+        root.classList.contains("is-open") ? closeCustomSelect(instance, false) : open();
+      });
+
+      trigger.addEventListener("keydown", function (e) {
+        if (["ArrowDown", "ArrowUp", "Enter", " ", "Spacebar"].indexOf(e.key) !== -1) e.preventDefault();
+        if (!root.classList.contains("is-open")) {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter" || e.key === " " || e.key === "Spacebar") open();
+          return;
+        }
+        if (e.key === "ArrowDown") setActiveOption(instance, Math.min(instance.activeIndex + 1, options.length - 1));
+        else if (e.key === "ArrowUp") setActiveOption(instance, Math.max(instance.activeIndex - 1, 0));
+        else if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") chooseOption(instance, instance.activeIndex);
+        else if (e.key === "Escape") closeCustomSelect(instance, true);
+        else if (e.key === "Tab") closeCustomSelect(instance, false);
+      });
+
+      options.forEach(function (opt, i) {
+        opt.addEventListener("click", function () { chooseOption(instance, i); });
+        opt.addEventListener("mouseenter", function () { setActiveOption(instance, i); });
+      });
+
+      root.__customSelectInstance = instance;
+    });
+
+    document.addEventListener("click", function (e) {
+      if (openCustomSelect && !openCustomSelect.root.contains(e.target)) {
+        closeCustomSelect(openCustomSelect, false);
+      }
+    });
+    document.addEventListener("focusin", function (e) {
+      if (openCustomSelect && !openCustomSelect.root.contains(e.target)) {
+        closeCustomSelect(openCustomSelect, false);
+      }
+    });
+  }
+  initCustomSelects();
+
+  /* -------------------------------------------------
      Property filter pills
   ------------------------------------------------- */
   var filterPills = document.querySelectorAll(".filters__pill");

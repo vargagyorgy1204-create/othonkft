@@ -82,37 +82,75 @@
           <button type="button" class="search-card__tab" role="tab" aria-selected="false">Eladás</button>
         </div>
         <div class="search-card__fields">
-          <label class="search-card__field">
-            <span>Helyszín</span>
-            <select>
-              <option>Budapest, összes kerület</option>
-              <option>Budapest, V. kerület</option>
-              <option>Budapest, XII. kerület</option>
-              <option>Debrecen</option>
-              <option>Balaton-part</option>
-            </select>
-          </label>
+          <div class="search-card__field">
+            <span id="loc-label">Helyszín</span>
+            <div class="custom-select" data-custom-select>
+              <button type="button" class="custom-select__trigger" id="loc-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="loc-listbox" aria-labelledby="loc-label loc-trigger">
+                <span class="custom-select__value">Budapest, összes kerület</span>
+                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="custom-select__panel" id="loc-listbox" role="listbox" aria-labelledby="loc-label" tabindex="-1">
+                <li class="custom-select__option is-selected" role="option" id="loc-opt-0" aria-selected="true">Budapest, összes kerület</li>
+                <li class="custom-select__option" role="option" id="loc-opt-1" aria-selected="false">Budapest, V. kerület</li>
+                <li class="custom-select__option" role="option" id="loc-opt-2" aria-selected="false">Budapest, XII. kerület</li>
+                <li class="custom-select__option" role="option" id="loc-opt-3" aria-selected="false">Debrecen</li>
+                <li class="custom-select__option" role="option" id="loc-opt-4" aria-selected="false">Balaton-part</li>
+              </ul>
+              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
+                <option>Budapest, összes kerület</option>
+                <option>Budapest, V. kerület</option>
+                <option>Budapest, XII. kerület</option>
+                <option>Debrecen</option>
+                <option>Balaton-part</option>
+              </select>
+            </div>
+          </div>
           <span class="search-card__divider" aria-hidden="true"></span>
-          <label class="search-card__field">
-            <span>Ingatlantípus</span>
-            <select>
-              <option>Összes típus</option>
-              <option>Lakás</option>
-              <option>Családi ház</option>
-              <option>Villa</option>
-              <option>Penthouse</option>
-            </select>
-          </label>
+          <div class="search-card__field">
+            <span id="type-label">Ingatlantípus</span>
+            <div class="custom-select" data-custom-select>
+              <button type="button" class="custom-select__trigger" id="type-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="type-listbox" aria-labelledby="type-label type-trigger">
+                <span class="custom-select__value">Összes típus</span>
+                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="custom-select__panel" id="type-listbox" role="listbox" aria-labelledby="type-label" tabindex="-1">
+                <li class="custom-select__option is-selected" role="option" id="type-opt-0" aria-selected="true">Összes típus</li>
+                <li class="custom-select__option" role="option" id="type-opt-1" aria-selected="false">Lakás</li>
+                <li class="custom-select__option" role="option" id="type-opt-2" aria-selected="false">Családi ház</li>
+                <li class="custom-select__option" role="option" id="type-opt-3" aria-selected="false">Villa</li>
+                <li class="custom-select__option" role="option" id="type-opt-4" aria-selected="false">Penthouse</li>
+              </ul>
+              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
+                <option>Összes típus</option>
+                <option>Lakás</option>
+                <option>Családi ház</option>
+                <option>Villa</option>
+                <option>Penthouse</option>
+              </select>
+            </div>
+          </div>
           <span class="search-card__divider" aria-hidden="true"></span>
-          <label class="search-card__field">
-            <span>Árkategória</span>
-            <select>
-              <option>Bármely ár</option>
-              <option>50–100 M Ft</option>
-              <option>100–200 M Ft</option>
-              <option>200 M Ft felett</option>
-            </select>
-          </label>
+          <div class="search-card__field">
+            <span id="price-label">Árkategória</span>
+            <div class="custom-select" data-custom-select>
+              <button type="button" class="custom-select__trigger" id="price-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="price-listbox" aria-labelledby="price-label price-trigger">
+                <span class="custom-select__value">Bármely ár</span>
+                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="custom-select__panel" id="price-listbox" role="listbox" aria-labelledby="price-label" tabindex="-1">
+                <li class="custom-select__option is-selected" role="option" id="price-opt-0" aria-selected="true">Bármely ár</li>
+                <li class="custom-select__option" role="option" id="price-opt-1" aria-selected="false">50–100 M Ft</li>
+                <li class="custom-select__option" role="option" id="price-opt-2" aria-selected="false">100–200 M Ft</li>
+                <li class="custom-select__option" role="option" id="price-opt-3" aria-selected="false">200 M Ft felett</li>
+              </ul>
+              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
+                <option>Bármely ár</option>
+                <option>50–100 M Ft</option>
+                <option>100–200 M Ft</option>
+                <option>200 M Ft felett</option>
+              </select>
+            </div>
+          </div>
           <button type="submit" class="btn btn--gold search-card__submit">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             Ingatlan Keresése

@@ -367,17 +367,47 @@ section[id]{scroll-margin-top:96px;}
 }
 .search-card__field{flex:1 1 0;display:flex;flex-direction:column;gap:4px;padding:10px 16px;min-width:0;}
 .search-card__field span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-600);font-weight:700;white-space:nowrap;}
-.search-card__field select{
-  width:100%;background:transparent;border:none;color:var(--navy-950);font-size:.88rem;font-weight:500;
-  appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:20px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23b8873c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right center;background-size:13px;
-}
-.search-card__field select option{color:#111;}
 .search-card__field:focus-within{outline:none;}
 .search-card__divider{width:1px;background:rgba(10,20,40,.12);align-self:center;height:36px;flex-shrink:0;}
 .search-card__submit{flex-shrink:0;margin:4px;}
+
+/* Custom-styled dropdown, replacing the native <select> popup (which
+   can't be themed cross-browser). A real <select class="custom-select__native">
+   stays in the DOM, hidden and inert, purely as a value-sync/no-JS
+   fallback — the button+listbox pair below it is what's actually
+   focusable and announced to assistive tech. */
+.custom-select{position:relative;}
+.custom-select__native{position:absolute;inset:0;width:0;height:0;opacity:0;overflow:hidden;pointer-events:none;}
+.custom-select__trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:transparent;border:none;padding:0;margin:0;
+  color:var(--navy-950);font-size:.88rem;font-weight:500;font-family:inherit;
+  cursor:pointer;text-align:left;border-radius:var(--radius-sm);
+}
+.custom-select__trigger:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px;}
+.custom-select__value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.custom-select__chevron{flex-shrink:0;color:var(--gold-600);transition:transform .2s ease;}
+.custom-select.is-open .custom-select__chevron{transform:rotate(180deg);}
+
+.custom-select__panel{
+  position:absolute;top:calc(100% + 10px);left:-16px;z-index:40;
+  min-width:calc(100% + 32px);width:max-content;max-width:260px;max-height:280px;overflow-y:auto;
+  background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);
+  list-style:none;padding:6px;margin:0;
+  opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top left;
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+.custom-select.is-open .custom-select__panel{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+.custom-select__option{
+  padding:10px 14px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:500;color:var(--ink-900);
+  cursor:pointer;white-space:nowrap;transition:background-color .15s ease, color .15s ease;
+}
+.custom-select__option:hover,
+.custom-select__option.is-active{background:rgba(205,164,94,.14);}
+.custom-select__option.is-selected{
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-600));color:var(--navy-950);font-weight:700;
+}
+.custom-select__option.is-selected.is-active{background:linear-gradient(135deg,var(--gold-400),var(--gold-600));}
 
 .hero__trust{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;}
 .hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-800);font-weight:500;}
