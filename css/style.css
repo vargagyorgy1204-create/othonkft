@@ -447,7 +447,7 @@ section[id]{scroll-margin-top:96px;}
    Partner strip
    ========================================================================== */
 .strip{background:var(--navy-950);padding:26px 0;}
-.strip__inner{display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.strip__inner{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
 .strip__label{color:#8b91a3;font-size:.82rem;font-weight:600;flex-shrink:0;}
 .strip__logos{display:flex;gap:42px;flex-wrap:wrap;}
 .strip__logos span{color:#5c6274;font-weight:700;font-size:1rem;letter-spacing:.02em;transition:color .3s ease;}
