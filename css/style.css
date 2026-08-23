@@ -324,7 +324,11 @@ section[id]{scroll-margin-top:96px;}
 .hero__grain{position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 .hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
-.hero__content{max-width:660px;}
+/* Widened from 660 so .search-card (below) has enough room for its 3
+   fields to show label + value on one line without cramping to a
+   single truncated character - the heading/lead paragraph still read
+   comfortably at this width. */
+.hero__content{max-width:860px;}
 .hero__title{
   font-family:"Fraunces", var(--font-head), Georgia, serif;
   font-optical-sizing:auto;
@@ -350,7 +354,7 @@ section[id]{scroll-margin-top:96px;}
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   border-radius:var(--radius-lg);
   padding:10px;
-  max-width:700px;
+  max-width:860px;
   box-shadow:0 20px 50px rgba(20,20,10,.12);
 }
 .search-card__tabs{display:flex;gap:4px;padding:6px 6px 12px;}
@@ -366,8 +370,20 @@ section[id]{scroll-margin-top:96px;}
   border-radius:var(--radius-md);
   display:flex;align-items:stretch;padding:6px;gap:2px;
 }
-.search-card__field{flex:1 1 0;display:flex;flex-direction:column;gap:4px;padding:10px 16px;min-width:0;}
-.search-card__field span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-600);font-weight:700;white-space:nowrap;}
+.search-card__field{flex:1 1 0;display:flex;flex-direction:row;align-items:center;gap:5px;padding:10px 12px;min-width:0;}
+/* Helyszín's value ("Budapest, összes kerület") runs noticeably longer
+   than Ingatlantípus/Árkategória's, so it gets a bigger flex-grow share
+   of the row instead of splitting evenly three ways - the other two
+   default values are short enough to sit comfortably in less room. */
+.search-card__field:first-of-type{flex:1.5 1 0;}
+/* Direct-child combinator, not descendant: .custom-select__value is also
+   a <span>, nested deeper inside this same field, and a plain
+   ".search-card__field span" descendant selector was matching it too -
+   its higher specificity (class+tag) was silently overriding the
+   value's own flex-shrink/truncation rules with the label's tiny
+   uppercase styling, which is what caused the field text to overlap
+   instead of truncating. */
+.search-card__field > span{font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-600);font-weight:700;white-space:nowrap;flex-shrink:0;}
 .search-card__field:focus-within{outline:none;}
 .search-card__divider{width:1px;background:rgba(10,20,40,.12);align-self:center;height:36px;flex-shrink:0;}
 .search-card__submit{flex-shrink:0;margin:4px;}
@@ -377,16 +393,16 @@ section[id]{scroll-margin-top:96px;}
    stays in the DOM, hidden and inert, purely as a value-sync/no-JS
    fallback — the button+listbox pair below it is what's actually
    focusable and announced to assistive tech. */
-.custom-select{position:relative;}
+.custom-select{position:relative;flex:1 1 0;min-width:0;}
 .custom-select__native{position:absolute;inset:0;width:0;height:0;opacity:0;overflow:hidden;pointer-events:none;}
 .custom-select__trigger{
   width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;
   background:transparent;border:none;padding:0;margin:0;
-  color:var(--navy-950);font-size:.88rem;font-weight:500;font-family:inherit;
+  color:var(--navy-950);font-size:.84rem;font-weight:500;font-family:inherit;
   cursor:pointer;text-align:left;border-radius:var(--radius-sm);
 }
 .custom-select__trigger:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px;}
-.custom-select__value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.custom-select__value{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .custom-select__chevron{flex-shrink:0;color:var(--gold-600);transition:transform .2s ease;}
 .custom-select.is-open .custom-select__chevron{transform:rotate(180deg);}
 
@@ -412,6 +428,27 @@ section[id]{scroll-margin-top:96px;}
 
 .hero__trust{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;}
 .hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-800);font-weight:500;}
+
+/* Dim behind an open search-card dropdown. Placed as a sibling of
+   .search-card and .hero__trust inside .hero__content (NOT one level
+   up, in .hero__inner) - .hero__content carries [data-reveal], whose
+   `transform` value (real even at rest: translate(0,0), never `none`)
+   quietly makes it a stacking context of its own, so .search-card's
+   isolated z-index:30 only sandwiches correctly against something
+   inside that same context (tried living in .hero__inner first and a
+   viewport-wide bleed from there; both broke the sandwich or the
+   horizontal centering once verified with elementFromPoint - simpler
+   is more robust here). The negative insets bleed a bit past
+   .hero__content's own box (clipped safely by .hero's overflow:hidden)
+   so the dim reaches past the trust-bar text and card edges rather
+   than hugging them exactly. */
+.search-card__scrim{
+  position:absolute;top:-32px;left:-40px;right:-40px;bottom:-32px;
+  background:rgba(6,10,20,.35);z-index:20;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+.hero__content.has-open-dropdown .search-card__scrim{opacity:1;visibility:visible;pointer-events:auto;}
 
 .hero__float-stack{position:relative;width:270px;margin-top:133px;}
 .hero__float-card{

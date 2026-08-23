@@ -169,6 +169,13 @@
      click-outside are all supported.
   ------------------------------------------------- */
   var openCustomSelect = null;
+  var searchScrim = document.querySelector("[data-search-scrim]");
+  var searchScrimHost = searchScrim && searchScrim.closest(".hero__content");
+
+  function syncSearchScrim() {
+    if (!searchScrimHost) return;
+    searchScrimHost.classList.toggle("has-open-dropdown", !!openCustomSelect);
+  }
 
   function closeCustomSelect(instance, focusTrigger) {
     if (!instance || !instance.root.classList.contains("is-open")) return;
@@ -176,6 +183,7 @@
     instance.trigger.setAttribute("aria-expanded", "false");
     instance.trigger.removeAttribute("aria-activedescendant");
     if (openCustomSelect === instance) openCustomSelect = null;
+    syncSearchScrim();
     if (focusTrigger) instance.trigger.focus();
   }
 
@@ -224,6 +232,7 @@
         trigger.setAttribute("aria-expanded", "true");
         setActiveOption(instance, instance.selectedIndex);
         openCustomSelect = instance;
+        syncSearchScrim();
       }
 
       trigger.addEventListener("click", function () {
@@ -261,6 +270,11 @@
         closeCustomSelect(openCustomSelect, false);
       }
     });
+    if (searchScrim) {
+      searchScrim.addEventListener("click", function () {
+        if (openCustomSelect) closeCustomSelect(openCustomSelect, false);
+      });
+    }
   }
   initCustomSelects();
 
