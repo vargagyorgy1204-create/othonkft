@@ -217,7 +217,9 @@ section[id]{scroll-margin-top:96px;}
   color:var(--gold-600);margin-bottom:14px;
 }
 .eyebrow--light{color:var(--gold-400);}
-.eyebrow__line{width:28px;height:1.5px;background:currentColor;display:inline-block;}
+.eyebrow__line{
+  display:inline-block;font-size:.8rem;letter-spacing:-1px;line-height:1;margin-right:2px;
+}
 
 .section{padding:110px 0;}
 .section--cream{background:var(--cream-2);}
