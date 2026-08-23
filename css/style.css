@@ -279,7 +279,7 @@ section[id]{scroll-margin-top:96px;}
 /* "Kft." intentionally has no color of its own — it inherits from .brand
    (or .brand--footer / .header.is-scrolled .brand) so it always matches
    "Othon" exactly, in every header/footer state, with one source of truth. */
-.brand__name em{font-style:normal;font-weight:500;margin-left:2px;}
+.brand__name em{font-style:normal;margin-left:2px;}
 .brand--footer{color:var(--white);}
 
 .nav{display:flex;align-items:center;gap:34px;}
