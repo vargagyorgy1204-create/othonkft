@@ -144,14 +144,6 @@
     }, { passive: true });
   }
 
-  var scrollCue = document.getElementById("scrollCue");
-  if (scrollCue) {
-    scrollCue.addEventListener("click", function () {
-      var target = document.querySelector(".strip") || document.getElementById("ingatlanok");
-      if (target) target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-    });
-  }
-
   /* -------------------------------------------------
      Search card tabs (visual only)
   ------------------------------------------------- */
