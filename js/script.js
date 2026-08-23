@@ -69,8 +69,37 @@
 
   /* -------------------------------------------------
      Scroll-reveal (IntersectionObserver)
+
+     Variants (data-reveal): up/left/right/fade (generic content),
+     eyebrow + curtain (heading pairs), rise (property/service cards,
+     auto-staggered below), image (large feature photos), testi
+     (testimonial block), pop (badges/CTAs, land after their parent).
   ------------------------------------------------- */
   var revealEls = document.querySelectorAll("[data-reveal]");
+
+  // Auto-stagger card grids: index within each shared parent, capped so a
+  // grid with many items never leaves the last card waiting too long.
+  function capStaggerByParent(selector, delayStep, maxDelay) {
+    var counts = new Map();
+    document.querySelectorAll(selector).forEach(function (el) {
+      var parent = el.parentElement;
+      var i = counts.get(parent) || 0;
+      counts.set(parent, i + 1);
+      if (el.hasAttribute("data-delay")) return; // explicit delay wins
+      el.setAttribute("data-delay", String(Math.min(i * delayStep, maxDelay)));
+    });
+  }
+  capStaggerByParent('[data-reveal="rise"]', 70, 200);
+
+  // Badges/CTAs tagged "pop" land shortly after the nearest revealing
+  // ancestor so they feel like they arrive once their card/photo has landed.
+  document.querySelectorAll('[data-reveal="pop"]').forEach(function (el) {
+    if (el.hasAttribute("data-delay")) return; // explicit delay wins
+    var host = el.closest('[data-reveal="rise"], [data-reveal="image"], [data-reveal="left"], [data-reveal="right"], [data-reveal="up"]');
+    var base = host ? parseInt(host.getAttribute("data-delay") || "0", 10) : 0;
+    el.setAttribute("data-delay", String(base + 420));
+  });
+
   if ("IntersectionObserver" in window && revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -79,11 +108,17 @@
           var delay = el.getAttribute("data-delay") || 0;
           setTimeout(function () {
             el.classList.add("is-visible");
+            // Free the compositing layer once the transition settles —
+            // will-change should not be left on indefinitely.
+            el.addEventListener("transitionend", function clear() {
+              el.style.willChange = "auto";
+              el.removeEventListener("transitionend", clear);
+            });
           }, reduceMotion ? 0 : parseInt(delay, 10));
           io.unobserve(el);
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px 150px 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
@@ -184,12 +219,12 @@
         el.textContent = target;
         return;
       }
-      var duration = 1600;
+      var duration = 1200;
       var start = null;
       function step(ts) {
         if (start === null) start = ts;
         var progress = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
+        var eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic, odometer feel
         el.textContent = Math.floor(eased * target);
         if (progress < 1) {
           requestAnimationFrame(step);
@@ -208,7 +243,7 @@
             statIo.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.5 });
+      }, { threshold: 0.3, rootMargin: "0px 0px 100px 0px" });
       statEls.forEach(function (el) { statIo.observe(el); });
     } else {
       statEls.forEach(animateCount);

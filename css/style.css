@@ -41,6 +41,7 @@
   --shadow-gold:0 14px 30px -10px rgba(184,135,60,.45);
 
   --ease:cubic-bezier(.22,1,.36,1);
+  --ease-reveal:cubic-bezier(.16,1,.3,1);
   --dur:.7s;
 }
 
@@ -74,14 +75,108 @@ section[id]{scroll-margin-top:96px;}
 .container--narrow{max-width:880px;}
 
 /* ==========================================================================
-   Reveal-on-scroll
+   Reveal-on-scroll — premium, per-type entrance motion
+   All variants share --ease-reveal (ease-out-expo) and stay in the
+   350–900ms range. Cheap-to-paint properties only: opacity, transform,
+   clip-path — nothing that forces a heavy repaint (no blur/backdrop-filter
+   on the revealed elements themselves).
    ========================================================================== */
-[data-reveal]{opacity:0;will-change:transform,opacity;transition:opacity .9s var(--ease), transform .9s var(--ease);}
-[data-reveal="up"]{transform:translateY(36px);}
-[data-reveal="left"]{transform:translateX(48px);}
-[data-reveal="right"]{transform:translateX(-48px);}
-[data-reveal="fade"]{transform:none;}
-[data-reveal].is-visible{opacity:1;transform:translate(0,0);}
+
+/* Generic content blocks — paragraphs, form columns, whole text stacks */
+[data-reveal="up"],
+[data-reveal="left"],
+[data-reveal="right"],
+[data-reveal="fade"]{
+  opacity:0;
+  transition:opacity .7s var(--ease-reveal), transform .7s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="up"]{transform:translateY(32px);}
+[data-reveal="left"]{transform:translateX(44px);}
+[data-reveal="right"]{transform:translateX(-44px);}
+[data-reveal="fade"]{transform:none;transition:opacity .6s var(--ease-reveal);will-change:opacity;}
+[data-reveal="up"].is-visible,
+[data-reveal="left"].is-visible,
+[data-reveal="right"].is-visible,
+[data-reveal="fade"].is-visible{opacity:1;transform:translate(0,0);}
+
+/* Gold eyebrow label — fades/slides in just ahead of its heading's curtain wipe */
+[data-reveal="eyebrow"]{
+  opacity:0;transform:translate(-8px,6px);
+  transition:opacity .5s var(--ease-reveal), transform .5s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="eyebrow"].is-visible{opacity:1;transform:translate(0,0);}
+
+/* Section headings — a gold light sweeps left-to-right as the text wipes open */
+[data-reveal="curtain"]{
+  position:relative;
+  opacity:1;
+  clip-path:inset(-.15em 100% -.2em 0);
+  transition:clip-path .68s var(--ease-reveal);
+  will-change:clip-path;
+}
+[data-reveal="curtain"].is-visible{clip-path:inset(-.15em 0 -.2em 0);}
+[data-reveal="curtain"]::after{
+  content:"";
+  position:absolute;top:0;bottom:0;left:0;width:56px;
+  background:linear-gradient(90deg, transparent, rgba(205,164,94,.85), transparent);
+  opacity:0;pointer-events:none;
+}
+[data-reveal="curtain"].is-visible::after{animation:curtainSweep .68s var(--ease-reveal) both;}
+@keyframes curtainSweep{
+  0%{transform:translateX(-56px);opacity:0;}
+  20%{opacity:.9;}
+  100%{transform:translateX(calc(100% + 56px));opacity:0;}
+}
+
+/* Property / service cards — snappy rise + scale; stagger delay is computed
+   and capped in JS so grids with many items never leave later cards waiting. */
+[data-reveal="rise"]{
+  opacity:0;transform:translateY(26px) scale(.96);
+  transition:opacity .4s var(--ease-reveal), transform .4s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="rise"].is-visible{opacity:1;transform:translate(0,0) scale(1);}
+
+/* Large feature photography — settles into place like a slow Ken Burns ease */
+[data-reveal="image"]{
+  opacity:0;transform:scale(1.08);
+  transition:opacity .9s var(--ease-reveal), transform .9s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="image"].is-visible{opacity:1;transform:scale(1);}
+/* Hero background is also driven by a scroll-parallax inline transform —
+   rest at the same scale the parallax uses so handoff never jumps. */
+#heroBg[data-reveal]{transform:scale(1.14);}
+#heroBg[data-reveal].is-visible{transform:scale(1.08);}
+
+/* Testimonials — minimal: quick fade + tiny rise, read one at a time */
+[data-reveal="testi"]{
+  opacity:0;transform:translateY(12px);
+  transition:opacity .4s var(--ease-reveal), transform .4s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="testi"].is-visible{opacity:1;transform:translate(0,0);}
+
+/* Badges / CTA pills — land with a soft scale-in just after their parent arrives */
+[data-reveal="pop"]{
+  opacity:0;transform:scale(.9);
+  transition:opacity .4s var(--ease-reveal), transform .4s var(--ease-reveal);
+  will-change:opacity, transform;
+}
+[data-reveal="pop"].is-visible{opacity:1;transform:scale(1);}
+
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{
+    opacity:1 !important;
+    transform:none !important;
+    clip-path:none !important;
+    transition:none !important;
+    animation:none !important;
+  }
+  [data-reveal]::after{animation:none !important;}
+}
 
 /* ==========================================================================
    Loader
@@ -416,7 +511,7 @@ section[id]{scroll-margin-top:96px;}
   display:grid;grid-template-columns:1.1fr 1fr;background:var(--navy-950);border-radius:var(--radius-xl);
   overflow:hidden;box-shadow:var(--shadow-lg);
 }
-.showcase__media{position:relative;min-height:420px;}
+.showcase__media{position:relative;min-height:420px;overflow:hidden;}
 .showcase__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
 .showcase__tag{
   position:absolute;top:24px;left:24px;background:linear-gradient(135deg,var(--gold-400),var(--gold-600));

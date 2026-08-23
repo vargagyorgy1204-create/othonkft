@@ -57,7 +57,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="fooldal">
-  <div class="hero__bg" id="heroBg" style="background-image:url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="hero__bg" id="heroBg" data-reveal="image" data-delay="0" style="background-image:url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1920&q=80')"></div>
   <div class="hero__overlay"></div>
   <div class="hero__grain"></div>
 
@@ -130,7 +130,7 @@
     <div class="hero__float-card" data-reveal="left" data-delay="400">
       <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Duna-parti panorámás penthouse kültéri terasszal">
       <div class="hero__float-card-body">
-        <p class="hero__float-card-tag">Kiemelt ajánlat</p>
+        <p class="hero__float-card-tag" data-reveal="pop" data-delay="750">Kiemelt ajánlat</p>
         <h3>Duna-parti Panoráma Penthouse</h3>
         <p class="hero__float-card-price">185 M Ft <span>· Budapest V.</span></p>
       </div>
@@ -159,15 +159,15 @@
 <!-- ============ FEATURED LISTINGS ============ -->
 <section class="section" id="ingatlanok">
   <div class="container">
-    <div class="section__head" data-reveal="up">
-      <p class="eyebrow">Válogatott kínálat</p>
+    <div class="section__head">
+      <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Válogatott kínálat</p>
       <div class="section__head-row">
-        <h2>Kiemelt Ingatlanok, <br>Önnek Válogatva</h2>
-        <p class="section__desc">Kézzel válogatott otthonok a főváros legkeresettebb részein és az ország legszebb üdülőövezeteiben — mindegyik ellenőrzött, azonnal megtekinthető.</p>
+        <h2 data-reveal="curtain" data-delay="150">Kiemelt Ingatlanok, <br>Önnek Válogatva</h2>
+        <p class="section__desc" data-reveal="up" data-delay="250">Kézzel válogatott otthonok a főváros legkeresettebb részein és az ország legszebb üdülőövezeteiben — mindegyik ellenőrzött, azonnal megtekinthető.</p>
       </div>
     </div>
 
-    <div class="filters" data-reveal="up" data-delay="80" role="tablist" aria-label="Ingatlan szűrő">
+    <div class="filters" data-reveal="rise" data-delay="80" role="tablist" aria-label="Ingatlan szűrő">
       <button class="filters__pill is-active" data-filter="all">Összes</button>
       <button class="filters__pill" data-filter="elado">Eladó</button>
       <button class="filters__pill" data-filter="kiado">Kiadó</button>
@@ -177,10 +177,10 @@
 
     <div class="listings" id="listingsGrid">
 
-      <article class="card" data-tags="elado lakas" data-reveal="up" data-delay="0">
+      <article class="card" data-tags="elado lakas" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80" alt="Panorámás penthouse a Duna partján, üvegfronttal" loading="lazy">
-          <span class="card__badge card__badge--sale">Eladó</span>
+          <span class="card__badge card__badge--sale" data-reveal="pop">Eladó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -198,10 +198,10 @@
         </div>
       </article>
 
-      <article class="card" data-tags="elado haz" data-reveal="up" data-delay="80">
+      <article class="card" data-tags="elado haz" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" alt="Modern családi ház kertvárosi környezetben, medencével" loading="lazy">
-          <span class="card__badge card__badge--sale">Eladó</span>
+          <span class="card__badge card__badge--sale" data-reveal="pop">Eladó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -219,10 +219,10 @@
         </div>
       </article>
 
-      <article class="card" data-tags="kiado lakas" data-reveal="up" data-delay="160">
+      <article class="card" data-tags="kiado lakas" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" alt="Design belvárosi loft nagy ablakokkal" loading="lazy">
-          <span class="card__badge card__badge--rent">Kiadó</span>
+          <span class="card__badge card__badge--rent" data-reveal="pop">Kiadó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -240,10 +240,10 @@
         </div>
       </article>
 
-      <article class="card" data-tags="elado haz" data-reveal="up" data-delay="0">
+      <article class="card" data-tags="elado haz" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=700&q=80" alt="Balatoni villa medencével és panorámával" loading="lazy">
-          <span class="card__badge card__badge--sale">Eladó</span>
+          <span class="card__badge card__badge--sale" data-reveal="pop">Eladó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -261,10 +261,10 @@
         </div>
       </article>
 
-      <article class="card" data-tags="elado lakas" data-reveal="up" data-delay="80">
+      <article class="card" data-tags="elado lakas" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=700&q=80" alt="Új építésű lakás debreceni belvárosban" loading="lazy">
-          <span class="card__badge card__badge--sale">Eladó</span>
+          <span class="card__badge card__badge--sale" data-reveal="pop">Eladó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -282,10 +282,10 @@
         </div>
       </article>
 
-      <article class="card" data-tags="kiado lakas" data-reveal="up" data-delay="160">
+      <article class="card" data-tags="kiado lakas" data-reveal="rise">
         <div class="card__media">
           <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80" alt="Elegáns társasházi lakás erkéllyel" loading="lazy">
-          <span class="card__badge card__badge--rent">Kiadó</span>
+          <span class="card__badge card__badge--rent" data-reveal="pop">Kiadó</span>
           <button class="card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
         <div class="card__body">
@@ -316,35 +316,35 @@
 <!-- ============ SERVICES / DARK PANEL ============ -->
 <section class="services" id="szolgaltatasok">
   <div class="container">
-    <div class="section__head section__head--center" data-reveal="up">
-      <p class="eyebrow eyebrow--light">Miért az Othon Kft.</p>
-      <h2 class="light">Otthonvásárlás <br>Egyszerűen és Megbízhatóan</h2>
-      <p class="section__desc section__desc--light">Az első kereséstől a kulcsátadásig egyetlen szakértő csapat kíséri végig — teljes átláthatósággal, valós piaci ismerettel.</p>
+    <div class="section__head section__head--center">
+      <p class="eyebrow eyebrow--light" data-reveal="eyebrow" data-delay="0">Miért az Othon Kft.</p>
+      <h2 class="light" data-reveal="curtain" data-delay="150">Otthonvásárlás <br>Egyszerűen és Megbízhatóan</h2>
+      <p class="section__desc section__desc--light" data-reveal="up" data-delay="250">Az első kereséstől a kulcsátadásig egyetlen szakértő csapat kíséri végig — teljes átláthatósággal, valós piaci ismerettel.</p>
     </div>
 
     <div class="services__grid">
-      <div class="service-card" data-reveal="up" data-delay="0">
+      <div class="service-card" data-reveal="rise">
         <span class="service-card__icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </span>
         <h3>Okos Keresés</h3>
         <p>Testreszabott szűrők és pontos piaci adatok segítenek gyorsan megtalálni az Ön igényeihez illő otthont.</p>
       </div>
-      <div class="service-card" data-reveal="up" data-delay="80">
+      <div class="service-card" data-reveal="rise">
         <span class="service-card__icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
         <h3>Szakértő Ügynökök</h3>
         <p>Több mint 10 év tapasztalattal rendelkező tanácsadóink minden lépésnél az Ön érdekeit képviselik.</p>
       </div>
-      <div class="service-card" data-reveal="up" data-delay="160">
+      <div class="service-card" data-reveal="rise">
         <span class="service-card__icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M7 7.5c0-1.7 2-3 5-3s5 1.3 5 3-2 2.5-5 2.5-5 1-5 2.7 2 3 5 3 5-1.1 5-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
         <h3>Legjobb Ár Garancia</h3>
         <p>Naprakész piaci elemzés és erős tárgyalási szakértelem — hogy Ön mindig a legjobb ajánlatot kapja.</p>
       </div>
-      <div class="service-card" data-reveal="up" data-delay="240">
+      <div class="service-card" data-reveal="rise">
         <span class="service-card__icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3 4.5 6v6c0 4.8 3.2 8.4 7.5 9 4.3-.6 7.5-4.2 7.5-9V6L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -377,23 +377,23 @@
 <!-- ============ LIFESTYLE SPLIT ============ -->
 <section class="lifestyle">
   <div class="container lifestyle__inner">
-    <div class="lifestyle__media" data-reveal="right">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Napfényes, elegáns nappali otthon berendezéssel">
-      <div class="lifestyle__media-badge">
+    <div class="lifestyle__media">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Napfényes, elegáns nappali otthon berendezéssel" data-reveal="image" data-delay="0">
+      <div class="lifestyle__media-badge" data-reveal="pop" data-delay="500">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
         <div><strong>120+</strong><span>Prémium helyszín</span></div>
       </div>
     </div>
-    <div class="lifestyle__content" data-reveal="left">
-      <p class="eyebrow">Új fejezet</p>
-      <h2>Nyissa Ki az Ajtót <br>Új Életstílusához</h2>
-      <p class="section__desc">Legyen szó vásárlásról, bérlésről vagy befektetésről — csapatunk gondoskodik róla, hogy megtalálja a tökéletes otthont, amely valóban Önre szabott.</p>
-      <ul class="lifestyle__list">
+    <div class="lifestyle__content">
+      <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Új fejezet</p>
+      <h2 data-reveal="curtain" data-delay="150">Nyissa Ki az Ajtót <br>Új Életstílusához</h2>
+      <p class="section__desc" data-reveal="left" data-delay="250">Legyen szó vásárlásról, bérlésről vagy befektetésről — csapatunk gondoskodik róla, hogy megtalálja a tökéletes otthont, amely valóban Önre szabott.</p>
+      <ul class="lifestyle__list" data-reveal="left" data-delay="350">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Személyre szabott ingatlanajánlatok</li>
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Teljes körű finanszírozási tanácsadás</li>
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Kulcsrakész beköltözési támogatás</li>
       </ul>
-      <a href="#kapcsolat" class="btn btn--dark">Kezdje El Most</a>
+      <a href="#kapcsolat" class="btn btn--dark" data-reveal="pop" data-delay="450">Kezdje El Most</a>
     </div>
   </div>
 </section>
@@ -401,12 +401,12 @@
 <!-- ============ PROPERTY OF THE MONTH ============ -->
 <section class="showcase">
   <div class="container">
-    <div class="showcase__card" data-reveal="up">
+    <div class="showcase__card">
       <div class="showcase__media">
-        <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=1100&q=80" alt="Modern építészetű luxusvilla medencével naplementében">
-        <span class="showcase__tag">A Hónap Ingatlana</span>
+        <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=1100&q=80" alt="Modern építészetű luxusvilla medencével naplementében" data-reveal="image" data-delay="0">
+        <span class="showcase__tag" data-reveal="pop" data-delay="500">A Hónap Ingatlana</span>
       </div>
-      <div class="showcase__body">
+      <div class="showcase__body" data-reveal="left" data-delay="150">
         <p class="eyebrow">Egyedi ajánlat</p>
         <h3>Modern Építészetű Luxusvilla</h3>
         <p class="card__loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/></svg> Budapest, II. kerület, Hűvösvölgy</p>
@@ -428,12 +428,12 @@
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section section--cream" id="rolunk">
   <div class="container">
-    <div class="section__head section__head--center" data-reveal="up">
-      <p class="eyebrow">Ügyfeleink mondták</p>
-      <h2>Vállalkozások Kedvelik, <br>Szakemberek Megbíznak Bennünk</h2>
+    <div class="section__head section__head--center">
+      <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Ügyfeleink mondták</p>
+      <h2 data-reveal="curtain" data-delay="150">Vállalkozások Kedvelik, <br>Szakemberek Megbíznak Bennünk</h2>
     </div>
 
-    <div class="avatars" data-reveal="up" data-delay="80">
+    <div class="avatars" data-reveal="rise">
       <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=12" alt="Kovács Róbert portréja"><span>Kovács Róbert</span><small>Ügyvéd</small></div>
       <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=47" alt="Nagy Eszter portréja"><span>Nagy Eszter</span><small>Vállalkozó</small></div>
       <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=33" alt="Tóth Bence portréja"><span>Tóth Bence</span><small>Befektető</small></div>
@@ -441,7 +441,7 @@
       <div class="avatars__item avatars__item--more">+2.8K</div>
     </div>
 
-    <div class="testimonials" data-reveal="up" data-delay="160">
+    <div class="testimonials" data-reveal="testi" data-delay="160">
       <div class="testimonials__track" id="testiTrack">
         <article class="testi">
           <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
@@ -475,12 +475,12 @@
 <!-- ============ FAQ ============ -->
 <section class="section" id="gyik">
   <div class="container container--narrow">
-    <div class="section__head section__head--center" data-reveal="up">
-      <p class="eyebrow">Kérdése van?</p>
-      <h2>Gyakran Ismételt Kérdések</h2>
+    <div class="section__head section__head--center">
+      <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Kérdése van?</p>
+      <h2 data-reveal="curtain" data-delay="150">Gyakran Ismételt Kérdések</h2>
     </div>
 
-    <div class="faq" data-reveal="up" data-delay="80">
+    <div class="faq" data-reveal="up" data-delay="250">
       <div class="faq__item is-open">
         <button class="faq__q" aria-expanded="true">
           Mennyi idő alatt találhatok megfelelő ingatlant?
@@ -532,11 +532,11 @@
   <div class="cta-final__bg" style="background-image:url('https://images.unsplash.com/photo-1541343672885-9be56236302a?auto=format&fit=crop&w=1600&q=80')"></div>
   <div class="cta-final__overlay"></div>
   <div class="container cta-final__inner">
-    <div class="cta-final__text" data-reveal="up">
-      <p class="eyebrow eyebrow--light">Vegye fel velünk a kapcsolatot</p>
-      <h2 class="light">Találjuk Meg Együtt <br>Álmai Otthonát</h2>
-      <p class="section__desc section__desc--light">Töltse ki elérhetőségeit, és 24 órán belül felvesszük Önnel a kapcsolatot egy díjmentes konzultáció egyeztetéséhez.</p>
-      <div class="cta-final__contacts">
+    <div class="cta-final__text">
+      <p class="eyebrow eyebrow--light" data-reveal="eyebrow" data-delay="0">Vegye fel velünk a kapcsolatot</p>
+      <h2 class="light" data-reveal="curtain" data-delay="150">Találjuk Meg Együtt <br>Álmai Otthonát</h2>
+      <p class="section__desc section__desc--light" data-reveal="up" data-delay="300">Töltse ki elérhetőségeit, és 24 órán belül felvesszük Önnel a kapcsolatot egy díjmentes konzultáció egyeztetéséhez.</p>
+      <div class="cta-final__contacts" data-reveal="up" data-delay="380">
         <a href="tel:+36301234567"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> +36 30 123 4567</a>
         <a href="mailto:info@othonkft.hu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> info@othonkft.hu</a>
         <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg> 1051 Budapest, Váci utca 12.</span>
