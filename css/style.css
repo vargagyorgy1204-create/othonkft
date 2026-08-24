@@ -747,13 +747,19 @@ section[id]{scroll-margin-top:96px;}
 .cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--navy-950);}
 .cta-final__overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,20,.96) 30%, rgba(6,10,20,.75) 100%);}
 .cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
-/* The .section__desc--light paragraph that used to sit here (removed)
-   carried the heading-to-contacts gap via its own margin-bottom:34px -
-   now that it's gone, the h2 needs that spacing directly so it doesn't
-   sit flush against .cta-final__contacts (global reset zeroes out h2's
-   own margin). */
-.cta-final__text h2.light{color:var(--white);margin-bottom:28px;}
-.cta-final__contacts{display:flex;flex-direction:column;gap:16px;}
+/* This h2 isn't nested in .section__head like every other section
+   heading, so it never picked up the shared font-size rule and was
+   falling back to the browser default (~24px) instead of matching
+   e.g. the FAQ heading (~43px). margin-bottom replaces the gap that
+   used to come from the .section__desc--light paragraph that sat here
+   (removed) via its own margin-bottom - bumped from 28 to 34px to give
+   the now-larger heading proportionally more room to breathe, since
+   .cta-final__inner's align-items:center already centers this whole
+   (much shorter) column against the taller form card - the remaining
+   emptiness is split evenly above and below rather than dumped at the
+   bottom, so no other rebalancing needed there. */
+.cta-final__text h2.light{font-size:clamp(1.9rem,3vw,2.7rem);color:var(--white);margin-bottom:34px;}
+.cta-final__contacts{display:flex;flex-direction:column;gap:20px;}
 .cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#dfe3ee;font-weight:500;}
 .cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
 .cta-final__contacts a:hover{color:var(--gold-400);}
