@@ -747,12 +747,12 @@ section[id]{scroll-margin-top:96px;}
 .cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--navy-950);}
 .cta-final__overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(6,10,20,.96) 30%, rgba(6,10,20,.75) 100%);}
 .cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
-.cta-final__text h2.light{color:var(--white);}
-.cta-final__text .section__desc{margin-bottom:34px;}
-/* .section__desc--light's margin-inline:auto centers it correctly in
-   #szolgaltatasok's centered header, but this column is left-aligned —
-   override just here so it lines up with the eyebrow/h2 above it. */
-.cta-final__text .section__desc--light{margin-inline:0;}
+/* The .section__desc--light paragraph that used to sit here (removed)
+   carried the heading-to-contacts gap via its own margin-bottom:34px -
+   now that it's gone, the h2 needs that spacing directly so it doesn't
+   sit flush against .cta-final__contacts (global reset zeroes out h2's
+   own margin). */
+.cta-final__text h2.light{color:var(--white);margin-bottom:28px;}
 .cta-final__contacts{display:flex;flex-direction:column;gap:16px;}
 .cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#dfe3ee;font-weight:500;}
 .cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
