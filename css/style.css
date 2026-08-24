@@ -333,10 +333,24 @@ section[id]{scroll-margin-top:96px;}
 .hero__title em{
   font-family:"Fraunces", var(--font-head), Georgia, serif;
   font-optical-sizing:auto;
-  font-style:italic;font-weight:400;
-  background:linear-gradient(135deg,var(--gold-300),var(--gold-500));
+  /* Upright, same weight as the h1's own line (600, via the shared
+     h1,h2,h3,h4 rule) - only the color treatment and a touch more
+     letter-spacing set this line apart from "Ahol az Álmok" above it. */
+  font-style:normal;font-weight:600;letter-spacing:.015em;
+  /* Gold, not the site's cool blue-violet-pink --card-primary gradient -
+     matches the eyebrow, buttons and price highlights already using
+     gold everywhere else, so the hero title doesn't introduce a second,
+     unrelated brand gradient. --gold-300 already exists in :root, but
+     the fallback is kept for safety if that ever changes. */
+  background:linear-gradient(135deg,var(--gold-300, var(--gold-400)) 0%,var(--gold-600) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)) drop-shadow(0 1px 3px rgba(0,0,0,.6));
+}
+/* Solid-color fallback for browsers without background-clip:text
+   support - without this the em text would render fully transparent
+   (invisible) instead of just losing the gradient. */
+@supports not (background-clip: text){
+  .hero__title em{background:none;color:var(--gold-600);}
 }
 .hero__lead{color:var(--ink-800);font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
 .hero .eyebrow--light{color:var(--gold-700);}
