@@ -328,29 +328,16 @@ section[id]{scroll-margin-top:96px;}
 .hero__title{
   font-family:"Fraunces", var(--font-head), Georgia, serif;
   font-optical-sizing:auto;
-  font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.12;color:var(--navy-950);margin-bottom:22px;
+  font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.12;font-weight:400;letter-spacing:0;
+  margin-bottom:22px;color:#12151f;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.38));
 }
 .hero__title em{
-  font-family:"Fraunces", var(--font-head), Georgia, serif;
-  font-optical-sizing:auto;
-  /* Upright, same weight as the h1's own line (600, via the shared
-     h1,h2,h3,h4 rule) - only the color treatment and a touch more
-     letter-spacing set this line apart from "Ahol az Álmok" above it. */
-  font-style:normal;font-weight:600;letter-spacing:.015em;
-  /* Gold, not the site's cool blue-violet-pink --card-primary gradient -
-     matches the eyebrow, buttons and price highlights already using
-     gold everywhere else, so the hero title doesn't introduce a second,
-     unrelated brand gradient. --gold-300 already exists in :root, but
-     the fallback is kept for safety if that ever changes. */
-  background:linear-gradient(135deg,var(--gold-300, var(--gold-400)) 0%,var(--gold-600) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)) drop-shadow(0 1px 3px rgba(0,0,0,.6));
+  font:inherit;
+  font-style:normal;
 }
-/* Solid-color fallback for browsers without background-clip:text
-   support - without this the em text would render fully transparent
-   (invisible) instead of just losing the gradient. */
 @supports not (background-clip: text){
-  .hero__title em{background:none;color:var(--gold-600);}
+  .hero__title{color:#12151f;}
 }
 .hero__lead{color:var(--ink-800);font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
 .hero .eyebrow--light{color:var(--gold-700);}
