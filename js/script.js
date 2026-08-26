@@ -290,8 +290,34 @@
       });
 
       if (emptyMsg) emptyMsg.hidden = visibleCount !== 0;
+      if (listings) listings.scrollTo({ left: 0, behavior: "auto" });
     });
   });
+
+  /* -------------------------------------------------
+     Listings carousel
+  ------------------------------------------------- */
+  var listings = document.getElementById("listingsGrid");
+  var previousListings = document.querySelector("[data-listings-prev]");
+  var nextListings = document.querySelector("[data-listings-next]");
+  if (listings && previousListings && nextListings) {
+    function moveListings(direction) {
+      var firstVisibleCard = listings.querySelector(".card:not(.is-hidden)");
+      var maxScroll = listings.scrollWidth - listings.clientWidth;
+      var step = firstVisibleCard ? firstVisibleCard.getBoundingClientRect().width + 28 : listings.clientWidth;
+      if (direction > 0 && listings.scrollLeft >= maxScroll - 2) {
+        listings.scrollTo({ left: 0, behavior: reduceMotion ? "auto" : "smooth" });
+        return;
+      }
+      if (direction < 0 && listings.scrollLeft <= 2) {
+        listings.scrollTo({ left: maxScroll, behavior: reduceMotion ? "auto" : "smooth" });
+        return;
+      }
+      listings.scrollBy({ left: direction * step, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    previousListings.addEventListener("click", function () { moveListings(-1); });
+    nextListings.addEventListener("click", function () { moveListings(1); });
+  }
 
   /* -------------------------------------------------
      Favourite heart toggle
