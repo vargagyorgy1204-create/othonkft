@@ -723,7 +723,7 @@ section[id]{scroll-margin-top:96px;}
 .services{background:var(--navy-950);padding:40px 0 110px;position:relative;overflow:hidden;}
 .services{background:var(--cream) !important;}
 .services__card{position:relative;z-index:1;width:100%;padding:72px 0;background:#0A1428;border-radius:24px;box-shadow:none;}
-.services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:72px 0;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
+.services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:48px 0;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
 /* min-height:900px removed - it matched the card's combined old content
    (icon grid + stats together); now that .stats moved out to sit below
    the card on the dark panel, forcing that height left a large dead
@@ -781,7 +781,7 @@ section[id]{scroll-margin-top:96px;}
 .services__card .section__head h2.light{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;}
 .services__card .section__desc--light{color:#d4dcde;}
 .services__card .section__head--center{text-align:left;}
-.services__card .section__head{max-width:none;margin-inline:0;}
+.services__card .section__head{max-width:none;margin-inline:0;margin-bottom:32px;}
 .services__card .section__head h2.light,.services__card .section__head .section__desc--light{margin-inline:0;}
 /* This whole .services__card .section__head ruleset (like its h2.light
    sibling above) was already sitting here, unused, apparently prepared
