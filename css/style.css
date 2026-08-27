@@ -294,12 +294,17 @@ section[id]{scroll-margin-top:96px;}
   transition:background-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
 }
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
+/* Transparent stays only for the top-of-page state (over the light hero) -
+   past that, dark logo/nav text needs a solid backing or it becomes
+   illegible over the site's darker sections (Miert a Leon Otthon Kft,
+   the contact CTA, etc). */
 .header.is-scrolled{
-  background:transparent;
+  background:#fff;
+  border:1px solid rgba(18,21,31,.08);
   backdrop-filter:none;
   -webkit-backdrop-filter:none;
   padding:8px 0;
-  box-shadow:none;
+  box-shadow:0 10px 30px rgba(18,21,31,.08);
 }
 
 /* The header stays transparent over the light hero in every scroll state. */
