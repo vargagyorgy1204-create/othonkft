@@ -774,7 +774,7 @@ section[id]{scroll-margin-top:96px;}
    intros. */
 .services > .container > .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
 .services > .container > .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
-.services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:48px;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
+.services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:20px;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
 /* min-height:900px removed - it matched the card's combined old content
    (icon grid + stats together); now that .stats moved out to sit below
    the card on the dark panel, forcing that height left a large dead
