@@ -892,6 +892,10 @@ section[id]{scroll-margin-top:96px;}
 /* Új ingatlan (.card__badge, default top:14px;left:14px) now owns the
    top-left corner; this pill moved to the bottom-left instead so the
    two no longer collide. */
+/* Boost definition on the photo: the plain gold pill read a bit washed
+   out against bright interiors, no shadow/border of its own to
+   separate it from similarly warm-toned photo backgrounds. */
+.lifestyle__media .card__badge{box-shadow:0 4px 14px rgba(6,10,20,.35);border:1px solid rgba(255,255,255,.35);}
 .lifestyle__media-loc--bottom{
   position:absolute;bottom:20px;left:20px;top:auto;z-index:2;display:flex;align-items:center;gap:6px;
   background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -899,18 +903,22 @@ section[id]{scroll-margin-top:96px;}
 }
 /* Plain panel now - no longer layered over a photo, so no frosted-glass
    treatment needed, just a solid warm background beside it. */
+/* justify-content:flex-start (was center) so the heading sits near the
+   top instead of the whole block floating in the middle; the button's
+   own margin-top:auto (below) then pushes it down to the bottom of the
+   panel instead of just following the last field. */
 .lifestyle__booking{
   padding:44px;background:var(--cream);
-  display:flex;flex-direction:column;gap:16px;justify-content:center;
+  display:flex;flex-direction:column;gap:18px;justify-content:flex-start;
 }
-.lifestyle__booking h3{font-size:1.5rem;color:var(--ink-900);margin-bottom:2px;}
+.lifestyle__booking h3{font-size:1.5rem;color:var(--ink-900);margin-bottom:4px;line-height:1.25;}
 .lifestyle__booking label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-600);}
 .lifestyle__booking input{
   border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-size:.92rem;color:var(--ink-900);
   background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;
 }
 .lifestyle__booking input:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
-.lifestyle__booking .btn{margin-top:16px;}
+.lifestyle__booking .btn{margin-top:auto;}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
