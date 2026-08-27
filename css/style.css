@@ -476,8 +476,14 @@ section[id]{scroll-margin-top:96px;}
   .hero--reference .hero__lead{font-size:.68rem;letter-spacing:.05em;}
   .hero__lead-break{display:none;}
   .hero__media{height:clamp(260px,72vw,390px);}
-  .hero-search{justify-content:flex-start;left:50%;width:100%;min-width:650px;min-height:77px;margin:0;}
-  .hero-search__fields{min-width:530px;border-radius:999px;overflow-x:auto;}
+  /* min-width:650px removed: it forced the *whole* bar (fields + the
+     fixed-width submit button) to be at least 650px wide regardless of
+     viewport, overflowing well past a narrow screen's edges - the
+     actual horizontal-scroll mechanism is .hero-search__fields'
+     own overflow-x:auto right below, which only needs .hero-search
+     itself to stay capped to the viewport. */
+  .hero-search{justify-content:flex-start;left:50%;width:calc(100% - 24px);min-height:77px;margin:0;}
+  .hero-search__fields{min-width:0;flex:1;border-radius:999px;overflow-x:auto;}
   .hero-search__field{min-width:92px;min-height:77px;padding:0 14px;}
   .hero-search__field--wide{min-width:170px;}
   .hero-search__submit{flex-basis:126px;min-height:61px;margin:0;}
