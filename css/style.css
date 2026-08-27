@@ -835,7 +835,9 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Lifestyle split
    ========================================================================== */
-.lifestyle{padding:16px 0 110px;background:var(--cream);}
+/* !important needed: main > section{background:var(--cream)!important}
+   (global rule) otherwise wins over this regardless of specificity. */
+.lifestyle{padding:16px 0 110px;background:var(--white) !important;}
 /* 3-zone "book a viewing" layout: a benefit card left, the big photo+
    booking-form card centered, two stacked benefit cards right. The
    heading row spans the full width above all three. */
@@ -845,10 +847,12 @@ section[id]{scroll-margin-top:96px;}
   gap:28px;align-items:center;
 }
 .lifestyle__media-head{grid-column:1/-1;margin-bottom:24px;text-align:left;}
-.lifestyle__heading-row{display:flex;align-items:center;justify-content:space-between;gap:28px;}
-.lifestyle__heading-row .btn{position:absolute;top:34px;right:0;}
-.lifestyle__media-head .eyebrow{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:400;letter-spacing:.045em;text-transform:none;color:#3C4748;}
-.lifestyle__media-head h2{font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--ink-900);text-align:left;white-space:nowrap;}
+/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
+   válogatva) - same size, color, and font treatment. .lifestyle__heading-row
+   and its .btn (the removed Érdekel button) are gone, h2 no longer
+   needs to share a row with anything. */
+.lifestyle__media-head .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
+.lifestyle__media-head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--ink-900);text-align:left;}
 
 /* Photo + booking form as one continuous card: the wrapper owns the
    radius/shadow/background, the photo and form sit inside it without
@@ -895,8 +899,6 @@ section[id]{scroll-margin-top:96px;}
   .lifestyle__side{flex-direction:column;}
   .lifestyle__side--left,.lifestyle__side--right{grid-column:1;}
   .lifestyle__media-head{margin-bottom:18px;}
-  .lifestyle__heading-row{align-items:flex-start;flex-direction:column;gap:18px;}
-  .lifestyle__heading-row .btn{position:static;}
   .lifestyle__booking{padding:24px;}
 }
 
