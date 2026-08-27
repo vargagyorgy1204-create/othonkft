@@ -872,15 +872,14 @@ section[id]{scroll-margin-top:96px;}
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg, rgba(6,10,20,.35) 0%, rgba(6,10,20,0) 22%, rgba(6,10,20,0) 78%, rgba(6,10,20,.2) 100%);
 }
-.lifestyle__media-loc{
-  position:absolute;top:20px;left:20px;z-index:2;display:flex;align-items:center;gap:6px;
+/* Új ingatlan (.card__badge, default top:14px;left:14px) now owns the
+   top-left corner; this pill moved to the bottom-left instead so the
+   two no longer collide. */
+.lifestyle__media-loc--bottom{
+  position:absolute;bottom:20px;left:20px;top:auto;z-index:2;display:flex;align-items:center;gap:6px;
   background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   color:var(--white);font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;
 }
-/* .card__badge already positions itself top:14px;left:14px - this
-   modifier just flips it to the opposite corner so it doesn't collide
-   with the location pill. */
-.lifestyle__media-badge--top-right{left:auto;right:16px;top:16px;}
 /* Plain panel now - no longer layered over a photo, so no frosted-glass
    treatment needed, just a solid warm background beside it. */
 .lifestyle__booking{
@@ -894,11 +893,6 @@ section[id]{scroll-margin-top:96px;}
   background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;
 }
 .lifestyle__booking input:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
-/* Reuses .hero__trust's checkmark-row styling verbatim - just a bit of
-   breathing room above it and a smaller gap/font to fit this narrower
-   column instead of the full-width hero. */
-.lifestyle__booking-trust{margin-top:2px;gap:10px 18px;}
-.lifestyle__booking-trust li{font-size:.78rem;}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
