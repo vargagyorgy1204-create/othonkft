@@ -557,55 +557,152 @@
     </div>
 
     <div class="avatars" data-reveal="rise">
-      <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=12" alt="Kovács Róbert portréja"><span>Kovács Róbert</span><small>Ügyvéd</small></div>
-      <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=47" alt="Nagy Eszter portréja"><span>Nagy Eszter</span><small>Vállalkozó</small></div>
-      <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=33" alt="Tóth Bence portréja"><span>Tóth Bence</span><small>Befektető</small></div>
-      <div class="avatars__item"><img src="https://i.pravatar.cc/150?img=5" alt="Szabó Anna portréja"><span>Szabó Anna</span><small>Építész</small></div>
-      <div class="avatars__item avatars__item--more">+2.8K</div>
+      <button type="button" class="avatars__item avatars__item--active" data-index="0"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Kovács Róbert portréja"><span>Kovács Róbert</span></button>
+      <button type="button" class="avatars__item" data-index="1"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Nagy Eszter portréja"><span>Nagy Eszter</span></button>
+      <button type="button" class="avatars__item" data-index="2"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Tóth Bence portréja"><span>Tóth Bence</span></button>
+      <button type="button" class="avatars__item" data-index="3"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Szabó Anna portréja"><span>Szabó Anna</span></button>
+      <button type="button" class="avatars__item" data-index="4"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Fekete Judit portréja"><span>Fekete Judit</span></button>
+      <button type="button" class="avatars__more-btn" id="reviewsModalOpen" data-reveal="pop" data-delay="200">
+        <span class="avatars__more-dot"></span>
+        <span>+2,8K Összes vélemény</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
 
     <div class="testimonials" data-reveal="testi" data-delay="160">
       <div class="testimonials__track" id="testiTrack">
         <article class="testi is-active">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Az Othon Kft. csapata percek alatt megértette, mit keresünk. Két hét alatt megtaláltuk álmaink lakását, minden dokumentáció zökkenőmentesen zajlott.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=12" alt=""><div><strong>Kovács Róbert</strong><span>Ügyvéd, Budapest</span></div></div>
+          <svg class="testi__quote-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testi__top">
+            <div class="testi__stars" aria-label="5 csillagos értékelés">
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="testi__tag">Ingatlan vásárlás</span>
+          </div>
+          <p class="testi__text">„Az Otthon Kft. gyorsan és stresszmentesen segített új otthonra találnunk, pontosan olyanra, amiről álmodtunk.”</p>
+          <div class="testi__footer">
+            <div class="testi__author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt=""><div><strong>Kovács Róbert</strong><span>Vevő, Budapest</span></div></div>
+            <div class="testi__meta">
+              <span class="testi__date">2026. augusztus 14.</span>
+              <span class="testi__verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ellenőrzött ügylet</span>
+            </div>
+          </div>
         </article>
         <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Profi, gyors és mindenben segítőkész hozzáállás. A tárgyalás során több millió forintot spóroltunk az ügynök szakértelmének köszönhetően.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=47" alt=""><div><strong>Nagy Eszter</strong><span>Vállalkozó, Debrecen</span></div></div>
+          <svg class="testi__quote-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testi__top">
+            <div class="testi__stars" aria-label="5 csillagos értékelés">
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="testi__tag">Lakáseladás</span>
+          </div>
+          <p class="testi__text">„Fantasztikus élmény volt velük dolgozni! Az ingatlan eladása mindössze 2 hetet vett igénybe a vártnál magasabb áron.”</p>
+          <div class="testi__footer">
+            <div class="testi__author"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt=""><div><strong>Nagy Eszter</strong><span>Eladó, Győr</span></div></div>
+            <div class="testi__meta">
+              <span class="testi__date">2026. augusztus 02.</span>
+              <span class="testi__verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ellenőrzött ügylet</span>
+            </div>
+          </div>
         </article>
         <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Befektetőként fontos a pontos piaci elemzés — ezt maradéktalanul megkaptam. Azóta három ingatlant vásároltunk rajtuk keresztül.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=33" alt=""><div><strong>Tóth Bence</strong><span>Befektető, Balaton</span></div></div>
+          <svg class="testi__quote-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testi__top">
+            <div class="testi__stars" aria-label="5 csillagos értékelés">
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="testi__tag">Befektetési tanácsadás</span>
+          </div>
+          <p class="testi__text">„Befektetőként kiemelten fontos számomra a megbízhatóság és a pontos piaci elemzés. Csak ajánlani tudom őket!”</p>
+          <div class="testi__footer">
+            <div class="testi__author"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt=""><div><strong>Tóth Bence</strong><span>Befektető, Szeged</span></div></div>
+            <div class="testi__meta">
+              <span class="testi__date">2026. július 28.</span>
+              <span class="testi__verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ellenőrzött ügylet</span>
+            </div>
+          </div>
         </article>
         <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Kifejezetten figyeltek az építészeti részletekre, amikor otthont kerestünk ügyfeleinknek. Igazi szakmai partner.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=5" alt=""><div><strong>Szabó Anna</strong><span>Építész, Budapest</span></div></div>
+          <svg class="testi__quote-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testi__top">
+            <div class="testi__stars" aria-label="5 csillagos értékelés">
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="testi__tag">Projektmenedzsment</span>
+          </div>
+          <p class="testi__text">„Nagyon alapos és figyelmes kiszolgálásban volt részünk. Az építészeti tanácsadásuk rengeteg pénzt spórolt meg nekünk.”</p>
+          <div class="testi__footer">
+            <div class="testi__author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt=""><div><strong>Szabó Anna</strong><span>Építész, Pécs</span></div></div>
+            <div class="testi__meta">
+              <span class="testi__date">2026. július 19.</span>
+              <span class="testi__verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ellenőrzött ügylet</span>
+            </div>
+          </div>
         </article>
         <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Az Othon Kft. gyorsan és stresszmentesen segített új otthonra találnunk, pontosan olyanra, amiről álmodtunk.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=25" alt=""><div><strong>Fekete Judit</strong><span>Vevő, Debrecen</span></div></div>
-        </article>
-        <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„Több ingatlanbefektetési tranzakciót is lebonyolítottam már velük — mindig precízek, gyorsak, és a piaci adatok alapján megalapozott tanácsokat adnak.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=68" alt=""><div><strong>Horváth Péter</strong><span>Befektető, Szeged</span></div></div>
-        </article>
-        <article class="testi">
-          <div class="testi__stars" aria-label="5 csillagos értékelés">★★★★★</div>
-          <p>„A csapat rugalmassága és szakértelme lenyűgözött. Az eladási folyamat elejétől a végéig átlátható volt, és a vártnál is jobb áron sikerült értékesítenünk otthonunkat.”</p>
-          <div class="testi__author"><img src="https://i.pravatar.cc/150?img=44" alt=""><div><strong>Molnár Kata</strong><span>Kisvállalkozó, Győr</span></div></div>
+          <svg class="testi__quote-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testi__top">
+            <div class="testi__stars" aria-label="5 csillagos értékelés">
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="testi__tag">Hitel &amp; Otthonteremtés</span>
+          </div>
+          <p class="testi__text">„Az első pillanattól kezdve éreztük a profizmust. A hitelügyintézésben is segítettek, ami hatalmas könnyebbség volt.”</p>
+          <div class="testi__footer">
+            <div class="testi__author"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt=""><div><strong>Fekete Judit</strong><span>Vevő, Debrecen</span></div></div>
+            <div class="testi__meta">
+              <span class="testi__date">2026. július 10.</span>
+              <span class="testi__verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ellenőrzött ügylet</span>
+            </div>
+          </div>
         </article>
       </div>
-      <div class="testimonials__nav">
-        <button id="testiPrev" aria-label="Előző vélemény"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button id="testiNext" aria-label="Következő vélemény"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="testimonials__footer-nav">
+        <div class="testimonials__dots" id="testiDots">
+          <button type="button" class="is-active" data-index="0" aria-label="1. vélemény"></button>
+          <button type="button" data-index="1" aria-label="2. vélemény"></button>
+          <button type="button" data-index="2" aria-label="3. vélemény"></button>
+          <button type="button" data-index="3" aria-label="4. vélemény"></button>
+          <button type="button" data-index="4" aria-label="5. vélemény"></button>
+        </div>
+        <div class="testimonials__nav">
+          <button id="testiPrev" aria-label="Előző vélemény"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="testiNext" aria-label="Következő vélemény"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <div class="reviews-modal" id="reviewsModal" aria-hidden="true">
+    <div class="reviews-modal__backdrop" id="reviewsModalBackdrop"></div>
+    <div class="reviews-modal__card" role="dialog" aria-modal="true" aria-labelledby="reviewsModalTitle">
+      <button type="button" class="reviews-modal__close" id="reviewsModalClose" aria-label="Bezárás"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="reviews-modal__icon">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <h3 id="reviewsModalTitle">2 840+ Értékelés</h3>
+      <p>Minden vélemény független forrásból (Google Reviews &amp; Trustpilot) lett ellenőrizve és hitelesítve.</p>
+      <button type="button" class="btn btn--dark btn--block" id="reviewsModalCloseBtn">Bezárás</button>
     </div>
   </div>
 </section>

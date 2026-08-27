@@ -380,25 +380,71 @@
     var index = 0;
     var prevBtn = document.getElementById("testiPrev");
     var nextBtn = document.getElementById("testiNext");
+    var avatarBtns = document.querySelectorAll(".avatars__item[data-index]");
+    var dotBtns = document.querySelectorAll("#testiDots button[data-index]");
 
-    function goTo(i) {
+    function goTo(i, opts) {
+      opts = opts || {};
       index = (i + slides) % slides;
       Array.prototype.forEach.call(track.children, function (slide, i2) {
         slide.classList.toggle("is-active", i2 === index);
       });
+      avatarBtns.forEach(function (btn) {
+        btn.classList.toggle("avatars__item--active", Number(btn.dataset.index) === index);
+      });
+      dotBtns.forEach(function (btn) {
+        btn.classList.toggle("is-active", Number(btn.dataset.index) === index);
+      });
+      if (!opts.silent) { stopAutoplay(); startAutoplay(); }
     }
     if (prevBtn) prevBtn.addEventListener("click", function () { goTo(index - 1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { goTo(index + 1); });
+    avatarBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () { goTo(Number(btn.dataset.index)); });
+    });
+    dotBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () { goTo(Number(btn.dataset.index)); });
+    });
 
     var autoplay;
     function startAutoplay() {
       if (reduceMotion) return;
-      autoplay = setInterval(function () { goTo(index + 1); }, 6500);
+      autoplay = setInterval(function () { goTo(index + 1, { silent: true }); }, 6500);
     }
     function stopAutoplay() { clearInterval(autoplay); }
     startAutoplay();
     track.closest(".testimonials").addEventListener("mouseenter", stopAutoplay);
     track.closest(".testimonials").addEventListener("mouseleave", startAutoplay);
+  }
+
+  /* -------------------------------------------------
+     Reviews count modal ("+2,8K Összes vélemény")
+  ------------------------------------------------- */
+  var reviewsModal = document.getElementById("reviewsModal");
+  if (reviewsModal) {
+    var reviewsModalOpenBtn = document.getElementById("reviewsModalOpen");
+    var reviewsModalCloseEls = [
+      document.getElementById("reviewsModalClose"),
+      document.getElementById("reviewsModalCloseBtn"),
+      document.getElementById("reviewsModalBackdrop")
+    ];
+
+    function openReviewsModal() {
+      reviewsModal.classList.add("is-open");
+      reviewsModal.setAttribute("aria-hidden", "false");
+    }
+    function closeReviewsModal() {
+      reviewsModal.classList.remove("is-open");
+      reviewsModal.setAttribute("aria-hidden", "true");
+    }
+
+    if (reviewsModalOpenBtn) reviewsModalOpenBtn.addEventListener("click", openReviewsModal);
+    reviewsModalCloseEls.forEach(function (el) {
+      if (el) el.addEventListener("click", closeReviewsModal);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && reviewsModal.classList.contains("is-open")) closeReviewsModal();
+    });
   }
 
   /* -------------------------------------------------
