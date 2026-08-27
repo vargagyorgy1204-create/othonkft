@@ -724,7 +724,12 @@ section[id]{scroll-margin-top:96px;}
 .services{background:var(--cream) !important;}
 .services__card{position:relative;z-index:1;width:100%;padding:72px 0;background:#0A1428;border-radius:24px;box-shadow:none;}
 .services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:72px 0;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
-.services__content{position:relative;z-index:1;width:97%;min-height:900px;margin:0 auto;padding:68px;background:#fff;border-radius:clamp(24px,3vw,32px);box-shadow:0 18px 42px rgba(18,21,31,.14);}
+/* min-height:900px removed - it matched the card's combined old content
+   (icon grid + stats together); now that .stats moved out to sit below
+   the card on the dark panel, forcing that height left a large dead
+   white gap under the icon grid. Sizes to its actual content now,
+   matching the min-height:0 this rule already got at mobile widths. */
+.services__content{position:relative;z-index:1;width:97%;margin:0 auto;padding:68px;background:#fff;border-radius:clamp(24px,3vw,32px);box-shadow:0 18px 42px rgba(18,21,31,.14);}
 /* .section__head (eyebrow+h2) used to live inside .services__content
    (the white inner card), which is why h2.light/the eyebrow were
    overridden to dark colors here. Now that it sits directly in
