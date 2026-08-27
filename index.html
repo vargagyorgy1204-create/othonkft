@@ -476,45 +476,51 @@
 <!-- ============ LIFESTYLE SPLIT ============ -->
 <section class="lifestyle">
   <div class="container lifestyle__inner">
-    <div class="lifestyle__media-wrap">
-      <div class="lifestyle__media-head">
-        <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Új fejezet</p>
-        <div class="lifestyle__heading-row">
-          <h2 data-reveal="curtain" data-delay="150">Nyissa ki az ajtót új életstílusához</h2>
-          <a href="#kapcsolat" class="btn btn--dark" data-reveal="pop" data-delay="450">Érdekel</a>
-        </div>
+    <div class="lifestyle__media-head">
+      <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Új fejezet</p>
+      <div class="lifestyle__heading-row">
+        <h2 data-reveal="curtain" data-delay="150">Nyissa ki az ajtót új életstílusához</h2>
+        <a href="#kapcsolat" class="btn btn--dark" data-reveal="pop" data-delay="450">Érdekel</a>
       </div>
+    </div>
+
+    <div class="lifestyle__side lifestyle__side--left" data-reveal="left" data-delay="300">
+      <div class="lifestyle__media-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Rugalmas időpont</strong><span>Az Önnek megfelelő napon és órában</span></div>
+      </div>
+    </div>
+
+    <div class="lifestyle__media-wrap">
       <div class="lifestyle__media">
         <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Napfényes, elegáns nappali otthon berendezéssel" data-reveal="image" data-delay="0">
         <span class="card__badge card__badge--sale">Új ingatlan</span>
       </div>
+      <form class="lifestyle__booking" onsubmit="return false;">
+        <h3>Foglaljon időpontot a megtekintésre</h3>
+        <label>Teljes név
+          <input type="text" placeholder="Az Ön neve" required>
+        </label>
+        <label>Telefonszám
+          <input type="tel" placeholder="+36 30 000 0000" required>
+        </label>
+        <label>Kívánt dátum
+          <input type="date">
+        </label>
+        <button type="submit" class="btn btn--gold btn--block">Időpont Foglalása</button>
+      </form>
     </div>
-    <div class="lifestyle__stats" data-reveal="pop" data-delay="500">
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><strong>120+</strong><span>Prémium helyszín</span></div>
-        </div>
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12.5 11 14.5 15 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><strong>500+</strong><span>Sikeres tranzakció</span></div>
-        </div>
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><strong>15+ Év</strong><span>Szakmai tapasztalat</span></div>
-        </div>
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
-          <div><strong>98%</strong><span>Elégedettségi arány</span></div>
-        </div>
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11M8 20v-5h8v5M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <div><strong>850+</strong><span>Eladott ingatlan</span></div>
-        </div>
-        <div class="lifestyle__media-badge">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><strong>24/7</strong><span>Személyes támogatás</span></div>
-        </div>
+
+    <div class="lifestyle__side lifestyle__side--right" data-reveal="right" data-delay="300">
+      <div class="lifestyle__media-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12.5 11 14.5 15 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div><strong>Gyors visszaigazolás</strong><span>24 órán belül válaszolunk</span></div>
       </div>
+      <div class="lifestyle__media-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div><strong>Személyes ügynök</strong><span>Élő kísérő minden megtekintésen</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
