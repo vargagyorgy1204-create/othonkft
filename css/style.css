@@ -635,7 +635,12 @@ section[id]{scroll-margin-top:96px;}
    Partner strip
    ========================================================================== */
 .strip{background:var(--navy-950);padding:26px 0;}
-.strip__inner{display:flex;align-items:center;justify-content:center;overflow:hidden;}
+/* max-width/padding-inline reset: .strip__inner also carries the shared
+   .container class (max-width:1240px, centered), which left empty
+   cream background on either side on wider screens instead of the
+   scrolling names reaching the edges - this section should go
+   full-bleed instead of capping to the site's usual content width. */
+.strip__inner{display:flex;align-items:center;justify-content:center;overflow:hidden;max-width:none;padding-inline:0;}
 .strip__label{color:#8b91a3;font-size:.82rem;font-weight:600;flex-shrink:0;}
 .strip__marquee{display:flex;width:max-content;animation:stripMarquee 24s linear infinite;}
 .strip__logos{display:flex;align-items:center;gap:72px;flex-shrink:0;padding-right:72px;white-space:nowrap;}
