@@ -859,7 +859,7 @@ section[id]{scroll-margin-top:96px;}
    outer radius/shadow (was a full-bleed photo with the form floating
    over it - now two normal-flow halves in a grid instead). */
 .lifestyle__media-wrap{
-  display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch;
+  display:grid;grid-template-columns:2fr 1fr;align-items:stretch;
   border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);
 }
 .lifestyle__media{position:relative;height:100%;min-height:340px;}
