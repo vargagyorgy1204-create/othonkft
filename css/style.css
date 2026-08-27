@@ -426,7 +426,7 @@ section[id]{scroll-margin-top:96px;}
   background-position:calc(100% - 4px) 50%;background-size:12px 12px;background-repeat:no-repeat;
 }
 .hero-search__field:last-of-type{border-right:0;}
-.hero-search__submit{flex:0 0 126px;margin:0;background:var(--navy-900);border-radius:999px;color:var(--white);font-size:.78rem;font-weight:800;letter-spacing:.02em;box-shadow:0 12px 28px rgba(18,21,31,.08);transition:background-color .25s ease,transform .25s ease;}
+.hero-search__submit{flex:0 0 126px;margin:0;background:var(--navy-900);border:2px solid var(--white);border-radius:999px;color:var(--white);font-size:.78rem;font-weight:800;letter-spacing:.02em;box-shadow:0 12px 28px rgba(18,21,31,.08);transition:background-color .25s ease,transform .25s ease;}
 .hero-search__submit:hover{background:var(--navy-700);transform:translateY(-1px);}
 .hero-search__field select:focus-visible,.hero-search__field input:focus-visible,.hero-search__submit:focus-visible{outline:2px solid var(--gold-500);outline-offset:-2px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
