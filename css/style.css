@@ -893,6 +893,7 @@ section[id]{scroll-margin-top:96px;}
   background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;
 }
 .lifestyle__booking input:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
+.lifestyle__booking .btn{margin-top:16px;}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
