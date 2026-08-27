@@ -290,7 +290,7 @@ section[id]{scroll-margin-top:96px;}
    ========================================================================== */
 .header{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-    width:min(85%,1240px);margin:28px auto 0;padding:8px 0;background:transparent;border:none;border-radius:999px;box-shadow:none;zoom:.81;
+    width:min(95%,1320px);margin:28px auto 0;padding:8px 0;background:transparent;border:none;border-radius:999px;box-shadow:none;zoom:.81;
   transition:background-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
 }
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
