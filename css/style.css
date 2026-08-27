@@ -844,16 +844,17 @@ section[id]{scroll-margin-top:96px;}
 
 .stats{
   display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
-  border-top:1px solid rgba(255,255,255,.1);padding-top:52px;position:relative;z-index:1;
+  border-top:1px solid var(--line);padding-top:52px;position:relative;z-index:1;
 }
-/* .stats is a direct child of .services__card (not .services__content),
-   so it needs its own horizontal padding to match the white card's
-   68px inset - it doesn't inherit that padding from anywhere. */
-.services__card .stats{padding-inline:clamp(24px,4vw,68px);}
+/* Now a sibling of .services__card (was its last child, sitting on the
+   dark panel) - moved below the whole card instead, onto the section's
+   own white background, so needs dark text/line colors instead of the
+   light-on-dark ones tuned for sitting on the navy card. */
+.stats--outside{margin-top:52px;}
 .stat{text-align:center;}
-.stat__num{font-family:var(--font-head);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:6px;}
+.stat__num{font-family:var(--font-head);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:var(--ink-900);margin-bottom:6px;}
 .stat__num::after{content:attr(data-suffix);}
-.stat__label{color:#9aa1b5;font-size:.86rem;font-weight:500;}
+.stat__label{color:var(--ink-500);font-size:.86rem;font-weight:500;}
 
 @media (max-width:980px){.services__grid{grid-template-columns:repeat(2,1fr);}.stats{grid-template-columns:repeat(2,1fr);row-gap:40px;}}
 @media (max-width:560px){.services__grid{grid-template-columns:1fr;}}
