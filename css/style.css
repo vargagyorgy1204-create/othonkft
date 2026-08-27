@@ -257,10 +257,8 @@ section[id]{scroll-margin-top:96px;}
 .section__desc{color:var(--ink-500);font-size:1.02rem;line-height:1.7;max-width:440px;}
 .section__desc--light{color:#b9c0d1;max-width:480px;margin-inline:auto;}
 #ingatlanok{background:#fff !important;}
-#ingatlanok{padding:64px 0;}
-/* Push the eyebrow/heading/arrows row down a bit further from the hero
-   above, so it sits a little lower, closer to the card grid below it. */
-#ingatlanok .section__head{margin-top:64px;margin-bottom:24px;}
+#ingatlanok{padding:24px 0 64px;}
+#ingatlanok .section__head{margin-top:8px;margin-bottom:24px;}
 /* text-transform stays none: "Exkluzív ajánlatok" is written in
    sentence case in the markup and no caps reference was given for this
    round - if the intent is actually uppercase, flag it and I'll flip
@@ -730,8 +728,7 @@ section[id]{scroll-margin-top:96px;}
 .card.is-hidden{display:none;}
 
 .card__media{position:relative;height:210px;overflow:hidden;}
-.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
-.card:hover .card__media img{transform:scale(1.08);}
+.card__media img{width:100%;height:100%;object-fit:cover;}
 .card__badge{
   position:absolute;top:14px;left:14px;padding:6px 13px;border-radius:999px;
   font-size:.72rem;font-weight:700;letter-spacing:.03em;color:var(--white);
