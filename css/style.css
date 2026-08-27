@@ -384,7 +384,7 @@ section[id]{scroll-margin-top:96px;}
 /* Reference hero: a quiet editorial card with the image as its visual anchor. */
 .hero--reference{
   min-height:0;display:block;overflow:visible;background:#fff !important;
-  padding:45px 24px 0;
+  padding:36px 24px 0;
 }
 .hero--legacy{display:none;}
 .hero__visual{position:relative;width:min(100%,1100px);margin:35px auto 0;overflow:visible;}
@@ -401,7 +401,7 @@ section[id]{scroll-margin-top:96px;}
    the submit button was a single element with margin:8px sitting
    *inside* .hero-search's own white/bordered/shadowed pill, which read
    as one connected shape rather than two buttons. */
-.hero-search{position:absolute;z-index:3;left:50%;bottom:65px;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:64px;margin:0;transform:translate(-50%,50%);}
+.hero-search{position:absolute;z-index:3;left:50%;bottom:53px;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:64px;margin:0;transform:translate(-50%,50%);}
 .hero-search__fields{display:flex;align-items:stretch;flex:1;min-width:0;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:999px;overflow:hidden;box-shadow:0 12px 28px rgba(18,21,31,.08);}
 /* flex:1 on the base rule (not just --wide) so all 4 fields split the
    bar evenly now that Meret m2 is gone - --wide no longer needs to be
