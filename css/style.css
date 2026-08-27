@@ -1067,42 +1067,45 @@ section[id]{scroll-margin-top:96px;}
 /* !important needed: main > section{background:var(--cream)!important}
    (global rule) otherwise wins over this regardless of specificity. */
 .cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--white) !important;}
-/* Was a dark gradient scrim for the navy background - with the section
-   now white there's nothing left for it to do, so it's hidden rather
-   than left painting a stray dark wash over a white section. */
-.cta-final__overlay{display:none;}
-.cta-final__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
-/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment. h2 isn't nested in
-   .section__head like every other section heading, so it needs its own
-   font-family/size/color here rather than inheriting the shared rule. */
-.cta-final__text .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
-.cta-final__text h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--ink-900);margin-bottom:34px;}
+.cta-final__inner{position:relative;z-index:1;}
+/* One merged card, two halves sharing one radius/shadow (same mechanics
+   as .lifestyle__media-wrap/.showcase__card) - form light, contacts
+   dark navy, instead of two separate cards apart with a gap. */
+.cta-final__card{
+  display:grid;grid-template-columns:1.1fr 1fr;
+  border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);
+}
+/* Dark half - same text-color convention already used everywhere else
+   on this site's navy panels (.showcase__card/.footer/.to-top): white
+   heading, light blue-gray body, gold icons/accents. */
+.cta-final__text{background:var(--navy-950);padding:48px;display:flex;flex-direction:column;justify-content:center;}
+.cta-final__text .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:var(--gold-400);}
+.cta-final__text h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--white);margin-bottom:34px;}
 .cta-final__contacts{display:flex;flex-direction:column;gap:20px;}
-.cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:var(--ink-800);font-weight:500;}
-.cta-final__contacts svg{color:var(--gold-600);flex-shrink:0;}
-.cta-final__contacts a:hover{color:var(--gold-600);}
+.cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#c7cde0;font-weight:500;}
+.cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
+.cta-final__contacts a:hover{color:var(--gold-400);}
 
-/* scale(.9): a straightforward 10% shrink of the whole form, per the
-   brief - transform-origin:top keeps it anchored to the same spot in
-   its grid cell rather than shrinking toward the center. */
+/* Light half - barely-there gray instead of near-opaque white, now that
+   it's one half of a shared card rather than its own floating card
+   (dropped its own border-radius/box-shadow/transform:scale(.9) 10%-
+   shrink from an earlier task - neither makes sense once merged). */
 .contact-card{
-  background:rgba(255,255,255,.97);border-radius:var(--radius-xl);padding:38px;box-shadow:var(--shadow-lg);
+  background:var(--cream-2);padding:48px;
   display:flex;flex-direction:column;gap:16px;
-  transform:scale(.9);transform-origin:top center;
 }
 .contact-card h3{font-size:1.3rem;color:var(--ink-900);margin-bottom:6px;}
 .contact-card label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-600);}
 .contact-card input,.contact-card textarea{
   border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-size:.92rem;color:var(--ink-900);
-  transition:border-color .3s ease, box-shadow .3s ease;resize:none;
+  background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;resize:none;
 }
 .contact-card input:focus,.contact-card textarea:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
 .contact-card__note{font-size:.76rem;color:var(--ink-500);text-align:center;}
 .contact-card__note a{color:var(--gold-700);font-weight:600;}
 
-@media (max-width:940px){
-  .cta-final__inner{grid-template-columns:1fr;}
+@media (max-width:900px){
+  .cta-final__card{grid-template-columns:1fr;}
 }
 
 /* ==========================================================================
