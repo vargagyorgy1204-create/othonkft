@@ -377,11 +377,19 @@ section[id]{scroll-margin-top:96px;}
    the submit button was a single element with margin:8px sitting
    *inside* .hero-search's own white/bordered/shadowed pill, which read
    as one connected shape rather than two buttons. */
-.hero-search{position:absolute;z-index:3;left:50%;bottom:0;display:flex;align-items:stretch;gap:12px;width:min(75%,1180px);min-height:77px;margin:0;transform:translate(-50%,50%);}
+.hero-search{position:absolute;z-index:3;left:50%;bottom:0;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:77px;margin:0;transform:translate(-50%,50%);}
 .hero-search__fields{display:flex;align-items:stretch;flex:1;min-width:0;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:999px;overflow:hidden;box-shadow:0 12px 28px rgba(18,21,31,.08);}
 .hero-search__field{display:flex;align-items:center;min-width:92px;padding:0 18px;border-right:1px solid var(--line);}
 .hero-search__field--wide{flex:1;min-width:170px;}
 .hero-search__field select,.hero-search__field input{width:100%;border:0;outline:0;background:transparent;color:var(--ink-800);font-size:.86rem;font-weight:700;}
+/* input only, not select - a <select>'s own native rendering already
+   clips its selected-option text to the box, and adding this CSS to it
+   as well made Chromium measure a narrower text area than without it
+   (clipping "Eladó" down to "Ela…", which wasn't happening before). At
+   the narrower bar width, the "Város, kerület, városrész" placeholder
+   no longer fits its input and was getting hard-clipped mid-word -
+   ellipsis instead so it trails off cleanly. */
+.hero-search__field input{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .hero-search__field input::placeholder{color:var(--ink-400);font-weight:500;}
 .hero-search__field select{appearance:none;padding-right:18px;background-image:linear-gradient(45deg,transparent 50%,var(--gold-600) 50%),linear-gradient(135deg,var(--gold-600) 50%,transparent 50%);background-position:calc(100% - 9px) 50%,100% 50%;background-size:7px 7px,7px 7px;background-repeat:no-repeat;}
 .hero-search__field:last-of-type{border-right:0;}
