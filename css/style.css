@@ -249,7 +249,8 @@ section[id]{scroll-margin-top:96px;}
 #ingatlanok .section__head-row .section__desc{max-width:640px;text-align:center;}
 #ingatlanok .section__head-row .filters{justify-content:flex-end;flex-shrink:0;margin:0;}
 #ingatlanok .section__head-row .listings__controls{display:flex;gap:8px;margin-left:auto;}
-.listings__arrow{width:48px;height:48px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;background:var(--navy-900);color:var(--white);font-size:1.2rem;box-shadow:var(--shadow-md);transition:background-color .3s ease,color .3s ease,transform .3s var(--ease);}
+.listings__arrow{width:36px;height:36px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;background:var(--navy-900);color:var(--white);font-size:1.2rem;box-shadow:var(--shadow-md);transition:background-color .3s ease,color .3s ease,transform .3s var(--ease);}
+.listings__arrow svg{width:15px;height:15px;}
 .listings__arrow:hover{background:var(--gold-500);color:var(--navy-950);transform:translateY(-2px);}
 .section__head h2{font-size:clamp(1.9rem,3vw,2.7rem);color:var(--ink-900);}
 .section__head h2.light{color:var(--white);}
