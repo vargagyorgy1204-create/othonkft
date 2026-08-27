@@ -239,7 +239,10 @@ section[id]{scroll-margin-top:96px;}
 .section__head-row{display:flex;flex-direction:column;gap:18px;}
 #ingatlanok .section__head-row{align-items:center;text-align:center;}
 #ingatlanok .section__head-row{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;text-align:left;}
-#ingatlanok .section__head-row h2{align-self:flex-start;text-align:left;font-size:clamp(1.8rem,3.2vw,2.8rem);white-space:nowrap;}
+/* Same font-size clamp/family as every other section heading
+   (.section__head h2 below, e.g. "Gyakran ismételt kérdések") -
+   this row had its own slightly-different clamp before. */
+#ingatlanok .section__head-row h2{align-self:flex-start;text-align:left;font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);white-space:nowrap;}
 #ingatlanok .section__head-row .section__desc{max-width:640px;text-align:center;}
 #ingatlanok .section__head-row .filters{justify-content:flex-end;flex-shrink:0;margin:0;}
 #ingatlanok .section__head-row .listings__controls{display:flex;gap:8px;margin-left:auto;}
@@ -251,7 +254,14 @@ section[id]{scroll-margin-top:96px;}
 .section__desc--light{color:#b9c0d1;max-width:480px;margin-inline:auto;}
 #ingatlanok{background:#fff !important;}
 #ingatlanok{padding:64px 0;}
-#ingatlanok .section__head > .eyebrow{display:block;width:100%;margin:0 auto 24px;text-align:left;font-family:"Playfair Display",serif;font-size:9px;font-weight:400;letter-spacing:.045em;text-transform:none;color:#3C4748;}
+/* text-transform stays none: "Exkluzív ajánlatok" is written in
+   sentence case in the markup and no caps reference was given for this
+   round - if the intent is actually uppercase, flag it and I'll flip
+   this. Also worth noting: #services/.lifestyle__media-head/.about__eyebrow
+   share this same serif-eyebrow pattern (1.35rem, no letter-spacing) -
+   only this one instance is being resized/spaced per the brief, so it
+   no longer matches those three siblings. */
+#ingatlanok .section__head > .eyebrow{display:block;width:100%;margin:0 auto 24px;text-align:left;font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
 /* Match the heading-to-subheading gap used in #ingatlanok's stacked
    header (.section__head-row{gap:18px}) — this section's h2/p had no
    gap at all (global margin reset), sitting flush against each other. */
