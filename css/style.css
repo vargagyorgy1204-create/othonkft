@@ -400,7 +400,7 @@ section[id]{scroll-margin-top:96px;}
    the submit button was a single element with margin:8px sitting
    *inside* .hero-search's own white/bordered/shadowed pill, which read
    as one connected shape rather than two buttons. */
-.hero-search{position:absolute;z-index:3;left:50%;bottom:0;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:77px;margin:0;transform:translate(-50%,50%);}
+.hero-search{position:absolute;z-index:3;left:50%;bottom:40px;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:77px;margin:0;transform:translate(-50%,50%);}
 .hero-search__fields{display:flex;align-items:stretch;flex:1;min-width:0;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:999px;overflow:hidden;box-shadow:0 12px 28px rgba(18,21,31,.08);}
 /* flex:1 on the base rule (not just --wide) so all 4 fields split the
    bar evenly now that Meret m2 is gone - --wide no longer needs to be
