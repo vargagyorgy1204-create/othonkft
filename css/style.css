@@ -630,6 +630,19 @@ section[id]{scroll-margin-top:96px;}
 .about__label{margin-bottom:24px;}
 .about__eyebrow{display:block;margin:0;text-align:left;font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:400;letter-spacing:.045em;text-transform:none;color:#3C4748;}
 .about__grid{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;min-height:485px;}
+/* #rolunk (class="about section") is completely empty right now
+   (<div class="about__content"></div>, no children) - its .section
+   padding:110px 0 + .about__grid min-height:485px were still reserving
+   705px of blank space between #szolgaltatasok and .lifestyle in the
+   page's flex order (main > .lifestyle{order:6} sits right after
+   main > #rolunk{order:5}) - this, not .lifestyle's own padding, was
+   the real source of the gap the last few edits were chasing. Collapsed
+   to zero height here rather than deleting the section outright, since
+   the header nav still links to #rolunk ("Rólunk") - keeps that link
+   working (scrolls to this exact point) without the visual chasm. If
+   this section ever gets real content, remove this override. */
+#rolunk{padding:0;}
+#rolunk .about__grid{min-height:0;}
 .about__media{position:relative;min-height:540px;overflow:visible;}
 .about__media::before{content:"";position:absolute;inset:28px -28px -28px 28px;border:1px solid var(--gold-500);opacity:.55;}
 .about__media img{position:relative;width:100%;height:540px;object-fit:cover;object-position:center;border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);}
