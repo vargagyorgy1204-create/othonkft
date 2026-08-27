@@ -886,7 +886,7 @@ section[id]{scroll-margin-top:96px;}
   padding:44px;background:var(--cream);
   display:flex;flex-direction:column;gap:16px;justify-content:center;
 }
-.lifestyle__booking h3{font-size:1.15rem;color:var(--ink-900);margin-bottom:2px;}
+.lifestyle__booking h3{font-size:1.5rem;color:var(--ink-900);margin-bottom:2px;}
 .lifestyle__booking label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-600);}
 .lifestyle__booking input{
   border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-size:.92rem;color:var(--ink-900);
