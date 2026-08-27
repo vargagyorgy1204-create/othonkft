@@ -418,36 +418,6 @@
   }
 
   /* -------------------------------------------------
-     Reviews count modal ("+2,8K Összes vélemény")
-  ------------------------------------------------- */
-  var reviewsModal = document.getElementById("reviewsModal");
-  if (reviewsModal) {
-    var reviewsModalOpenBtn = document.getElementById("reviewsModalOpen");
-    var reviewsModalCloseEls = [
-      document.getElementById("reviewsModalClose"),
-      document.getElementById("reviewsModalCloseBtn"),
-      document.getElementById("reviewsModalBackdrop")
-    ];
-
-    function openReviewsModal() {
-      reviewsModal.classList.add("is-open");
-      reviewsModal.setAttribute("aria-hidden", "false");
-    }
-    function closeReviewsModal() {
-      reviewsModal.classList.remove("is-open");
-      reviewsModal.setAttribute("aria-hidden", "true");
-    }
-
-    if (reviewsModalOpenBtn) reviewsModalOpenBtn.addEventListener("click", openReviewsModal);
-    reviewsModalCloseEls.forEach(function (el) {
-      if (el) el.addEventListener("click", closeReviewsModal);
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && reviewsModal.classList.contains("is-open")) closeReviewsModal();
-    });
-  }
-
-  /* -------------------------------------------------
      FAQ accordion
   ------------------------------------------------- */
   document.querySelectorAll(".faq__item").forEach(function (item) {
