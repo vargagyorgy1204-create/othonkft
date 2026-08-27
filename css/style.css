@@ -384,7 +384,7 @@ section[id]{scroll-margin-top:96px;}
 /* Reference hero: a quiet editorial card with the image as its visual anchor. */
 .hero--reference{
   min-height:0;display:block;overflow:visible;background:#fff !important;
-  padding:36px 24px 0;
+  padding:40px 24px 0;
 }
 .hero--legacy{display:none;}
 .hero__visual{position:relative;width:min(100%,1100px);margin:35px auto 0;overflow:visible;}
