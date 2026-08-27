@@ -735,7 +735,6 @@ section[id]{scroll-margin-top:96px;}
    intros. */
 .services > .container > .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
 .services > .container > .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
-.services__card{position:relative;z-index:1;width:100%;padding:72px 0;background:#0A1428;border-radius:24px;box-shadow:none;}
 .services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:48px 0;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
 /* min-height:900px removed - it matched the card's combined old content
    (icon grid + stats together); now that .stats moved out to sit below
@@ -751,8 +750,11 @@ section[id]{scroll-margin-top:96px;}
    .eyebrow--light (gold) / h2.light (white) styling used on every other
    dark section (hero, CTA, etc). */
 .services .section__desc--light{color:var(--ink-500);}
-.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-bottom:80px;position:relative;z-index:1;}
-#szolgaltatasok{background:#fff !important;}
+/* margin-bottom:0 (was 80px) - .services__content's own 68px padding-bottom
+   is already a full, symmetric cushion matching its 68px padding-top;
+   the extra 80px on top of that was stacking into a lopsided 148px gap
+   under the photo-card row vs 68px above it. */
+.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-bottom:0;position:relative;z-index:1;}
 /* Photo card with a bottom-left overlaid label (photo -> ::after scrim ->
    text), replacing the old icon-centered card. --service-photo is set
    per-card via an inline style on .service-card (matches how #heroBg
@@ -788,47 +790,26 @@ section[id]{scroll-margin-top:96px;}
 .service-card:hover .service-card__label p{opacity:1;max-height:120px;margin-top:10px;}
 .services .service-card[data-reveal="rise"]{height:300px;min-height:300px;opacity:1;transform:none;transition:none;will-change:auto;}
 .services .service-card[data-reveal="rise"]:hover{height:300px;min-height:300px;transform:none;}
-.services__content .section__head h2.light{color:var(--ink-900);}
-.services__card .section__head h2.light{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;}
-.services__card .section__desc--light{color:#d4dcde;}
-.services__card .section__head--center{text-align:left;}
-/* Direct child of .services__card now (no longer inside .services__content,
-   which had its own padding:68px) - without its own horizontal padding
-   this text sat flush against the dark card's rounded edges. */
-.services__card .section__head{max-width:none;margin-inline:0;margin-bottom:32px;padding-inline:clamp(24px,4vw,68px);}
-.services__card .section__head h2.light,.services__card .section__head .section__desc--light{margin-inline:0;}
-/* This whole .services__card .section__head ruleset (like its h2.light
-   sibling above) was already sitting here, unused, apparently prepared
-   for exactly this layout - the eyebrow/h2 as direct children of the
-   dark #0A1428 panel rather than nested in the white .services__content
-   card. Its color:#3C4748 (dark charcoal) is illegible against that
-   dark background though - swapped for the gold used by every other
-   dark-section eyebrow (hero, CTA) instead. */
-.services__card .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:400;letter-spacing:.045em;text-transform:none;color:var(--gold-400);}
-.services__content .section__head > .eyebrow{color:#3C4748;}
-.services__content .section__head--center{text-align:center;}
-.services__content .section__head{max-width:none;margin-inline:0;}
-.services__content .section__head h2.light,.services__content .section__head .section__desc--light{margin-inline:auto;}
-.services__content .stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-top:0;padding-top:24px;}
-.services__content .stat{padding:16px 10px;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:12px;box-shadow:0 8px 20px rgba(18,21,31,.06);}
-.services__content .stat__num{color:var(--gold-700);}
-.services__content .stat__label{color:var(--ink-600);}
+/* The block that used to be here (.services__card .section__head / .light /
+   .eyebrow, .services__content .section__head / .light / .eyebrow / .stats /
+   .stat*) is dead: .section__head is now a direct child of .container
+   (sibling before .services__card, styled separately above), and .stats
+   is a sibling of .services__content, not nested inside it - none of
+   those descendant selectors have matched anything since those moves.
+   Removed rather than left as noise. */
 
 @media (max-width:640px){
   .services__card{margin-top:24px;padding:42px 0;border-radius:18px;}
   .services__content{width:100%;min-height:0;padding:35px 22px;border-radius:16px;}
-  .services__content .stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
-  .services__content .stat{padding:12px 5px;}
-  .services__content .stat__label{font-size:.68rem;}
 }
 
 .stats{
   display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
   border-top:1px solid rgba(255,255,255,.1);padding-top:52px;position:relative;z-index:1;
 }
-/* Same reasoning as .services__card .section__head above: a direct
-   child of .services__card now, needs its own horizontal padding since
-   it no longer inherits .services__content's padding:68px. */
+/* .stats is a direct child of .services__card (not .services__content),
+   so it needs its own horizontal padding to match the white card's
+   68px inset - it doesn't inherit that padding from anywhere. */
 .services__card .stats{padding-inline:clamp(24px,4vw,68px);}
 .stat{text-align:center;}
 .stat__num{font-family:var(--font-head);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:6px;}
