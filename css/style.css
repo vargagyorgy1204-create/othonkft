@@ -256,7 +256,7 @@ section[id]{scroll-margin-top:96px;}
 #ingatlanok{padding:64px 0;}
 /* Push the eyebrow/heading/arrows row down a bit further from the hero
    above, so it sits a little lower, closer to the card grid below it. */
-#ingatlanok .section__head{margin-top:64px;}
+#ingatlanok .section__head{margin-top:64px;margin-bottom:24px;}
 /* text-transform stays none: "Exkluzív ajánlatok" is written in
    sentence case in the markup and no caps reference was given for this
    round - if the intent is actually uppercase, flag it and I'll flip
