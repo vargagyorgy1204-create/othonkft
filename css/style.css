@@ -402,8 +402,11 @@ section[id]{scroll-margin-top:96px;}
    as one connected shape rather than two buttons. */
 .hero-search{position:absolute;z-index:3;left:50%;bottom:0;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:77px;margin:0;transform:translate(-50%,50%);}
 .hero-search__fields{display:flex;align-items:stretch;flex:1;min-width:0;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:999px;overflow:hidden;box-shadow:0 12px 28px rgba(18,21,31,.08);}
-.hero-search__field{display:flex;align-items:center;min-width:92px;padding:0 18px;border-right:1px solid var(--line);}
-.hero-search__field--wide{flex:1;min-width:170px;}
+/* flex:1 on the base rule (not just --wide) so all 4 fields split the
+   bar evenly now that Meret m2 is gone - --wide no longer needs to be
+   the only one that grows. */
+.hero-search__field{display:flex;align-items:center;flex:1;min-width:0;padding:0 18px;border-right:1px solid var(--line);}
+.hero-search__field--wide{min-width:170px;}
 .hero-search__field select,.hero-search__field input{width:100%;border:0;outline:0;background:transparent;color:var(--ink-800);font-size:.86rem;font-weight:700;}
 /* input only, not select - a <select>'s own native rendering already
    clips its selected-option text to the box, and adding this CSS to it
@@ -414,7 +417,14 @@ section[id]{scroll-margin-top:96px;}
    ellipsis instead so it trails off cleanly. */
 .hero-search__field input{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .hero-search__field input::placeholder{color:var(--ink-400);font-weight:500;}
-.hero-search__field select{appearance:none;padding-right:18px;background-image:linear-gradient(45deg,transparent 50%,var(--gold-600) 50%),linear-gradient(135deg,var(--gold-600) 50%,transparent 50%);background-position:calc(100% - 9px) 50%,100% 50%;background-size:7px 7px,7px 7px;background-repeat:no-repeat;}
+/* Chevron SVG (not the old two-triangle gradient hack) in navy-950,
+   URL-encoded inline since a <select>'s native arrow can't be
+   restyled any other way without JS. */
+.hero-search__field select{
+  appearance:none;padding-right:26px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23060a14' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position:calc(100% - 4px) 50%;background-size:12px 12px;background-repeat:no-repeat;
+}
 .hero-search__field:last-of-type{border-right:0;}
 .hero-search__submit{flex:0 0 126px;margin:0;background:var(--navy-900);border-radius:999px;color:var(--white);font-size:.78rem;font-weight:800;letter-spacing:.02em;box-shadow:0 12px 28px rgba(18,21,31,.08);transition:background-color .25s ease,transform .25s ease;}
 .hero-search__submit:hover{background:var(--navy-700);transform:translateY(-1px);}
