@@ -58,33 +58,35 @@
     </div>
   </div>
   <form class="hero-search" action="#ingatlanok" onsubmit="return false;">
-    <label class="hero-search__field hero-search__field--select">
-      <span class="sr-only">Eladó vagy kiadó</span>
-      <select aria-label="Eladó vagy kiadó">
-        <option>Eladó</option>
-        <option>Kiadó</option>
-      </select>
-    </label>
-    <label class="hero-search__field hero-search__field--select">
-      <span class="sr-only">Ingatlantípus</span>
-      <select aria-label="Ingatlantípus">
-        <option>Lakás</option>
-        <option>Családi ház</option>
-        <option>Villa</option>
-      </select>
-    </label>
-    <label class="hero-search__field hero-search__field--wide">
-      <span class="sr-only">Város, kerület, városrész</span>
-      <input type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
-    </label>
-    <label class="hero-search__field">
-      <span class="sr-only">Ár</span>
-      <input type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
-    </label>
-    <label class="hero-search__field">
-      <span class="sr-only">Méret</span>
-      <input type="text" placeholder="Méret m²" aria-label="Méret m²">
-    </label>
+    <div class="hero-search__fields">
+      <label class="hero-search__field hero-search__field--select">
+        <span class="sr-only">Eladó vagy kiadó</span>
+        <select aria-label="Eladó vagy kiadó">
+          <option>Eladó</option>
+          <option>Kiadó</option>
+        </select>
+      </label>
+      <label class="hero-search__field hero-search__field--select">
+        <span class="sr-only">Ingatlantípus</span>
+        <select aria-label="Ingatlantípus">
+          <option>Lakás</option>
+          <option>Családi ház</option>
+          <option>Villa</option>
+        </select>
+      </label>
+      <label class="hero-search__field hero-search__field--wide">
+        <span class="sr-only">Város, kerület, városrész</span>
+        <input type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
+      </label>
+      <label class="hero-search__field">
+        <span class="sr-only">Ár</span>
+        <input type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
+      </label>
+      <label class="hero-search__field">
+        <span class="sr-only">Méret</span>
+        <input type="text" placeholder="Méret m²" aria-label="Méret m²">
+      </label>
+    </div>
     <button class="hero-search__submit" type="submit">Keresés</button>
   </form>
 </section>
