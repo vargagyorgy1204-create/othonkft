@@ -231,7 +231,7 @@ section[id]{scroll-margin-top:96px;}
 .eyebrow--light{color:var(--gold-400);}
 /* .eyebrow is shared across many sections (hero, testimonials, FAQ,
    contact...) - scoped here so only "Exkluzív ajánlatok" changes. */
-#ingatlanok .eyebrow{font-size:12px;}
+#ingatlanok .eyebrow{font-size:9px;}
 
 .section{padding:110px 0;}
 .section--cream{background:var(--cream-2);}
