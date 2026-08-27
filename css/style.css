@@ -1019,9 +1019,26 @@ section[id]{scroll-margin-top:96px;}
    FAQ
    ========================================================================== */
 /* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment. */
-#gyik .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
-#gyik .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
+   válogatva) - same size, color, and font treatment. Left-aligned now
+   that the heading lives in .faq-intro instead of a centered
+   .section__head--center above the whole section. */
+#gyik .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;text-align:left;}
+#gyik .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;text-align:left;}
+
+/* Two-column split: photo+intro card left, FAQ list right. */
+.faq-split{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:56px;align-items:start;}
+.faq-intro{display:flex;flex-direction:column;align-items:flex-start;}
+.faq-intro__media{width:100%;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:26px;}
+.faq-intro__media img{width:100%;height:280px;object-fit:cover;}
+.faq-intro .section__head{margin-bottom:14px;}
+.faq-intro .section__desc{margin-bottom:22px;}
+.faq-intro .btn{align-self:flex-start;}
+
+@media (max-width:980px){
+  .faq-split{grid-template-columns:1fr;gap:32px;}
+  .faq-intro__media img{height:220px;}
+}
+
 .faq{display:flex;flex-direction:column;gap:14px;}
 .faq__item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;transition:border-color .3s ease;}
 .faq__item.is-open{border-color:var(--gold-500);}
