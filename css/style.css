@@ -781,7 +781,10 @@ section[id]{scroll-margin-top:96px;}
 .services__card .section__head h2.light{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;}
 .services__card .section__desc--light{color:#d4dcde;}
 .services__card .section__head--center{text-align:left;}
-.services__card .section__head{max-width:none;margin-inline:0;margin-bottom:32px;}
+/* Direct child of .services__card now (no longer inside .services__content,
+   which had its own padding:68px) - without its own horizontal padding
+   this text sat flush against the dark card's rounded edges. */
+.services__card .section__head{max-width:none;margin-inline:0;margin-bottom:32px;padding-inline:clamp(24px,4vw,68px);}
 .services__card .section__head h2.light,.services__card .section__head .section__desc--light{margin-inline:0;}
 /* This whole .services__card .section__head ruleset (like its h2.light
    sibling above) was already sitting here, unused, apparently prepared
@@ -816,6 +819,10 @@ section[id]{scroll-margin-top:96px;}
   display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
   border-top:1px solid rgba(255,255,255,.1);padding-top:52px;position:relative;z-index:1;
 }
+/* Same reasoning as .services__card .section__head above: a direct
+   child of .services__card now, needs its own horizontal padding since
+   it no longer inherits .services__content's padding:68px. */
+.services__card .stats{padding-inline:clamp(24px,4vw,68px);}
 .stat{text-align:center;}
 .stat__num{font-family:var(--font-head);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:6px;}
 .stat__num::after{content:attr(data-suffix);}
