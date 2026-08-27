@@ -1018,6 +1018,10 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    FAQ
    ========================================================================== */
+/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
+   válogatva) - same size, color, and font treatment. */
+#gyik .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
+#gyik .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
 .faq{display:flex;flex-direction:column;gap:14px;}
 .faq__item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;transition:border-color .3s ease;}
 .faq__item.is-open{border-color:var(--gold-500);}
