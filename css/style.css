@@ -232,6 +232,9 @@ section[id]{scroll-margin-top:96px;}
 
 .section{padding:110px 0;}
 .section--cream{background:var(--cream-2);}
+/* !important needed: main > section{background:var(--cream)!important}
+   (global rule) otherwise wins over this regardless of specificity. */
+#velemenyek{background:var(--white) !important;}
 .section__head{margin-bottom:52px;}
 .section__head--center{max-width:640px;margin-inline:auto;text-align:center;}
 /* #ingatlanok's header: heading stacked above its paragraph, both full
