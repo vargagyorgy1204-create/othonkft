@@ -822,7 +822,7 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Lifestyle split
    ========================================================================== */
-.lifestyle{padding:110px 0;background:var(--cream);}
+.lifestyle{padding:48px 0 110px;background:var(--cream);}
 .lifestyle__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.8fr) minmax(250px,.8fr);gap:44px;align-items:start;}
 .lifestyle__media-wrap{min-width:0;}
 .lifestyle__media{position:relative;width:100%;margin-inline:0;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);}
