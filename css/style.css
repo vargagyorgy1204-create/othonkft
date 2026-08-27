@@ -720,7 +720,7 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Services (dark panel)
    ========================================================================== */
-.services{background:var(--navy-950);padding:40px 0 110px;position:relative;overflow:hidden;}
+.services{background:var(--navy-950);padding:88px 0 110px;position:relative;overflow:hidden;}
 .services{background:var(--white) !important;}
 /* .section__head now sits directly in .container, above .services__card
    entirely, on the section's own cream background - h2 already falls
