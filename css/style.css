@@ -747,45 +747,43 @@ section[id]{scroll-margin-top:96px;}
    .eyebrow--light (gold) / h2.light (white) styling used on every other
    dark section (hero, CTA, etc). */
 .services .section__desc--light{color:var(--ink-500);}
-.services .service-card{background:var(--navy-900);border-color:rgba(10,20,40,.18);color:var(--white);}
-.services .service-card:hover{background:var(--navy-800);border-color:rgba(205,164,94,.55);}
 .services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-bottom:80px;position:relative;z-index:1;}
 #szolgaltatasok{background:#fff !important;}
+/* Photo card with a bottom-left overlaid label (photo -> ::after scrim ->
+   text), replacing the old icon-centered card. --service-photo is set
+   per-card via an inline style on .service-card (matches how #heroBg
+   already inlines its own background-image elsewhere on this page). */
 .service-card{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);
-  padding:34px 26px;min-height:196px;cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  transition:transform .4s var(--ease), background-color .4s ease, border-color .4s ease, min-height .35s ease;
+  position:relative;overflow:hidden;isolation:isolate;
+  border-radius:var(--radius-lg);height:300px;cursor:pointer;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .service-card:hover{
-  transform:translateY(-6px);background:rgba(255,255,255,.07);border-color:rgba(205,164,94,.4);
-  min-height:216px;
+  transform:translateY(-6px);box-shadow:0 20px 40px rgba(6,10,20,.28);
 }
-.service-card__icon{
-  width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  background-image:linear-gradient(90deg, var(--gold-400) 0%, var(--gold-600) 40%, rgba(0,0,0,.28) 60%);
-  background-size:200px 100%;background-position:0 0;
-  color:var(--white);margin-bottom:22px;
-  transition:background-position .8s ease;
+.service-card__photo{
+  position:absolute;inset:0;z-index:0;
+  background-image:var(--service-photo);background-size:cover;background-position:center;
+  transition:transform .7s var(--ease);
 }
-.service-card:hover .service-card__icon{background-position:-120px 0;}
-.service-card h3{
+.service-card:hover .service-card__photo{transform:scale(1.06);}
+.service-card::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(6,10,20,0) 40%, rgba(6,10,20,.55) 75%, rgba(6,10,20,.85) 100%);
+}
+.service-card__label{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 22px 22px;}
+.service-card__label h3{
   color:var(--white);font-size:.92rem;font-weight:600;margin-bottom:0;
-  text-transform:uppercase;letter-spacing:.18em;
+  text-transform:uppercase;letter-spacing:.14em;text-shadow:0 1px 3px rgba(0,0,0,.4);
 }
-.service-card p{
-  color:rgba(255,255,255,.72);font-size:.85rem;line-height:1.6;letter-spacing:.02em;
+.service-card__label p{
+  color:rgba(255,255,255,.85);font-size:.85rem;line-height:1.6;letter-spacing:.02em;
   opacity:0;max-height:0;overflow:hidden;margin-top:0;
   transition:opacity .3s ease, max-height .3s ease, margin-top .3s ease;
 }
-.service-card:hover p{opacity:1;max-height:120px;margin-top:16px;}
+.service-card:hover .service-card__label p{opacity:1;max-height:120px;margin-top:10px;}
 .services .service-card[data-reveal="rise"]{height:300px;min-height:300px;opacity:1;transform:none;transition:none;will-change:auto;}
 .services .service-card[data-reveal="rise"]:hover{height:300px;min-height:300px;transform:none;}
-.services .service-card p{opacity:1;max-height:none;margin-top:16px;transition:none;}
-.services__card .service-card{background:#fff;border-color:rgba(18,21,31,.12);color:var(--ink-900);}
-.services__card .service-card:hover{background:#f3f5f6;border-color:var(--gold-500);}
-.services__card .service-card h3{color:var(--ink-900);}
-.services__card .service-card p{color:var(--ink-500);}
 .services__content .section__head h2.light{color:var(--ink-900);}
 .services__card .section__head h2.light{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;}
 .services__card .section__desc--light{color:#d4dcde;}
@@ -807,10 +805,6 @@ section[id]{scroll-margin-top:96px;}
 .services__content .section__head--center{text-align:center;}
 .services__content .section__head{max-width:none;margin-inline:0;}
 .services__content .section__head h2.light,.services__content .section__head .section__desc--light{margin-inline:auto;}
-.services__content .service-card{background:#fff;border-color:rgba(18,21,31,.12);color:var(--ink-900);}
-.services__content .service-card:hover{background:#f3f5f6;border-color:var(--gold-500);}
-.services__content .service-card h3{color:var(--ink-900);}
-.services__content .service-card p{color:var(--ink-500);}
 .services__content .stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-top:0;padding-top:24px;}
 .services__content .stat{padding:16px 10px;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:12px;box-shadow:0 8px 20px rgba(18,21,31,.06);}
 .services__content .stat__num{color:var(--gold-700);}
