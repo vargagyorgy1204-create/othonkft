@@ -229,9 +229,6 @@ section[id]{scroll-margin-top:96px;}
   color:var(--gold-600);margin-bottom:14px;
 }
 .eyebrow--light{color:var(--gold-400);}
-/* .eyebrow is shared across many sections (hero, testimonials, FAQ,
-   contact...) - scoped here so only "Exkluzív ajánlatok" changes. */
-#ingatlanok .eyebrow{font-size:9px;}
 
 .section{padding:110px 0;}
 .section--cream{background:var(--cream-2);}
@@ -254,7 +251,7 @@ section[id]{scroll-margin-top:96px;}
 .section__desc--light{color:#b9c0d1;max-width:480px;margin-inline:auto;}
 #ingatlanok{background:#fff !important;}
 #ingatlanok{padding:64px 0;}
-#ingatlanok .section__head > .eyebrow{display:block;width:100%;margin:0 auto 24px;text-align:left;font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:400;letter-spacing:.045em;text-transform:none;color:#3C4748;}
+#ingatlanok .section__head > .eyebrow{display:block;width:100%;margin:0 auto 24px;text-align:left;font-family:"Playfair Display",serif;font-size:9px;font-weight:400;letter-spacing:.045em;text-transform:none;color:#3C4748;}
 /* Match the heading-to-subheading gap used in #ingatlanok's stacked
    header (.section__head-row{gap:18px}) — this section's h2/p had no
    gap at all (global margin reset), sitting flush against each other. */
