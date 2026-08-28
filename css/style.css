@@ -926,51 +926,55 @@ section[id]{scroll-margin-top:96px;}
    ========================================================================== */
 /* !important needed: main > section{background:var(--cream)!important}
    (global rule) otherwise wins over this regardless of specificity. */
-.cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--white) !important;}
+.cta-final{position:relative;padding:120px 0;overflow:hidden;background:var(--bento-bg-light) !important;}
 .cta-final__inner{position:relative;z-index:1;}
-/* One merged card, two halves sharing one radius/shadow (same mechanics
-   as .lifestyle__media-wrap/.showcase__card) - form light, contacts
-   dark navy, instead of two separate cards apart with a gap. */
+/* Two independent bento tiles now (form, dark contact panel) with a
+   gap between them, same mechanics as .lifestyle__media-wrap (phase
+   4) - instead of one merged card sharing an outer radius/shadow. */
 .cta-final__card{
-  display:grid;grid-template-columns:1.1fr 1fr;
-  border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);
+  display:grid;grid-template-columns:1.1fr 1fr;gap:var(--bento-gap);
+  border-radius:0;box-shadow:none;
 }
-/* Dark half - same text-color convention already used everywhere else
-   on this site's navy panels (.showcase__card/.footer/.to-top): white
-   heading, light blue-gray body, gold icons/accents. */
-.cta-final__text{background:var(--navy-950);padding:48px;display:flex;flex-direction:column;justify-content:center;}
-.cta-final__text .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:var(--gold-400);}
-.cta-final__text h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--white);margin-bottom:24px;}
+/* Dark tile - same text-color convention used on every other dark
+   bento panel so far (.showcase__card/.hero-tile--photo). */
+.cta-final__text{
+  background:var(--bento-bg-dark);padding:48px;display:flex;flex-direction:column;justify-content:center;
+  border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);
+}
+.cta-final__text .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+.cta-final__text h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-weight:800;letter-spacing:-.02em;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--bento-text-ondark);margin-bottom:24px;}
 /* Same pill-social-icon pattern as .footer__social, reused here since
-   this panel shares the same dark navy background/text convention. */
+   this panel shares the same dark background/text convention. */
 .cta-final__social{display:flex;gap:12px;margin-bottom:28px;}
 .cta-final__social a{
-  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;
-  color:#c7cde0;transition:all .3s ease;
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--bento-border-dark);display:flex;align-items:center;justify-content:center;
+  color:var(--bento-text-ondark-muted);transition:all .3s ease;
 }
-.cta-final__social a:hover{background:var(--gold-500);color:var(--navy-950);border-color:var(--gold-500);transform:translateY(-3px);}
+.cta-final__social a:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);transform:translateY(-3px);}
 .cta-final__contacts{display:flex;flex-direction:column;gap:20px;}
-.cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#c7cde0;font-weight:500;}
-.cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
-.cta-final__contacts a:hover{color:var(--gold-400);}
+.cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:var(--bento-text-ondark-muted);font-weight:500;}
+.cta-final__contacts svg{color:var(--bento-blue);flex-shrink:0;}
+.cta-final__contacts a:hover{color:var(--bento-text-ondark);}
 
-/* Light half - barely-there gray instead of near-opaque white, now that
-   it's one half of a shared card rather than its own floating card
-   (dropped its own border-radius/box-shadow/transform:scale(.9) 10%-
-   shrink from an earlier task - neither makes sense once merged). */
+/* Light tile - own flat bento border/shadow now (dropped its own
+   border-radius/box-shadow/transform:scale(.9) 10%-shrink from an
+   earlier task - reinstating radius+shadow here in the new bento
+   flavor, now that it's a standalone tile again, not one half of a
+   merged card). */
 .contact-card{
-  background:var(--cream-2);padding:48px;
+  background:var(--bento-bg-light);padding:48px;
+  border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);box-shadow:var(--bento-shadow);
   display:flex;flex-direction:column;gap:16px;
 }
-.contact-card h3{font-size:1.3rem;color:var(--ink-900);margin-bottom:6px;}
-.contact-card label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-600);}
+.contact-card h3{font-size:1.3rem;color:var(--bento-text-onlight);margin-bottom:6px;font-family:var(--font-body);font-weight:800;}
+.contact-card label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--bento-text-onlight-muted);}
 .contact-card input,.contact-card textarea{
-  border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-size:.92rem;color:var(--ink-900);
-  background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;resize:none;
+  border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);padding:12px 14px;font-size:.92rem;color:var(--bento-text-onlight);
+  background:var(--bento-surface-light);transition:border-color .3s ease, box-shadow .3s ease;resize:none;
 }
-.contact-card input:focus,.contact-card textarea:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
-.contact-card__note{font-size:.76rem;color:var(--ink-500);text-align:center;}
-.contact-card__note a{color:var(--gold-700);font-weight:600;}
+.contact-card input:focus,.contact-card textarea:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
+.contact-card__note{font-size:.76rem;color:var(--bento-text-onlight-muted);text-align:center;}
+.contact-card__note a{color:var(--bento-blue);font-weight:600;}
 
 @media (max-width:900px){
   .cta-final__card{grid-template-columns:1fr;}
@@ -979,39 +983,39 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Footer
    ========================================================================== */
-.footer{background:var(--navy-950);color:#c7cde0;padding-top:80px;}
-.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.08);}
-.footer__brand p{margin:18px 0 22px;color:#9aa1b5;font-size:.9rem;line-height:1.7;max-width:300px;}
+.footer{background:var(--bento-bg-dark);color:var(--bento-text-ondark-muted);padding-top:80px;}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:60px;border-bottom:1px solid var(--bento-border-dark);}
+.footer__brand p{margin:18px 0 22px;color:var(--bento-text-ondark-muted);font-size:.9rem;line-height:1.7;max-width:300px;}
 .footer__social{display:flex;gap:12px;}
 .footer__social a{
-  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--bento-border-dark);display:flex;align-items:center;justify-content:center;
   transition:all .3s ease;
 }
-.footer__social a:hover{background:var(--gold-500);color:var(--navy-950);border-color:var(--gold-500);transform:translateY(-3px);}
+.footer__social a:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);transform:translateY(-3px);}
 
-.footer__col h4{color:var(--white);font-size:.94rem;margin-bottom:20px;font-weight:600;}
+.footer__col h4{color:var(--bento-text-ondark);font-size:.94rem;margin-bottom:20px;font-weight:700;font-family:var(--font-body);}
 .footer__col{display:flex;flex-direction:column;gap:12px;}
-.footer__col a{color:#9aa1b5;font-size:.88rem;transition:color .25s ease;}
-.footer__col a:hover{color:var(--gold-400);}
-.footer__col--newsletter p{color:#9aa1b5;font-size:.88rem;margin-bottom:16px;line-height:1.6;}
+.footer__col a{color:var(--bento-text-ondark-muted);font-size:.88rem;transition:color .25s ease;}
+.footer__col a:hover{color:var(--bento-blue);}
+.footer__col--newsletter p{color:var(--bento-text-ondark-muted);font-size:.88rem;margin-bottom:16px;line-height:1.6;}
 .footer__form{display:flex;gap:8px;}
 .footer__form input{
-  flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  flex:1;background:rgba(255,255,255,.06);border:1px solid var(--bento-border-dark);border-radius:999px;
   padding:11px 16px;color:var(--white);font-size:.86rem;
 }
-.footer__form input::placeholder{color:#767c8f;}
-.footer__form input:focus{outline:none;border-color:var(--gold-500);}
+.footer__form input::placeholder{color:var(--bento-text-ondark-muted);}
+.footer__form input:focus{outline:none;border-color:var(--bento-blue);}
 .footer__form button{
-  width:42px;height:42px;border-radius:50%;background:var(--gold-500);color:var(--navy-950);flex-shrink:0;
+  width:42px;height:42px;border-radius:50%;background:var(--bento-blue);color:var(--white);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;transition:transform .3s ease;
 }
 .footer__form button:hover{transform:scale(1.08);}
 
 .footer__bottom{display:flex;justify-content:space-between;align-items:center;padding:26px 0;flex-wrap:wrap;gap:12px;}
-.footer__bottom p{font-size:.82rem;color:#767c8f;}
+.footer__bottom p{font-size:.82rem;color:var(--bento-text-ondark-muted);}
 .footer__legal{display:flex;gap:22px;}
-.footer__legal a{font-size:.82rem;color:#9aa1b5;}
-.footer__legal a:hover{color:var(--gold-400);}
+.footer__legal a{font-size:.82rem;color:var(--bento-text-ondark-muted);}
+.footer__legal a:hover{color:var(--bento-blue);}
 
 @media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr;}}
 @media (max-width:560px){.footer__grid{grid-template-columns:1fr;}.footer__bottom{flex-direction:column;text-align:center;}}
@@ -1021,13 +1025,13 @@ section[id]{scroll-margin-top:96px;}
    ========================================================================== */
 .to-top{
   position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;
-  background:var(--navy-900);color:var(--gold-400);display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(12px);
+  background:var(--bento-bg-dark);color:var(--bento-blue);display:flex;align-items:center;justify-content:center;
+  box-shadow:none;border:1px solid var(--bento-border-dark);opacity:0;visibility:hidden;transform:translateY(12px);
   transition:opacity .35s ease, transform .35s ease, visibility .35s ease, background-color .3s ease;
   z-index:900;
 }
 .to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
-.to-top:hover{background:var(--gold-500);color:var(--navy-950);}
+.to-top:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);}
 
 /* ==========================================================================
    Mobile nav
