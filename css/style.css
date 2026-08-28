@@ -73,8 +73,8 @@ main > .strip{order:3;}
 main > #szolgaltatasok{order:4;}
 main > #rolunk{order:5;}
 main > .lifestyle{order:6;}
-main > .showcase{order:7;}
-main > #velemenyek{order:8;}
+main > #velemenyek{order:7;}
+main > .showcase{order:8;}
 main > #gyik{order:9;}
 main > #kapcsolat{order:10;}
 section[id]{scroll-margin-top:96px;}
