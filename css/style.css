@@ -910,11 +910,17 @@ section[id]{scroll-margin-top:96px;}
 /* Plain panel now - no longer layered over a photo, so no frosted-glass
    treatment needed, just a solid warm background beside it. */
 /* justify-content:flex-start (was center) so the heading sits near the
-   top instead of the whole block floating in the middle; the button's
-   own margin-top:auto (below) then pushes it down to the bottom of the
-   panel instead of just following the last field. */
+   top instead of the whole block floating in the middle. Bottom padding
+   is trimmed to the same 18px used as the container's own field-to-field
+   gap value, and the button gets auto margins on both top and bottom
+   (instead of just margin-top:auto) - flexbox splits the panel's leftover
+   vertical space evenly between those two auto margins, so with the gap
+   and padding-bottom now matching (18px each), the button ends up with
+   equal breathing room above (from the date field) and below (to the
+   card's bottom edge) instead of the lopsided gap the single-sided
+   auto-margin used to produce. */
 .lifestyle__booking{
-  padding:44px;background:var(--cream);
+  padding:44px 44px 18px;background:var(--cream);
   display:flex;flex-direction:column;gap:18px;justify-content:flex-start;
 }
 .lifestyle__booking h3{font-size:1.5rem;color:var(--ink-900);margin-bottom:4px;line-height:1.25;}
@@ -924,7 +930,7 @@ section[id]{scroll-margin-top:96px;}
   background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;
 }
 .lifestyle__booking input:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
-.lifestyle__booking .btn{margin-top:auto;}
+.lifestyle__booking .btn{margin:auto 0;}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
