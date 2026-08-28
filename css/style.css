@@ -270,31 +270,22 @@ section[id]{scroll-margin-top:96px;}
 .section__head-row{display:flex;flex-direction:column;gap:18px;}
 #ingatlanok .section__head-row{align-items:center;text-align:center;}
 #ingatlanok .section__head-row{flex-direction:row;align-items:center;justify-content:space-between;gap:32px;text-align:left;}
-/* Same font-size clamp/family as every other section heading
-   (.section__head h2 below, e.g. "Gyakran ismételt kérdések") -
-   this row had its own slightly-different clamp before. */
-#ingatlanok .section__head-row h2{align-self:flex-start;text-align:left;font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);white-space:nowrap;}
+/* Bento typography (matches the hero's phase-1 treatment): geometric
+   sans instead of the serif Fraunces used everywhere else on the site
+   still awaiting its own redesign turn. */
+#ingatlanok .section__head-row h2{align-self:flex-start;text-align:left;font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;font-size:clamp(1.9rem,3vw,2.7rem);white-space:nowrap;color:var(--bento-text-onlight);}
 #ingatlanok .section__head-row .section__desc{max-width:640px;text-align:center;}
-#ingatlanok .section__head-row .filters{justify-content:flex-end;flex-shrink:0;margin:0;}
-#ingatlanok .section__head-row .listings__controls{display:flex;gap:8px;margin-left:auto;}
-.listings__arrow{width:36px;height:36px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;background:var(--navy-900);color:var(--white);font-size:1.2rem;box-shadow:var(--shadow-md);transition:background-color .3s ease,color .3s ease,transform .3s var(--ease);}
-.listings__arrow svg{width:15px;height:15px;}
-.listings__arrow:hover{background:var(--gold-500);color:var(--navy-950);transform:translateY(-2px);}
 .section__head h2{font-size:clamp(1.9rem,3vw,2.7rem);color:var(--ink-900);}
 .section__head h2.light{color:var(--white);}
 .section__desc{color:var(--ink-500);font-size:1.02rem;line-height:1.7;max-width:440px;}
 .section__desc--light{color:#b9c0d1;max-width:480px;margin-inline:auto;}
-#ingatlanok{background:#fff !important;}
+#ingatlanok{background:var(--bento-bg-light) !important;}
 #ingatlanok{padding:24px 0 64px;}
 #ingatlanok .section__head{margin-top:8px;margin-bottom:24px;}
-/* text-transform stays none: "Exkluzív ajánlatok" is written in
-   sentence case in the markup and no caps reference was given for this
-   round - if the intent is actually uppercase, flag it and I'll flip
-   this. Also worth noting: #services/.lifestyle__media-head/.about__eyebrow
-   share this same serif-eyebrow pattern (1.35rem, no letter-spacing) -
-   only this one instance is being resized/spaced per the brief, so it
-   no longer matches those three siblings. */
-#ingatlanok .section__head > .eyebrow{display:block;width:100%;margin:0 auto 8px;text-align:left;font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
+#ingatlanok .section__head > .eyebrow{
+  display:block;width:100%;margin:0 auto 8px;text-align:left;
+  font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);
+}
 /* Match the heading-to-subheading gap used in #ingatlanok's stacked
    header (.section__head-row{gap:18px}) — this section's h2/p had no
    gap at all (global margin reset), sitting flush against each other. */
@@ -304,7 +295,6 @@ section[id]{scroll-margin-top:96px;}
 @media (max-width:860px){
   .section__head-row{flex-direction:column;align-items:flex-start;}
   #ingatlanok .section__head-row{flex-direction:column;align-items:flex-start;}
-  #ingatlanok .section__head-row .filters{width:100%;justify-content:flex-start;}
   .section__desc{max-width:none;}
   /* Below common desktop widths, let the heading wrap again rather than
      force a single line that would overflow narrow viewports. */
@@ -540,9 +530,6 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Listings
    ========================================================================== */
-.listings{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:none;}
-.listings::-webkit-scrollbar{display:none;}
-.listings .card{flex:0 0 calc((100% - 56px) / 3);scroll-snap-align:start;}
 .listings__empty{text-align:center;color:var(--ink-500);padding:40px 0;}
 
 .card{
@@ -582,8 +569,32 @@ section[id]{scroll-margin-top:96px;}
 .card__link{display:flex;align-items:center;gap:6px;font-weight:700;font-size:.86rem;color:var(--gold-700);transition:gap .25s ease;}
 .card__link:hover{gap:10px;}
 
-@media (max-width:980px){.listings .card{flex-basis:calc((100% - 28px) / 2);}}
-@media (max-width:640px){.listings .card{flex-basis:100%;}}
+/* Bento grid for #ingatlanok specifically - .card/.card__* above stay
+   untouched (lifestyle/showcase still reuse those same base classes
+   until their own redesign turn), these are ID-scoped overrides so
+   only this section's cards pick up the new flat bento look. Replaces
+   the old horizontal-scroll 3-up carousel (and its now-removed
+   prev/next arrows) with a real grid: one large "feature" tile + 5
+   regular tiles, matching the hero's big-tile-plus-small-tiles bento
+   pattern. */
+.listings{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--bento-gap);}
+#ingatlanok .card{border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);box-shadow:none;}
+#ingatlanok .card:hover{box-shadow:var(--bento-shadow);border-color:var(--bento-blue);}
+#ingatlanok .card__badge--sale{background:var(--bento-blue);}
+#ingatlanok .card__badge--rent{background:var(--bento-violet);}
+#ingatlanok .card__link{color:var(--bento-blue);}
+.card--feature{grid-column:span 2;}
+.card--feature .card__media{height:320px;}
+
+@media (max-width:980px){
+  .listings{grid-template-columns:repeat(2,1fr);}
+  .card--feature{grid-column:span 2;}
+}
+@media (max-width:640px){
+  .listings{grid-template-columns:1fr;}
+  .card--feature{grid-column:span 1;}
+  .card--feature .card__media{height:210px;}
+}
 
 /* ==========================================================================
    Services (dark panel)
