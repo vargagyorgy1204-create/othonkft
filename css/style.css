@@ -865,8 +865,8 @@ section[id]{scroll-margin-top:96px;}
 }
 .lifestyle__booking input:focus,.lifestyle__booking textarea:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
 .lifestyle__booking .btn{margin:auto 0;}
-.lifestyle__booking .btn--bento{background:linear-gradient(135deg,#1e3a8a,var(--bento-blue));}
-.lifestyle__booking .btn--bento:hover{background:linear-gradient(135deg,#16296b,#3d68f0);}
+.lifestyle__booking .btn--bento{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));}
+.lifestyle__booking .btn--bento:hover{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
