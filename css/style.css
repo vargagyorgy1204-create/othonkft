@@ -796,10 +796,9 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Avatars + Testimonials
    ========================================================================== */
-/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment. */
-#velemenyek .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
-#velemenyek .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
+/* Bento typography, matching phases 1-4. */
+#velemenyek .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+#velemenyek .section__head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);}
 .avatars{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:56px;}
 .avatars__item{
   display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -811,10 +810,10 @@ section[id]{scroll-margin-top:96px;}
   width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--white);box-shadow:var(--shadow-sm);
   transition:border-color .3s ease, box-shadow .3s ease;
 }
-.avatars__item span{font-weight:700;font-size:.78rem;color:var(--ink-900);}
-/* Matches the reference's .avatar-tab.active: lift + gold ring + full opacity. */
+.avatars__item span{font-weight:700;font-size:.78rem;color:var(--bento-text-onlight);}
+/* Matches the reference's .avatar-tab.active: lift + accent ring + full opacity. */
 .avatars__item--active{opacity:1;transform:translateY(-4px);}
-.avatars__item--active img{border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.2);}
+.avatars__item--active img{border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.2);}
 
 .testimonials{position:relative;max-width:800px;margin-inline:auto;}
 /* Slides are cross-faded, not translated: a flex row wide enough to hold
@@ -825,8 +824,8 @@ section[id]{scroll-margin-top:96px;}
    Stacking the slides instead sidesteps that entirely. */
 .testimonials__track{position:relative;border-radius:var(--radius-lg);}
 .testi{
-  width:100%;background:var(--white);padding:44px 48px;border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-sm);text-align:left;overflow:hidden;
+  width:100%;background:var(--bento-bg-light);padding:44px 48px;border-radius:var(--bento-radius-lg);
+  border:1px solid var(--bento-border);box-shadow:none;text-align:left;overflow:hidden;
   position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .5s ease;
 }
@@ -835,19 +834,20 @@ section[id]{scroll-margin-top:96px;}
 }
 .testi__top{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;}
 /* fill:currentColor - the star SVGs have no fill attribute of their own,
-   so without this they render at their default black instead of gold. */
-.testi__stars{display:flex;gap:2px;color:var(--gold-500);}
+   so without this they render at their default black instead of the
+   accent color. */
+.testi__stars{display:flex;gap:2px;color:var(--bento-peach);}
 .testi__stars svg{fill:currentColor;}
-.testi__tag{background:var(--cream-2);color:var(--gold-700);border:1px solid rgba(184,135,60,.25);font-size:.72rem;font-weight:600;padding:5px 13px;border-radius:999px;}
-.testi__text{position:relative;z-index:1;font-family:var(--font-head);font-size:1.2rem;line-height:1.7;color:var(--ink-800);font-style:italic;margin-bottom:28px;}
-.testi__footer{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:22px;}
+.testi__tag{background:var(--bento-surface-light);color:var(--bento-blue);border:1px solid var(--bento-border);font-size:.72rem;font-weight:600;padding:5px 13px;border-radius:999px;}
+.testi__text{position:relative;z-index:1;font-family:var(--font-body);font-size:1.2rem;line-height:1.7;color:var(--bento-text-onlight);font-style:normal;font-weight:500;margin-bottom:28px;}
+.testi__footer{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--bento-border);padding-top:22px;}
 .testi__author{display:flex;align-items:center;gap:12px;}
 .testi__author img{width:46px;height:46px;border-radius:50%;object-fit:cover;}
 .testi__author div{text-align:left;}
-.testi__author strong{display:block;font-size:.92rem;color:var(--ink-900);}
-.testi__author span{font-size:.8rem;color:var(--ink-500);}
+.testi__author strong{display:block;font-size:.92rem;color:var(--bento-text-onlight);}
+.testi__author span{font-size:.8rem;color:var(--bento-text-onlight-muted);}
 .testi__meta{display:flex;align-items:center;gap:12px;}
-.testi__date{font-size:.76rem;color:var(--ink-400);font-weight:500;}
+.testi__date{font-size:.76rem;color:var(--bento-text-onlight-muted);font-weight:500;}
 .testi__verified{
   display:flex;align-items:center;gap:6px;background:#ecfdf5;color:#047857;
   border:1px solid #d1fae5;font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:999px;white-space:nowrap;
@@ -859,15 +859,15 @@ section[id]{scroll-margin-top:96px;}
 .testimonials__dots{grid-column:2;justify-self:center;}
 .testimonials__nav{grid-column:3;justify-self:end;}
 .testimonials__dots{display:flex;align-items:center;gap:8px;}
-.testimonials__dots button{width:8px;height:8px;border-radius:999px;background:var(--line);border:0;padding:0;cursor:pointer;transition:all .3s ease;}
-.testimonials__dots button:hover{background:var(--ink-400);}
-.testimonials__dots button.is-active{width:24px;background:var(--gold-500);}
+.testimonials__dots button{width:8px;height:8px;border-radius:999px;background:var(--bento-border);border:0;padding:0;cursor:pointer;transition:all .3s ease;}
+.testimonials__dots button:hover{background:var(--bento-text-onlight-muted);}
+.testimonials__dots button.is-active{width:24px;background:var(--bento-blue);}
 .testimonials__nav{display:flex;justify-content:center;gap:14px;}
 .testimonials__nav button{
-  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
-  color:var(--ink-800);transition:all .3s ease;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--bento-border);display:flex;align-items:center;justify-content:center;
+  color:var(--bento-text-onlight);transition:all .3s ease;
 }
-.testimonials__nav button:hover{background:var(--ink-900);color:var(--white);border-color:var(--ink-900);}
+.testimonials__nav button:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);}
 
 @media (max-width:640px){
   .testi{padding:32px 24px;}
