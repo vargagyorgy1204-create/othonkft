@@ -688,7 +688,7 @@ section[id]{scroll-margin-top:96px;}
 /* Bento typography, matching the hero/#ingatlanok phase-1/2 treatment
    (geometric sans instead of the serif Playfair/Fraunces pairing the
    rest of the not-yet-redesigned site still uses). */
-.services > .container > .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+.services > .container > .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
 .services > .container > .section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);}
 .services .section__desc--light{color:var(--ink-500);}
 .services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:var(--bento-gap);margin-top:32px;margin-bottom:0;position:relative;z-index:1;}
@@ -803,7 +803,7 @@ section[id]{scroll-margin-top:96px;}
 .lifestyle__media-head{margin-bottom:24px;text-align:left;}
 /* Bento typography, matching the hero/#ingatlanok/#szolgaltatasok
    phase-1..3 treatment. */
-.lifestyle__media-head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+.lifestyle__media-head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
 .lifestyle__media-head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);text-align:left;}
 
 /* Two independent bento tiles (photo, booking form) with a gap between
@@ -912,7 +912,7 @@ section[id]{scroll-margin-top:96px;}
    Avatars + Testimonials
    ========================================================================== */
 /* Bento typography, matching phases 1-4. */
-#velemenyek .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+#velemenyek .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
 #velemenyek .section__head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);}
 .avatars{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:56px;}
 .avatars__item{
