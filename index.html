@@ -47,190 +47,57 @@
 
 <main>
 
-<!-- ============ HERO ============ -->
-<section class="hero hero--reference" id="fooldal">
-  <div class="hero__intro hero-content">
-  </div>
-  <div class="hero__visual card-wrapper">
-    <div class="hero__card card-bg-box">
-      <img class="card-bg-img" src="images/leonhero.jpg" alt="Leon Otthon Kft. ingatlanbemutató" loading="eager">
-    </div>
-  </div>
-  <form class="hero-search" action="#ingatlanok" onsubmit="return false;">
-    <div class="hero-search__fields">
-      <label class="hero-search__field hero-search__field--select">
-        <span class="sr-only">Eladó vagy kiadó</span>
-        <select aria-label="Eladó vagy kiadó">
-          <option>Eladó</option>
-          <option>Kiadó</option>
-        </select>
-      </label>
-      <label class="hero-search__field hero-search__field--select">
-        <span class="sr-only">Ingatlantípus</span>
-        <select aria-label="Ingatlantípus">
-          <option>Lakás</option>
-          <option>Családi ház</option>
-          <option>Villa</option>
-        </select>
-      </label>
-      <label class="hero-search__field hero-search__field--wide">
-        <span class="sr-only">Város, kerület, városrész</span>
-        <input type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
-      </label>
-      <label class="hero-search__field">
-        <span class="sr-only">Ár</span>
-        <input type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
-      </label>
-    </div>
-    <button class="hero-search__submit" type="submit">Keresés</button>
-  </form>
-</section>
-
-<section class="hero hero--legacy" aria-hidden="true">
-  <div class="hero__bg" id="heroBgLegacy" data-reveal="image" data-delay="0" style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80')"></div>
-  <div class="hero__overlay"></div>
-  <div class="hero__grain"></div>
-
-  <div class="container hero__inner">
-    <div class="hero__content" data-reveal="up">
-      <p class="eyebrow eyebrow--light" data-reveal="up" data-delay="0">
-        Prémium Ingatlanközvetítés Budapesten
-      </p>
-      <h1 class="hero__title" data-reveal="up" data-delay="80">
-        Ahol az Álmok <br>
-        <em>Otthonná Válnak</em>
-      </h1>
-      <p class="hero__lead" data-reveal="up" data-delay="160">
-        Fedezze fel Magyarország legkiválóbb ingatlanjait — egy szakértő csapattal amely végigkíséri Önt minden lépésen
-      </p>
-
-      <form class="search-card" data-reveal="up" data-delay="240" onsubmit="return false;">
-        <div class="search-card__tabs" role="tablist" aria-label="Tranzakció típusa">
-          <button type="button" class="search-card__tab is-active" role="tab" aria-selected="true">Vétel</button>
-          <button type="button" class="search-card__tab" role="tab" aria-selected="false">Bérlés</button>
-          <button type="button" class="search-card__tab" role="tab" aria-selected="false">Eladás</button>
+<!-- ============ HERO (bento) ============ -->
+<section class="hero hero--bento" id="fooldal">
+  <div class="container">
+    <div class="hero-grid">
+      <article class="hero-tile hero-tile--photo" data-reveal="fade" data-delay="0" style="background-image:url('images/leonhero.jpg')">
+        <div class="hero-tile__scrim"></div>
+        <div class="hero-tile__copy">
+          <h1>Ahol az álmok <br>otthonná válnak</h1>
+          <p>Fedezze fel Magyarország legkiválóbb ingatlanjait egy szakértő csapattal.</p>
         </div>
-        <div class="search-card__fields">
-          <div class="search-card__field">
-            <span id="loc-label">Helyszín</span>
-            <div class="custom-select" data-custom-select>
-              <button type="button" class="custom-select__trigger" id="loc-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="loc-listbox" aria-labelledby="loc-label loc-trigger">
-                <span class="custom-select__value">Budapest, összes kerület</span>
-                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <ul class="custom-select__panel" id="loc-listbox" role="listbox" aria-labelledby="loc-label" tabindex="-1">
-                <li class="custom-select__option is-selected" role="option" id="loc-opt-0" aria-selected="true">Budapest, összes kerület</li>
-                <li class="custom-select__option" role="option" id="loc-opt-1" aria-selected="false">Budapest, V. kerület</li>
-                <li class="custom-select__option" role="option" id="loc-opt-2" aria-selected="false">Budapest, XII. kerület</li>
-                <li class="custom-select__option" role="option" id="loc-opt-3" aria-selected="false">Debrecen</li>
-                <li class="custom-select__option" role="option" id="loc-opt-4" aria-selected="false">Balaton-part</li>
-              </ul>
-              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
-                <option>Budapest, összes kerület</option>
-                <option>Budapest, V. kerület</option>
-                <option>Budapest, XII. kerület</option>
-                <option>Debrecen</option>
-                <option>Balaton-part</option>
-              </select>
-            </div>
-          </div>
-          <span class="search-card__divider" aria-hidden="true"></span>
-          <div class="search-card__field">
-            <span id="type-label">Ingatlantípus</span>
-            <div class="custom-select" data-custom-select>
-              <button type="button" class="custom-select__trigger" id="type-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="type-listbox" aria-labelledby="type-label type-trigger">
-                <span class="custom-select__value">Összes típus</span>
-                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <ul class="custom-select__panel" id="type-listbox" role="listbox" aria-labelledby="type-label" tabindex="-1">
-                <li class="custom-select__option is-selected" role="option" id="type-opt-0" aria-selected="true">Összes típus</li>
-                <li class="custom-select__option" role="option" id="type-opt-1" aria-selected="false">Lakás</li>
-                <li class="custom-select__option" role="option" id="type-opt-2" aria-selected="false">Családi ház</li>
-                <li class="custom-select__option" role="option" id="type-opt-3" aria-selected="false">Villa</li>
-                <li class="custom-select__option" role="option" id="type-opt-4" aria-selected="false">Penthouse</li>
-              </ul>
-              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
-                <option>Összes típus</option>
-                <option>Lakás</option>
-                <option>Családi ház</option>
-                <option>Villa</option>
-                <option>Penthouse</option>
-              </select>
-            </div>
-          </div>
-          <span class="search-card__divider" aria-hidden="true"></span>
-          <div class="search-card__field">
-            <span id="price-label">Árkategória</span>
-            <div class="custom-select" data-custom-select>
-              <button type="button" class="custom-select__trigger" id="price-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="price-listbox" aria-labelledby="price-label price-trigger">
-                <span class="custom-select__value">Bármely ár</span>
-                <svg class="custom-select__chevron" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <ul class="custom-select__panel" id="price-listbox" role="listbox" aria-labelledby="price-label" tabindex="-1">
-                <li class="custom-select__option is-selected" role="option" id="price-opt-0" aria-selected="true">Bármely ár</li>
-                <li class="custom-select__option" role="option" id="price-opt-1" aria-selected="false">50–100 M Ft</li>
-                <li class="custom-select__option" role="option" id="price-opt-2" aria-selected="false">100–200 M Ft</li>
-                <li class="custom-select__option" role="option" id="price-opt-3" aria-selected="false">200 M Ft felett</li>
-              </ul>
-              <select class="custom-select__native" tabindex="-1" aria-hidden="true">
-                <option>Bármely ár</option>
-                <option>50–100 M Ft</option>
-                <option>100–200 M Ft</option>
-                <option>200 M Ft felett</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn--gold search-card__submit">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            Ingatlan Keresése
-          </button>
-        </div>
-      </form>
-
-      <ul class="hero__trust" data-reveal="up" data-delay="320">
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ellenőrzött ingatlanok</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 800+ elégedett ügyfél</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="#CDA45E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Legjobb ár garancia</li>
-      </ul>
-    </div>
-
-    <div class="hero__float-stack" data-reveal="left" data-delay="400">
-      <article class="hero__float-card hero__float-card--front">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=500&q=80" alt="Panorámás penthouse a Duna partján, üvegfronttal">
-        <div class="hero__float-card-body">
-          <p class="hero__float-card-tag" data-reveal="pop" data-delay="750">Kiemelt ajánlat</p>
-          <h3>Panorámás Penthouse a Dunánál</h3>
-          <p class="hero__float-card-price">185 M Ft <span>· Budapest V.</span></p>
-        </div>
-        <button class="hero__float-card-like" aria-label="Kedvencekhez adás">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg>
-        </button>
       </article>
-      <article class="hero__float-card hero__float-card--middle">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" alt="Modern családi ház kertvárosi környezetben, medencével">
-        <div class="hero__float-card-body">
-          <p class="hero__float-card-tag">Eladó</p>
-          <h3>Modern Családi Ház a Budai-hegyekben</h3>
-          <p class="hero__float-card-price">129 M Ft <span>· Budapest XII.</span></p>
-        </div>
-        <button class="hero__float-card-like" aria-label="Kedvencekhez adás">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg>
-        </button>
+
+      <article class="hero-tile hero-tile--search" data-reveal="fade" data-delay="80">
+        <form action="#ingatlanok" onsubmit="return false;">
+          <div class="hero-tile__row">
+            <label class="sr-only" for="heroDeal">Eladó vagy kiadó</label>
+            <select id="heroDeal" aria-label="Eladó vagy kiadó">
+              <option>Eladó</option>
+              <option>Kiadó</option>
+            </select>
+            <label class="sr-only" for="heroType">Ingatlantípus</label>
+            <select id="heroType" aria-label="Ingatlantípus">
+              <option>Lakás</option>
+              <option>Családi ház</option>
+              <option>Villa</option>
+            </select>
+          </div>
+          <label class="sr-only" for="heroLoc">Város, kerület, városrész</label>
+          <input id="heroLoc" type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
+          <label class="sr-only" for="heroPrice">Ár M Ft</label>
+          <input id="heroPrice" type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
+          <button class="btn btn--bento" type="submit">Keresés</button>
+        </form>
       </article>
-      <article class="hero__float-card hero__float-card--back">
-        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=500&q=80" alt="Balatoni villa medencével és panorámával">
-        <div class="hero__float-card-body">
-          <p class="hero__float-card-tag">Eladó</p>
-          <h3>Balatoni Villa Panorámával</h3>
-          <p class="hero__float-card-price">210 M Ft <span>· Balatonfüred</span></p>
-        </div>
-        <button class="hero__float-card-like" aria-label="Kedvencekhez adás">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg>
-        </button>
+
+      <article class="hero-tile hero-tile--stat hero-tile--blue" data-reveal="rise" data-delay="120">
+        <p class="hero-tile__num">2 800+</p>
+        <p class="hero-tile__label">Elégedett ügyfél</p>
       </article>
+
+      <article class="hero-tile hero-tile--stat hero-tile--mint" data-reveal="rise" data-delay="180">
+        <p class="hero-tile__num">100%</p>
+        <p class="hero-tile__label">Ellenőrzött ingatlanok</p>
+      </article>
+
+      <a href="#ingatlanok" class="hero-tile hero-tile--cta hero-tile--violet" data-reveal="rise" data-delay="240">
+        <span>Nézze meg az ingatlanokat</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
-
 </section>
 
 <!-- ============ ABOUT ============ -->

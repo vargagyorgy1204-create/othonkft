@@ -43,6 +43,34 @@
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-reveal:cubic-bezier(.16,1,.3,1);
   --dur:.7s;
+
+  /* Bento palette (new redesign, phase 1: header + hero) - added
+     alongside the tokens above rather than replacing them, since the
+     rest of the site still reads gold/navy/cream until each section
+     gets its own redesign pass. */
+  --bento-bg-light:#ffffff;
+  --bento-bg-dark:#0b0b12;
+  --bento-surface-light:#f5f6f8;
+
+  --bento-blue:#4f7cff;
+  --bento-violet:#8b5cf6;
+  --bento-mint:#34d399;
+  --bento-peach:#fb923c;
+
+  --bento-text-onlight:#0b0b12;
+  --bento-text-onlight-muted:#5b5f6b;
+  --bento-text-ondark:#f5f6f8;
+  --bento-text-ondark-muted:#a8acb8;
+
+  --bento-border:#e6e7eb;
+  --bento-border-dark:#22232c;
+
+  --bento-radius-sm:14px;
+  --bento-radius-md:20px;
+  --bento-radius-lg:28px;
+  --bento-gap:16px;
+
+  --bento-shadow:0 1px 2px rgba(11,11,18,.04), 0 1px 0 rgba(11,11,18,.03);
 }
 
 /* ==========================================================================
@@ -289,25 +317,26 @@ section[id]{scroll-margin-top:96px;}
    ========================================================================== */
 .header{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-    width:min(calc((100vw - 78px)/.81),1321px);margin:28px auto 0;padding:8px 0;background:transparent;border:none;border-radius:999px;box-shadow:none;zoom:.81;
-  transition:background-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
+  width:min(calc(100% - 48px),1240px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
+  transition:background-color .4s var(--ease), border-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
 }
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
-/* Transparent stays only for the top-of-page state (over the light hero) -
-   past that, dark logo/nav text needs a solid backing or it becomes
-   illegible over the site's darker sections (Miert a Leon Otthon Kft,
-   the contact CTA, etc). */
+/* The bento hero's dark photo tile only covers the left ~7/12 of the
+   grid, not the header's full width (the search/stat tiles beside and
+   below it are light) - so most of the header actually sits over a
+   white page-top, not a dark one. Dark text throughout, transparent at
+   top, light-frosted once scrolled - the opposite assumption from the
+   old single-full-bleed-photo hero. */
 .header.is-scrolled{
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(18,21,31,.08);
+  background:rgba(255,255,255,.8);
+  border-color:var(--bento-border);
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
   padding:8px 0;
-  box-shadow:0 10px 30px rgba(18,21,31,.08);
+  box-shadow:var(--bento-shadow);
 }
 
-/* The header stays transparent over the light hero in every scroll state. */
-.brand{display:flex;align-items:center;gap:10px;color:var(--navy-950);transition:color .3s ease;}
+.brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
    is already a self-contained circular badge (navy + gold house mark),
    so an extra gold circle behind it would just clash. */
@@ -324,17 +353,17 @@ section[id]{scroll-margin-top:96px;}
 .brand--footer{color:var(--white);}
 
 .nav{display:flex;align-items:center;gap:34px;}
-.nav a{color:var(--ink-800);font-size:.94rem;font-weight:500;position:relative;padding:4px 0;transition:color .25s ease;}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--gold-400);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease);}
-.nav a:hover{color:var(--navy-950);}
+.nav a{color:var(--bento-text-onlight-muted);font-size:.94rem;font-weight:500;position:relative;padding:4px 0;transition:color .25s ease;}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--bento-blue);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease);}
+.nav a:hover{color:var(--bento-text-onlight);}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left;}
 
 .header__actions{display:flex;align-items:center;gap:10px;}
-.header__cta{height:44px;padding:0 18px;font-size:.8rem;}
-.header__phone{display:flex;align-items:center;gap:8px;color:var(--navy-950);font-weight:600;font-size:.9rem;transition:color .3s ease;}
-.header__phone svg{color:var(--gold-600);}
+.header__cta{height:44px;padding:0 18px;font-size:.8rem;background:var(--bento-blue);color:var(--white);}
+.header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
+.header__phone svg{color:var(--bento-blue);}
 
-.hamburger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border-radius:50%;background:var(--navy-900);}
+.hamburger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border-radius:50%;background:var(--bento-bg-dark);border:1px solid var(--bento-border-dark);}
 .hamburger span{display:block;width:20px;height:2px;background:var(--white);transition:background-color .3s ease, transform .35s var(--ease), opacity .3s ease;}
 .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
@@ -343,296 +372,93 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Hero
    ========================================================================== */
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  overflow:hidden;background:var(--cream);padding-top:120px;padding-bottom:80px;
-}
-.hero__bg{
-  position:absolute;inset:0;background-size:cover;background-position:center;
-  transform:scale(1.08);will-change:transform;
-  filter:brightness(1.06) saturate(1.12);
-}
-.hero__overlay{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg, rgba(255,252,245,.08) 0%, rgba(255,248,235,.4) 60%, rgba(250,241,224,.72) 100%),
-    linear-gradient(90deg, rgba(255,250,240,.52) 0%, rgba(255,250,240,.06) 55%, rgba(255,250,240,.38) 100%);
-}
-.hero__grain{position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-
-.hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
-.hero__content{max-width:660px;}
-.hero__title{
-  font-family:"Fraunces", var(--font-head), Georgia, serif;
-  font-optical-sizing:auto;
-  font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.12;font-weight:400;letter-spacing:0;
-  margin-bottom:22px;color:#12151f;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.38));
-}
-.hero__title em{
-  font:inherit;
-  font-style:normal;
-}
-@supports not (background-clip: text){
-  .hero__title{color:#12151f;}
-}
-.hero__lead{color:var(--ink-800);font-size:1.08rem;line-height:1.75;max-width:520px;margin-bottom:38px;}
-.hero .eyebrow--light{color:var(--gold-700);}
-
-/* Reference hero: a quiet editorial card with the image as its visual anchor. */
-.hero--reference{
-  min-height:0;display:block;overflow:visible;background:#fff !important;
-  padding:40px 24px 0;
-}
-.hero--legacy{display:none;}
-.hero__visual{position:relative;width:min(100%,1100px);margin:35px auto 0;overflow:visible;}
-.hero__card{
-  width:100%;height:610px;margin:0 auto;padding:0;
-  background:var(--cream-2);border:1px solid rgba(18,21,31,.14);overflow:hidden;
-  border-radius:clamp(24px,3vw,32px);box-shadow:0 18px 50px rgba(18,21,31,.08);position:relative;z-index:1;
-}
-.hero__card img{width:100%;height:100%;object-fit:cover;object-position:center;}
-/* Two separate pills, not one continuous bar: .hero-search is just a
-   flex wrapper (gap between the two), .hero-search__fields carries the
-   white pill's own background/border/radius/shadow, and
-   .hero-search__submit carries its own dark pill styling - previously
-   the submit button was a single element with margin:8px sitting
-   *inside* .hero-search's own white/bordered/shadowed pill, which read
-   as one connected shape rather than two buttons. */
-.hero-search{position:absolute;z-index:3;left:50%;bottom:53px;display:flex;align-items:stretch;gap:12px;width:min(60%,944px);min-height:64px;margin:0;transform:translate(-50%,50%);}
-.hero-search__fields{display:flex;align-items:stretch;flex:1;min-width:0;background:#fff;border:1px solid rgba(18,21,31,.1);border-radius:999px;overflow:hidden;box-shadow:0 12px 28px rgba(18,21,31,.08);}
-/* flex:1 on the base rule (not just --wide) so all 4 fields split the
-   bar evenly now that Meret m2 is gone - --wide no longer needs to be
-   the only one that grows. */
-.hero-search__field{display:flex;align-items:center;flex:1;min-width:0;padding:0 18px;border-right:1px solid var(--line);}
-.hero-search__field--wide{min-width:170px;}
-.hero-search__field select,.hero-search__field input{width:100%;border:0;outline:0;background:transparent;color:var(--ink-800);font-size:.86rem;font-weight:700;}
-/* input only, not select - a <select>'s own native rendering already
-   clips its selected-option text to the box, and adding this CSS to it
-   as well made Chromium measure a narrower text area than without it
-   (clipping "Eladó" down to "Ela…", which wasn't happening before). At
-   the narrower bar width, the "Város, kerület, városrész" placeholder
-   no longer fits its input and was getting hard-clipped mid-word -
-   ellipsis instead so it trails off cleanly. */
-.hero-search__field input{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.hero-search__field input::placeholder{color:var(--ink-400);font-weight:500;}
-/* Chevron SVG (not the old two-triangle gradient hack) in navy-950,
-   URL-encoded inline since a <select>'s native arrow can't be
-   restyled any other way without JS. */
-.hero-search__field select{
-  appearance:none;padding-right:26px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23060a14' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position:calc(100% - 4px) 50%;background-size:12px 12px;background-repeat:no-repeat;
-}
-.hero-search__field:last-of-type{border-right:0;}
-.hero-search__submit{flex:0 0 126px;margin:0;background:var(--navy-900);border:2px solid var(--white);border-radius:999px;color:var(--white);font-size:.78rem;font-weight:800;letter-spacing:.02em;box-shadow:0 12px 28px rgba(18,21,31,.08);transition:background-color .25s ease,transform .25s ease;}
-.hero-search__submit:hover{background:var(--navy-700);transform:translateY(-1px);}
-.hero-search__field select:focus-visible,.hero-search__field input:focus-visible,.hero-search__submit:focus-visible{outline:2px solid var(--gold-500);outline-offset:-2px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-.hero__topbar{
-  display:flex;justify-content:space-between;align-items:center;gap:24px;
-  color:var(--ink-500);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
-}
-.hero__topbar a{transition:color .25s ease;}
-.hero__topbar a:hover{color:var(--ink-900);}
-.hero__intro{text-align:center;padding:clamp(34px,6vw,74px) 0 30px;}
-.hero--reference > .hero__intro{position:relative;z-index:1;width:min(100%,1180px);margin:0 auto -70px;padding:0;}
-.hero--reference .eyebrow{color:var(--gold-700);margin-bottom:14px;}
-.hero--reference .hero__title{
-  display:block;width:100%;margin:0 auto 18px;color:#3C4748;
-  font-family:"Playfair Display", serif;
-  font-size:clamp(4rem,8vw,7rem);font-weight:400;letter-spacing:.045em;
-  line-height:.96;white-space:nowrap;
-  filter:none;
-}
-.hero--reference .hero__title em{font:inherit;font-style:normal;}
-.hero--reference .hero__lead{
-  max-width:620px;margin:0 auto;color:var(--ink-500);font-size:.82rem;
-  line-height:1.7;letter-spacing:.08em;text-transform:uppercase;
-}
-.hero__media{
-  position:relative;isolation:isolate;overflow:hidden;height:clamp(300px,46vw,560px);
-  border:1px solid rgba(18,21,31,.16);border-radius:clamp(16px,2vw,20px);background:var(--navy-900);
-}
-.hero--reference .hero__bg{position:absolute;inset:-4%;background-size:cover;background-position:center;}
-.hero--reference .hero__overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(6,10,20,.02),rgba(6,10,20,.16));
-}
-.hero--reference .hero__grain{position:absolute;inset:0;z-index:2;opacity:.18;}
 
+/* Bento hero: a grid of tiles instead of one photo + floating search
+   pill. Section background carries !important - main > section{
+   background:var(--cream)!important} (near the top of this file) wins
+   over anything here otherwise. */
+.hero--bento{background:var(--bento-bg-light) !important;padding:112px 0 var(--bento-gap);}
+.hero-grid{
+  display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);
+  gap:var(--bento-gap);
+}
+.hero-tile{
+  position:relative;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);
+  overflow:hidden;
+}
+
+/* Tile A - photo + headline, dark, spans the left ~7/12 across 2 rows. */
+.hero-tile--photo{
+  grid-column:span 7;grid-row:span 2;min-height:480px;
+  background-size:cover;background-position:center;border-color:var(--bento-border-dark);
+  display:flex;align-items:flex-end;
+}
+.hero-tile__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(11,11,18,0) 40%, rgba(11,11,18,.75) 100%);
+}
+.hero-tile__copy{position:relative;z-index:1;padding:40px;color:var(--bento-text-ondark);}
+.hero-tile__copy h1{
+  font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin-bottom:14px;color:var(--bento-text-ondark);
+}
+.hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
+
+/* Tile B - search form, light, beside the photo, fields stacked
+   vertically instead of one horizontal floating pill. */
+.hero-tile--search{grid-column:span 5;grid-row:span 2;background:var(--bento-bg-light);box-shadow:var(--bento-shadow);}
+.hero-tile--search form{display:flex;flex-direction:column;gap:12px;height:100%;padding:28px;}
+.hero-tile__row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hero-tile--search select,.hero-tile--search input{
+  width:100%;padding:13px 14px;border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);
+  background:var(--bento-surface-light);color:var(--bento-text-onlight);font-size:.92rem;font-weight:500;
+  font-family:var(--font-body);
+}
+.hero-tile--search select{
+  appearance:none;padding-right:32px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%230b0b12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position:calc(100% - 12px) 50%;background-size:12px 12px;background-repeat:no-repeat;
+}
+.hero-tile--search input::placeholder{color:var(--bento-text-onlight-muted);}
+.hero-tile--search select:focus-visible,.hero-tile--search input:focus-visible{outline:2px solid var(--bento-blue);outline-offset:1px;}
+.hero-tile--search .btn--bento{margin-top:auto;}
+
+.btn--bento{background:var(--bento-blue);color:var(--white);}
+.btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
+
+/* Tiles C/D - single-stat accent tiles, 1 row each, ~4/12 wide. */
+.hero-tile--stat{grid-column:span 4;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+.hero-tile__num{font-family:var(--font-body);font-weight:800;font-size:2.1rem;line-height:1;}
+.hero-tile__label{font-size:.9rem;font-weight:600;}
+.hero-tile--blue{background:var(--bento-blue);border-color:var(--bento-blue);}
+.hero-tile--blue .hero-tile__num,.hero-tile--blue .hero-tile__label{color:var(--white);}
+/* Mint fails contrast for white text at this saturation - dark text
+   instead, per the palette's contrast rule. */
+.hero-tile--mint{background:var(--bento-mint);border-color:var(--bento-mint);}
+.hero-tile--mint .hero-tile__num,.hero-tile--mint .hero-tile__label{color:var(--bento-text-onlight);}
+
+/* Tile E - CTA link tile, 1 row, ~4/12 wide. */
+.hero-tile--cta{
+  grid-column:span 4;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--bento-violet);border-color:var(--bento-violet);color:var(--white);
+  font-family:var(--font-body);font-weight:700;font-size:.98rem;transition:background-color .25s ease;
+}
+.hero-tile--cta:hover{background:#7c4de0;}
+.hero-tile--cta svg{flex-shrink:0;transition:transform .25s ease;}
+.hero-tile--cta:hover svg{transform:translateX(4px);}
+
+@media (max-width:900px){
+  .hero-tile--photo,.hero-tile--search{grid-column:span 12;grid-row:span 1;}
+  .hero-tile--stat,.hero-tile--cta{grid-column:span 6;}
+}
 @media (max-width:640px){
-  .hero--reference{padding:45px 12px 36px;}
-  .hero__card{height:362px;border-radius:24px;}
-  .hero__topbar{align-items:flex-start;flex-direction:column;gap:7px;font-size:.64rem;}
-  .hero__topbar a:last-child{align-self:flex-end;}
-  .hero__intro{padding:44px 0 24px;}
-  .hero--reference > .hero__intro{margin-bottom:-42px;}
-  .hero__visual{margin-top:32px;}
-  .hero--reference .eyebrow{font-size:.62rem;letter-spacing:.12em;}
-  .hero--reference .hero__title{font-size:clamp(2.4rem,10vw,4rem);letter-spacing:.02em;}
-  .hero--reference .hero__lead{font-size:.68rem;letter-spacing:.05em;}
-  .hero__lead-break{display:none;}
-  .hero__media{height:clamp(260px,72vw,390px);}
-  /* min-width:650px removed: it forced the *whole* bar (fields + the
-     fixed-width submit button) to be at least 650px wide regardless of
-     viewport, overflowing well past a narrow screen's edges - the
-     actual horizontal-scroll mechanism is .hero-search__fields'
-     own overflow-x:auto right below, which only needs .hero-search
-     itself to stay capped to the viewport. */
-  .hero-search{justify-content:flex-start;left:50%;width:calc(100% - 24px);min-height:77px;margin:0;}
-  .hero-search__fields{min-width:0;flex:1;border-radius:999px;overflow-x:auto;}
-  .hero-search__field{min-width:92px;min-height:77px;padding:0 14px;}
-  .hero-search__field--wide{min-width:170px;}
-  .hero-search__submit{flex-basis:126px;min-height:61px;margin:0;}
-}
-
-/* search card — light warm frosted glass, matching the bright hero */
-.search-card{
-  position:relative;isolation:isolate;z-index:30;
-  background:rgba(255,252,245,.55);
-  border:1px solid rgba(255,255,255,.6);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:var(--radius-lg);
-  padding:10px;
-  background-image:linear-gradient(90deg, var(--gold-400) 0%, var(--gold-600) 40%, rgba(0,0,0,.28) 60%);
-  box-shadow:0 20px 50px rgba(20,20,10,.12);
-}
-.search-card__tabs{display:flex;gap:4px;padding:6px 6px 12px;}
-.search-card__tab{
-  padding:9px 18px;border-radius:999px;font-size:.86rem;font-weight:600;color:#3a3f4d;
-  transition:background-color .3s ease, color .3s ease;
-}
-.search-card__tab.is-active{background:rgba(205,164,94,.85);color:var(--navy-950);}
-.search-card__tab:not(.is-active):hover{background:rgba(10,20,40,.06);}
-
-.search-card__fields{
-  background:rgba(255,255,255,.45);
-  border-radius:var(--radius-md);
-  display:flex;align-items:stretch;padding:6px;gap:2px;
-}
-/* flex:0 0 auto (was 1 1 0, equal-thirds): each field now only holds a
-   label word + chevron - it should hug its own content instead of
-   stretching to fill a third of the row. .search-card__submit's
-   margin-left:auto (below) claims whatever width the fields don't
-   need, so the search button still sits flush at the row's end. */
-.search-card__field{flex:0 0 auto;display:flex;flex-direction:row;align-items:center;gap:5px;padding:10px 12px;min-width:0;}
-/* Direct-child combinator, not descendant: .custom-select__value is also
-   a <span>, nested deeper inside this same field, and a plain
-   ".search-card__field span" descendant selector was matching it too -
-   its higher specificity (class+tag) was silently overriding the
-   value's own rules with the label's tiny uppercase styling. */
-.search-card__field > span{font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-600);font-weight:700;white-space:nowrap;flex-shrink:0;}
-.search-card__field:focus-within{outline:none;}
-.search-card__divider{width:1px;background:rgba(10,20,40,.12);align-self:center;height:36px;flex-shrink:0;}
-.search-card__submit{flex-shrink:0;margin:4px;margin-left:auto;}
-
-/* Custom-styled dropdown, replacing the native <select> popup (which
-   can't be themed cross-browser). A real <select class="custom-select__native">
-   stays in the DOM, hidden and inert, purely as a value-sync/no-JS
-   fallback — the button+listbox pair below it is what's actually
-   focusable and announced to assistive tech. */
-.custom-select{position:relative;flex:0 0 auto;min-width:0;}
-.custom-select__native{position:absolute;inset:0;width:0;height:0;opacity:0;overflow:hidden;pointer-events:none;}
-.custom-select__trigger{
-  display:flex;align-items:center;justify-content:flex-start;gap:6px;
-  background:transparent;border:none;padding:0 4px;margin:0;
-  color:var(--navy-950);font-size:.84rem;font-weight:500;font-family:inherit;
-  cursor:pointer;text-align:left;border-radius:var(--radius-sm);
-}
-.custom-select__trigger:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px;}
-/* Kept in the DOM and still updated on selection (chooseOption() in
-   script.js) so the trigger's aria-labelledby still announces the
-   current value to screen readers - just clipped to 1x1px instead of
-   rendered, per "keep the state, drop the visible text" from the brief. */
-.custom-select__value{
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
-}
-.custom-select__chevron{flex-shrink:0;color:var(--gold-600);transition:transform .2s ease;}
-.custom-select.is-open .custom-select__chevron{transform:rotate(180deg);}
-
-.custom-select__panel{
-  position:absolute;bottom:100%;top:auto;margin-bottom:8px;left:-16px;z-index:40;
-  min-width:calc(100% + 32px);width:max-content;max-width:260px;max-height:280px;overflow-y:auto;
-  background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);
-  list-style:none;padding:6px;
-  opacity:0;visibility:hidden;transform:translateY(6px) scale(.98);transform-origin:bottom left;
-  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
-}
-.custom-select.is-open .custom-select__panel{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
-.custom-select__option{
-  padding:10px 14px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:500;color:var(--ink-900);
-  cursor:pointer;white-space:nowrap;transition:background-color .15s ease, color .15s ease;
-}
-.custom-select__option:hover,
-.custom-select__option.is-active{background:rgba(205,164,94,.14);}
-.custom-select__option.is-selected{
-  background:linear-gradient(135deg,var(--gold-400),var(--gold-600));color:var(--navy-950);font-weight:700;
-}
-.custom-select__option.is-selected.is-active{background:linear-gradient(135deg,var(--gold-400),var(--gold-600));}
-
-.hero__trust{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;}
-.hero__trust li{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-800);font-weight:500;}
-
-
-.hero__float-stack{position:relative;width:270px;margin-top:133px;}
-.hero__float-card{
-  width:270px;background:rgba(255,255,255,.96);border-radius:var(--radius-lg);overflow:hidden;
-  box-shadow:var(--shadow-lg);position:relative;
-  animation:floatCard 5s ease-in-out infinite;
-}
-/* Front card anchors the stack's footprint; middle and back cards fan out
-   behind it, each a step smaller/dimmer with a softer shadow, so all three
-   edges stay visible. The fan offset lives in the independent translate/
-   rotate properties (not `transform`), so the floatCard keyframes — which
-   only animate `transform` — can bob all three without ever overwriting
-   their static offset, and the offset can be re-tuned per breakpoint
-   without touching the animation at all. Each layer runs on its own
-   animation-delay so the trio doesn't move in lockstep. */
-.hero__float-card--front{z-index:3;}
-.hero__float-card--middle{
-  position:absolute;top:0;left:0;z-index:2;
-  width:252px;opacity:.95;
-  box-shadow:0 18px 40px -12px rgba(10,20,40,.26);
-  translate:-16px -12px;
-  rotate:-3deg;
-  animation-delay:.25s;
-}
-.hero__float-card--back{
-  position:absolute;top:0;left:0;z-index:1;
-  width:234px;opacity:.88;
-  box-shadow:0 12px 26px -10px rgba(10,20,40,.2);
-  translate:-32px -24px;
-  rotate:-6deg;
-  animation-delay:.5s;
-}
-@keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
-.hero__float-card img{height:150px;object-fit:cover;width:100%;}
-.hero__float-card-body{padding:16px 18px 18px;}
-.hero__float-card-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-600);margin-bottom:6px;}
-.hero__float-card-body h3{font-size:1rem;color:var(--ink-900);margin-bottom:8px;font-weight:600;}
-.hero__float-card-price{font-weight:800;color:var(--ink-900);font-size:1.05rem;}
-.hero__float-card-price span{font-weight:500;color:var(--ink-500);font-size:.82rem;}
-.hero__float-card-like{
-  position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
-  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:var(--ink-600);
-  transition:color .25s ease, transform .25s ease;
-}
-.hero__float-card-like:hover{color:#e0455f;transform:scale(1.08);}
-
-@media (max-width:980px){
-  .hero__inner{grid-template-columns:1fr;}
-  /* Below 980px the stack drops under hero__content in normal flow (not
-     beside it), so the desktop margin-top used to line it up with
-     .hero__lead no longer applies — back to a small natural gap. */
-  .hero__float-stack{width:100%;max-width:320px;margin-top:8px;}
-  .hero__float-card{width:100%;}
-  /* Smaller fan offset so the back/middle cards stay within the
-     container's padding instead of clipping past the viewport edge. */
-  .hero__float-card--middle{width:88%;translate:-8px -6px;rotate:-2deg;}
-  .hero__float-card--back{width:78%;translate:-14px -10px;rotate:-3deg;}
+  .hero--bento{padding:96px 0 10px;}
+  .hero-grid{gap:10px;}
+  .hero-tile--photo{min-height:280px;}
+  .hero-tile__copy{padding:24px;}
+  .hero-tile--stat,.hero-tile--cta{grid-column:span 12;}
+  .hero-tile__row{grid-template-columns:1fr;}
 }
 
 /* ==========================================================================
@@ -1192,7 +1018,7 @@ section[id]{scroll-margin-top:96px;}
 @media (max-width:1180px){
   .header{width:min(calc(100% - 32px),1240px);}
   .nav{
-    position:fixed;top:0;right:0;height:100vh;width:min(320px,84vw);background:var(--navy-950);
+    position:fixed;top:0;right:0;height:100vh;width:min(320px,84vw);background:var(--bento-bg-dark);
     flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:40px;
     transform:translateX(100%);transition:transform .45s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);
   }
@@ -1221,7 +1047,4 @@ section[id]{scroll-margin-top:96px;}
   .lifestyle,.showcase{padding-top:76px;}
   .showcase{padding-bottom:76px;}
   .cta-final{padding:80px 0;}
-  .search-card__fields{flex-direction:column;}
-  .search-card__divider{display:none;}
-  .search-card__submit{margin:8px 4px 4px;}
 }
