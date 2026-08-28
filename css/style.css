@@ -1112,7 +1112,15 @@ section[id]{scroll-margin-top:96px;}
    heading, light blue-gray body, gold icons/accents. */
 .cta-final__text{background:var(--navy-950);padding:48px;display:flex;flex-direction:column;justify-content:center;}
 .cta-final__text .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:var(--gold-400);}
-.cta-final__text h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--white);margin-bottom:34px;}
+.cta-final__text h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--white);margin-bottom:24px;}
+/* Same pill-social-icon pattern as .footer__social, reused here since
+   this panel shares the same dark navy background/text convention. */
+.cta-final__social{display:flex;gap:12px;margin-bottom:28px;}
+.cta-final__social a{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;
+  color:#c7cde0;transition:all .3s ease;
+}
+.cta-final__social a:hover{background:var(--gold-500);color:var(--navy-950);border-color:var(--gold-500);transform:translateY(-3px);}
 .cta-final__contacts{display:flex;flex-direction:column;gap:20px;}
 .cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:#c7cde0;font-weight:500;}
 .cta-final__contacts svg{color:var(--gold-400);flex-shrink:0;}
