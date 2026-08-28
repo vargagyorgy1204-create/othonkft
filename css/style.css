@@ -218,7 +218,7 @@ section[id]{scroll-margin-top:96px;}
 .btn--dark{background:var(--navy-900);color:var(--white);}
 .btn--dark:hover{background:var(--navy-700);transform:translateY(-2px);}
 .btn--sm{padding:10px 20px;font-size:.85rem;}
-.btn--block{width:100%;}
+.btn--block{width:50%;align-self:center;}
 
 /* ==========================================================================
    Eyebrow / section heads
