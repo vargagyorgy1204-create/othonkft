@@ -284,7 +284,7 @@ section[id]{scroll-margin-top:96px;}
 #ingatlanok .section__head{margin-top:8px;margin-bottom:24px;}
 #ingatlanok .section__head > .eyebrow{
   display:block;width:100%;margin:0 auto 8px;text-align:left;
-  font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--navy-900);
+  font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);
 }
 /* Match the heading-to-subheading gap used in #ingatlanok's stacked
    header (.section__head-row{gap:18px}) — this section's h2/p had no
