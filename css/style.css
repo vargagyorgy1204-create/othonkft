@@ -331,7 +331,7 @@ section[id]{scroll-margin-top:96px;}
    is already a self-contained circular badge (navy + gold house mark),
    so an extra gold circle behind it would just clash. */
 .brand__mark{
-  width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
 .brand__mark-img{width:100%;height:100%;object-fit:contain;display:block;}
@@ -353,11 +353,7 @@ section[id]{scroll-margin-top:96px;}
 .header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
 .header__phone svg{color:var(--bento-blue);}
 
-.hamburger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border-radius:50%;background:var(--bento-bg-dark);border:1px solid var(--bento-border-dark);}
-.hamburger span{display:block;width:20px;height:2px;background:var(--white);transition:background-color .3s ease, transform .35s var(--ease), opacity .3s ease;}
-.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
-.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.hamburger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;background:var(--bento-bg-dark);border:1px solid var(--bento-border-dark);color:var(--white);}
 
 /* ==========================================================================
    Hero
@@ -368,7 +364,7 @@ section[id]{scroll-margin-top:96px;}
    pill. Section background carries !important - main > section{
    background:var(--cream)!important} (near the top of this file) wins
    over anything here otherwise. */
-.hero--bento{background:var(--bento-bg-light) !important;padding:112px 0 var(--bento-gap);}
+.hero--bento{background:var(--bento-bg-light) !important;padding:126px 0 32px;}
 .hero-grid{
   display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);
   gap:var(--bento-gap);
@@ -378,9 +374,14 @@ section[id]{scroll-margin-top:96px;}
   overflow:hidden;
 }
 
-/* Tile A - photo + headline, dark, spans the left ~7/12 across 2 rows. */
+/* Tile A - photo + headline, dark, now full-bleed across all 12
+   columns (was 7/12 beside the search tile) - the search panel moved
+   inside it as a floating overlay instead of living in its own grid
+   cell beside the photo. Extra bottom padding-in-flow isn't needed
+   since the overlay is position:absolute, but min-height is bumped a
+   bit so the overlay panel has clearance below the headline. */
 .hero-tile--photo{
-  grid-column:span 7;grid-row:span 2;min-height:480px;
+  grid-column:span 12;min-height:680px;
   background-size:cover;background-position:center;border-color:var(--bento-border-dark);
   display:flex;align-items:flex-end;
 }
@@ -388,31 +389,46 @@ section[id]{scroll-margin-top:96px;}
   position:absolute;inset:0;
   background:linear-gradient(180deg, rgba(11,11,18,0) 40%, rgba(11,11,18,.75) 100%);
 }
-.hero-tile__copy{position:relative;z-index:1;padding:40px;color:var(--bento-text-ondark);}
+.hero-tile__copy{position:relative;z-index:1;padding:40px;padding-bottom:150px;color:var(--bento-text-ondark);}
 .hero-tile__copy h1{
   font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;
   font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin-bottom:14px;color:var(--bento-text-ondark);
 }
 .hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
 
-/* Tile B - search form, light, beside the photo, fields stacked
-   vertically instead of one horizontal floating pill. */
-.hero-tile--search{grid-column:span 5;grid-row:span 2;background:var(--bento-bg-light);box-shadow:var(--bento-shadow);}
-.hero-tile--search form{display:flex;flex-direction:column;gap:12px;height:100%;padding:28px;}
-.hero-tile__row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.hero-tile--search select,.hero-tile--search input{
-  width:100%;padding:13px 14px;border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);
-  background:var(--bento-surface-light);color:var(--bento-text-onlight);font-size:.92rem;font-weight:500;
-  font-family:var(--font-body);
+/* Search panel - floats as a semi-transparent frosted overlay over the
+   bottom of the photo tile (30% narrower than the full photo width),
+   instead of living in its own grid cell beside it. Fields run in a
+   single horizontal row now that it's a compact floating bar, not a
+   tall side panel. */
+/* Centered via left:0;right:0;margin-inline:auto (not left:50% +
+   transform:translateX(-50%)) - this element also carries
+   data-reveal="fade", and [data-reveal="fade"].is-visible sets its
+   own transform:translate(0,0) at higher specificity than a plain
+   class selector, which would silently cancel a transform-based
+   centering trick. */
+.hero-tile--search{
+  position:absolute;left:0;right:0;margin-inline:auto;bottom:24px;
+  width:70%;max-width:900px;z-index:2;
+  background:rgba(255,255,255,.55);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid rgba(255,255,255,.4);border-radius:var(--bento-radius-lg);box-shadow:0 20px 50px rgba(11,11,18,.25);
 }
+.hero-tile--search form{display:flex;align-items:center;gap:10px;padding:14px;}
+.hero-tile--search select,.hero-tile--search input{
+  width:100%;padding:12px 14px;border:1px solid rgba(11,11,18,.1);border-radius:var(--bento-radius-sm);
+  background:rgba(255,255,255,.7);color:var(--bento-text-onlight);font-size:.88rem;font-weight:500;
+  font-family:var(--font-body);min-width:0;
+}
+.hero-tile--search select{flex:0 1 150px;}
+.hero-tile--search input{flex:1 1 auto;}
 .hero-tile--search select{
-  appearance:none;padding-right:32px;
+  appearance:none;padding-right:30px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%230b0b12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position:calc(100% - 12px) 50%;background-size:12px 12px;background-repeat:no-repeat;
+  background-position:calc(100% - 10px) 50%;background-size:12px 12px;background-repeat:no-repeat;
 }
 .hero-tile--search input::placeholder{color:var(--bento-text-onlight-muted);}
 .hero-tile--search select:focus-visible,.hero-tile--search input:focus-visible{outline:2px solid var(--bento-blue);outline-offset:1px;}
-.hero-tile--search .btn--bento{margin-top:auto;}
+.hero-tile--search .btn--bento{flex:0 0 auto;white-space:nowrap;}
 
 .btn--bento{background:var(--bento-blue);color:var(--white);}
 .btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
@@ -439,16 +455,35 @@ section[id]{scroll-margin-top:96px;}
 .hero-tile--cta:hover svg{transform:translateX(4px);}
 
 @media (max-width:900px){
-  .hero-tile--photo,.hero-tile--search{grid-column:span 12;grid-row:span 1;}
   .hero-tile--stat,.hero-tile--cta{grid-column:span 6;}
 }
 @media (max-width:640px){
   .hero--bento{padding:96px 0 10px;}
   .hero-grid{gap:10px;}
-  .hero-tile--photo{min-height:280px;}
+  /* Photo stays tall enough for the headline up top and the now-taller
+     (fields stacked vertically) overlay panel at the bottom - still an
+     absolute overlay, not static-in-flow, so .hero-tile--photo doesn't
+     need to become a flex/block container for it. align-items switches
+     to flex-start (was flex-end, inherited from desktop) so the
+     headline anchors near the TOP of the tall mobile photo instead of
+     sitting at the bottom, where it would end up hidden underneath the
+     much taller stacked-fields search overlay. */
+  .hero-tile--photo{min-height:640px;align-items:flex-start;}
   .hero-tile__copy{padding:24px;}
+  /* Headline moved to the top on mobile (see align-items above), so
+     the scrim needs its own dark patch up there too - the desktop
+     scrim only darkens the bottom, which left the top text sitting
+     directly on a bright sky photo with poor contrast. */
+  .hero-tile__scrim{
+    background:linear-gradient(180deg, rgba(11,11,18,.6) 0%, rgba(11,11,18,.1) 26%, rgba(11,11,18,0) 46%, rgba(11,11,18,0) 60%, rgba(11,11,18,.75) 100%);
+  }
   .hero-tile--stat,.hero-tile--cta{grid-column:span 12;}
-  .hero-tile__row{grid-template-columns:1fr;}
+  .hero-tile--search{
+    width:calc(100% - 24px);max-width:none;bottom:16px;
+    background:rgba(255,255,255,.75);
+  }
+  .hero-tile--search form{flex-direction:column;align-items:stretch;padding:16px;}
+  .hero-tile--search select{flex:1 1 auto;}
 }
 
 /* ==========================================================================
@@ -750,12 +785,14 @@ section[id]{scroll-margin-top:96px;}
 }
 .lifestyle__booking h3{font-size:1.5rem;color:var(--bento-text-onlight);margin-bottom:4px;line-height:1.25;font-family:var(--font-body);font-weight:800;}
 .lifestyle__booking label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--bento-text-onlight-muted);}
-.lifestyle__booking input{
+.lifestyle__booking input,.lifestyle__booking textarea{
   border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);padding:12px 14px;font-size:.92rem;color:var(--bento-text-onlight);
-  background:var(--bento-surface-light);transition:border-color .3s ease, box-shadow .3s ease;
+  background:var(--bento-surface-light);transition:border-color .3s ease, box-shadow .3s ease;font-family:var(--font-body);resize:none;
 }
-.lifestyle__booking input:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
+.lifestyle__booking input:focus,.lifestyle__booking textarea:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
 .lifestyle__booking .btn{margin:auto 0;}
+.lifestyle__booking .btn--bento{background:linear-gradient(135deg,#1e3a8a,var(--bento-blue));}
+.lifestyle__booking .btn--bento:hover{background:linear-gradient(135deg,#16296b,#3d68f0);}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
@@ -894,14 +931,14 @@ section[id]{scroll-margin-top:96px;}
 #gyik{background:var(--bento-bg-light) !important;}
 .faq-split{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:var(--bento-gap);align-items:start;}
 .faq-intro{display:flex;flex-direction:column;align-items:flex-start;}
-.faq-intro__media{position:relative;width:100%;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);overflow:hidden;box-shadow:none;margin-bottom:26px;}
+.faq-intro__media{position:relative;width:100%;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);overflow:hidden;box-shadow:none;}
 .faq-intro__media img{width:100%;height:280px;object-fit:cover;}
 /* Corner badge on the photo, matching .card__badge's pill conventions. */
 .faq-intro__badge{
   position:absolute;top:16px;left:16px;padding:7px 15px;border-radius:999px;
   background:var(--bento-blue);color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.02em;
 }
-.faq-intro .section__head{margin-bottom:14px;}
+.faq-intro .section__head{margin-bottom:20px;}
 
 @media (max-width:980px){
   .faq-split{grid-template-columns:1fr;gap:32px;}

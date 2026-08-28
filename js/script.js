@@ -395,7 +395,6 @@
       dotBtns.forEach(function (btn) {
         btn.classList.toggle("is-active", Number(btn.dataset.index) === index);
       });
-      if (!opts.silent) { stopAutoplay(); startAutoplay(); }
     }
     if (prevBtn) prevBtn.addEventListener("click", function () { goTo(index - 1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { goTo(index + 1); });
@@ -405,16 +404,8 @@
     dotBtns.forEach(function (btn) {
       btn.addEventListener("click", function () { goTo(Number(btn.dataset.index)); });
     });
-
-    var autoplay;
-    function startAutoplay() {
-      if (reduceMotion) return;
-      autoplay = setInterval(function () { goTo(index + 1, { silent: true }); }, 6500);
-    }
-    function stopAutoplay() { clearInterval(autoplay); }
-    startAutoplay();
-    track.closest(".testimonials").addEventListener("mouseenter", stopAutoplay);
-    track.closest(".testimonials").addEventListener("mouseleave", startAutoplay);
+    /* Autoplay removed per request - testimonials now only change via
+       explicit prev/next/dot/avatar clicks, never on their own. */
   }
 
   /* -------------------------------------------------
