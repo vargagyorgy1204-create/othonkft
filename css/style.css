@@ -777,26 +777,12 @@ section[id]{scroll-margin-top:96px;}
    intros. */
 .services > .container > .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
 .services > .container > .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
-.services__card{position:relative;z-index:1;width:100%;margin-top:32px;padding:10px;background:#0A1428;border-radius:clamp(24px,3vw,32px);box-shadow:none;}
-/* min-height:900px removed - it matched the card's combined old content
-   (icon grid + stats together); now that .stats moved out to sit below
-   the card on the dark panel, forcing that height left a large dead
-   white gap under the icon grid. Sizes to its actual content now,
-   matching the min-height:0 this rule already got at mobile widths. */
-.services__content{position:relative;z-index:1;width:100%;padding:68px;background:#fff;border:2px solid var(--navy-900);border-radius:clamp(24px,3vw,32px);box-shadow:0 18px 42px rgba(18,21,31,.14);}
-/* .section__head (eyebrow+h2) used to live inside .services__content
-   (the white inner card), which is why h2.light/the eyebrow were
-   overridden to dark colors here. Now that it sits directly in
-   .services__card instead - on the dark #0A1428 panel, above the white
-   card - those overrides are gone, so it falls back to the plain
-   .eyebrow--light (gold) / h2.light (white) styling used on every other
-   dark section (hero, CTA, etc). */
 .services .section__desc--light{color:var(--ink-500);}
-/* margin-bottom:0 (was 80px) - .services__content's own 68px padding-bottom
-   is already a full, symmetric cushion matching its 68px padding-top;
-   the extra 80px on top of that was stacking into a lopsided 148px gap
-   under the photo-card row vs 68px above it. */
-.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-bottom:0;position:relative;z-index:1;}
+/* The navy .services__card and white .services__content wrapper cards
+   are gone - .services__grid now sits directly in .container, so it
+   carries the margin-top that used to live on .services__card to keep
+   the same spacing under the eyebrow/h2. */
+.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-top:32px;margin-bottom:0;position:relative;z-index:1;}
 /* Photo card with a bottom-left overlaid label (photo -> ::after scrim ->
    text), replacing the old icon-centered card. --service-photo is set
    per-card via an inline style on .service-card (matches how #heroBg
@@ -841,8 +827,7 @@ section[id]{scroll-margin-top:96px;}
    Removed rather than left as noise. */
 
 @media (max-width:640px){
-  .services__card{margin-top:24px;padding:24px;border-radius:18px;}
-  .services__content{width:100%;min-height:0;padding:35px 22px;border-radius:16px;}
+  .services__grid{margin-top:24px;}
 }
 
 .stats{
