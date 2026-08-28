@@ -364,7 +364,7 @@ section[id]{scroll-margin-top:96px;}
    pill. Section background carries !important - main > section{
    background:var(--cream)!important} (near the top of this file) wins
    over anything here otherwise. */
-.hero--bento{background:var(--bento-bg-light) !important;padding:126px 0 32px;}
+.hero--bento{background:var(--bento-bg-light) !important;padding:106px 0 32px;}
 .hero-grid{
   display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);
   gap:var(--bento-gap);
