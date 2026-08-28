@@ -692,19 +692,20 @@ section[id]{scroll-margin-top:96px;}
 .lifestyle{padding:16px 0 110px;background:var(--white) !important;}
 .lifestyle__inner{position:relative;}
 .lifestyle__media-head{margin-bottom:24px;text-align:left;}
-/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment. */
-.lifestyle__media-head .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
-.lifestyle__media-head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--ink-900);text-align:left;}
+/* Bento typography, matching the hero/#ingatlanok/#szolgaltatasok
+   phase-1..3 treatment. */
+.lifestyle__media-head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+.lifestyle__media-head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);text-align:left;}
 
-/* Side-by-side split card: photo left, booking form right, sharing one
-   outer radius/shadow (was a full-bleed photo with the form floating
-   over it - now two normal-flow halves in a grid instead). */
+/* Two independent bento tiles (photo, booking form) with a gap between
+   them, instead of one merged card sharing an outer radius/shadow -
+   each tile gets its own flat border, matching the rest of the
+   redesigned sections. */
 .lifestyle__media-wrap{
-  display:grid;grid-template-columns:2fr 1fr;align-items:stretch;
-  border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);
+  display:grid;grid-template-columns:2fr 1fr;align-items:stretch;gap:var(--bento-gap);
+  border-radius:0;box-shadow:none;
 }
-.lifestyle__media{position:relative;height:100%;min-height:340px;}
+.lifestyle__media{position:relative;height:100%;min-height:340px;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);overflow:hidden;}
 .lifestyle__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
 /* Dark-at-the-bottom scrim (same recipe as .service-card::after) so the
    location pill/badge stay legible regardless of the photo underneath -
@@ -724,34 +725,36 @@ section[id]{scroll-margin-top:96px;}
    z-index:2 here lifts the badge above that scrim, same layer as the
    location pill. */
 .lifestyle__media .card__badge{z-index:2;}
+.lifestyle__media .card__badge--sale{background:var(--bento-blue);}
 .lifestyle__media-loc--bottom{
   position:absolute;bottom:20px;left:20px;top:auto;z-index:2;display:flex;align-items:center;gap:6px;
   background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   color:var(--white);font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;
 }
-/* Plain panel now - no longer layered over a photo, so no frosted-glass
-   treatment needed, just a solid warm background beside it. */
-/* justify-content:flex-start (was center) so the heading sits near the
-   top instead of the whole block floating in the middle. Bottom padding
-   is trimmed to the same 18px used as the container's own field-to-field
-   gap value, and the button gets auto margins on both top and bottom
-   (instead of just margin-top:auto) - flexbox splits the panel's leftover
-   vertical space evenly between those two auto margins, so with the gap
-   and padding-bottom now matching (18px each), the button ends up with
+/* Own flat bento tile now (border + bento-shadow instead of the old
+   plain cream panel that only made sense as one half of a merged
+   card). justify-content:flex-start (was center) so the heading sits
+   near the top instead of the whole block floating in the middle.
+   Bottom padding matches the container's own field-to-field gap value,
+   and the button gets auto margins on both top and bottom (instead of
+   just margin-top:auto) - flexbox splits the panel's leftover vertical
+   space evenly between those two auto margins, so with the gap and
+   padding-bottom now matching (18px each), the button ends up with
    equal breathing room above (from the date field) and below (to the
    card's bottom edge) instead of the lopsided gap the single-sided
    auto-margin used to produce. */
 .lifestyle__booking{
-  padding:44px 44px 18px;background:var(--cream);
+  padding:44px 44px 18px;background:var(--bento-bg-light);
+  border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);box-shadow:var(--bento-shadow);
   display:flex;flex-direction:column;gap:18px;justify-content:flex-start;
 }
-.lifestyle__booking h3{font-size:1.5rem;color:var(--ink-900);margin-bottom:4px;line-height:1.25;}
-.lifestyle__booking label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-600);}
+.lifestyle__booking h3{font-size:1.5rem;color:var(--bento-text-onlight);margin-bottom:4px;line-height:1.25;font-family:var(--font-body);font-weight:800;}
+.lifestyle__booking label{display:flex;flex-direction:column;gap:8px;font-size:.82rem;font-weight:700;color:var(--bento-text-onlight-muted);}
 .lifestyle__booking input{
-  border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-size:.92rem;color:var(--ink-900);
-  background:var(--white);transition:border-color .3s ease, box-shadow .3s ease;
+  border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);padding:12px 14px;font-size:.92rem;color:var(--bento-text-onlight);
+  background:var(--bento-surface-light);transition:border-color .3s ease, box-shadow .3s ease;
 }
-.lifestyle__booking input:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 4px rgba(205,164,94,.15);}
+.lifestyle__booking input:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
 .lifestyle__booking .btn{margin:auto 0;}
 
 @media (max-width:640px){
