@@ -768,24 +768,28 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Showcase (property of the month)
    ========================================================================== */
-.showcase{padding:0 0 110px;background:var(--cream);}
+.showcase{padding:0 0 110px;background:var(--bento-bg-light) !important;}
+/* Flat bento tile - border instead of the soft drop shadow, bento-bg-dark
+   instead of navy-950 (close in value, but now sourced from the new
+   token so it stays in step if the palette changes later). */
 .showcase__card{
-  display:grid;grid-template-columns:1.1fr 1fr;background:var(--navy-950);border-radius:var(--radius-xl);
-  overflow:hidden;box-shadow:var(--shadow-lg);
+  display:grid;grid-template-columns:1.1fr 1fr;background:var(--bento-bg-dark);border-radius:var(--bento-radius-lg);
+  border:1px solid var(--bento-border-dark);overflow:hidden;box-shadow:none;
 }
 .showcase__media{position:relative;min-height:420px;overflow:hidden;}
 .showcase__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
 .showcase__tag{
-  position:absolute;top:24px;left:24px;background:linear-gradient(135deg,var(--gold-400),var(--gold-600));
-  color:var(--navy-950);padding:9px 18px;border-radius:999px;font-weight:700;font-size:.78rem;letter-spacing:.03em;z-index:1;
+  position:absolute;top:24px;left:24px;background:var(--bento-blue);
+  color:var(--white);padding:9px 18px;border-radius:999px;font-weight:700;font-size:.78rem;letter-spacing:.03em;z-index:1;
 }
-.showcase__body{padding:52px 48px;color:var(--white);display:flex;flex-direction:column;}
-.showcase__body h3{font-size:1.9rem;margin-bottom:12px;}
-.showcase__body .card__loc{color:#a9b0c2;margin-bottom:20px;}
-.showcase__desc{color:#b9c0d1;line-height:1.75;margin-bottom:26px;}
-.showcase__body .card__specs--lg{color:#c7cde0;border-bottom-color:rgba(255,255,255,.14);}
+.showcase__body{padding:52px 48px;color:var(--bento-text-ondark);display:flex;flex-direction:column;}
+.showcase__body .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;color:var(--bento-blue);}
+.showcase__body h3{font-size:1.9rem;margin-bottom:12px;font-family:var(--font-body);font-weight:800;color:var(--bento-text-ondark);}
+.showcase__body .card__loc{color:var(--bento-text-ondark-muted);margin-bottom:20px;}
+.showcase__desc{color:var(--bento-text-ondark-muted);line-height:1.75;margin-bottom:26px;}
+.showcase__body .card__specs--lg{color:var(--bento-text-ondark);border-bottom-color:var(--bento-border-dark);}
 .showcase__foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:28px;}
-.showcase__price{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--gold-400);}
+.showcase__price{font-family:var(--font-body);font-size:2rem;font-weight:800;color:var(--bento-peach);}
 
 @media (max-width:900px){
   .showcase__card{grid-template-columns:1fr;}
@@ -878,25 +882,24 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    FAQ
    ========================================================================== */
-/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment. Left-aligned now
-   that the heading lives in .faq-intro instead of a centered
+/* Bento typography, matching phases 1-5. Left-aligned now that the
+   heading lives in .faq-intro instead of a centered
    .section__head--center above the whole section. */
-#gyik .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;text-align:left;}
-#gyik .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;text-align:left;}
+#gyik .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);text-align:left;}
+#gyik .section__head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);text-align:left;}
 
 /* Two-column split: photo+intro card left, FAQ list right. */
 /* !important needed: main > section{background:var(--cream)!important}
    (global rule) otherwise wins over this regardless of specificity. */
-#gyik{background:var(--white) !important;}
-.faq-split{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:56px;align-items:start;}
+#gyik{background:var(--bento-bg-light) !important;}
+.faq-split{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:var(--bento-gap);align-items:start;}
 .faq-intro{display:flex;flex-direction:column;align-items:flex-start;}
-.faq-intro__media{position:relative;width:100%;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:26px;}
+.faq-intro__media{position:relative;width:100%;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);overflow:hidden;box-shadow:none;margin-bottom:26px;}
 .faq-intro__media img{width:100%;height:280px;object-fit:cover;}
 /* Corner badge on the photo, matching .card__badge's pill conventions. */
 .faq-intro__badge{
   position:absolute;top:16px;left:16px;padding:7px 15px;border-radius:999px;
-  background:var(--gold-500);color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.02em;
+  background:var(--bento-blue);color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.02em;
 }
 .faq-intro .section__head{margin-bottom:14px;}
 
@@ -905,18 +908,18 @@ section[id]{scroll-margin-top:96px;}
   .faq-intro__media img{height:220px;}
 }
 
-.faq{display:flex;flex-direction:column;gap:14px;}
-.faq__item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;transition:border-color .3s ease;}
-.faq__item.is-open{border-color:var(--gold-500);}
+.faq{display:flex;flex-direction:column;gap:var(--bento-gap);}
+.faq__item{background:var(--bento-bg-light);border:1px solid var(--bento-border);border-radius:var(--bento-radius-md);overflow:hidden;transition:border-color .3s ease;}
+.faq__item.is-open{border-color:var(--bento-blue);}
 .faq__q{
   width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:22px 26px;font-weight:600;font-size:.98rem;color:var(--ink-900);text-align:left;
+  padding:22px 26px;font-weight:600;font-size:.98rem;color:var(--bento-text-onlight);text-align:left;
 }
-.faq__q svg{flex-shrink:0;transition:transform .35s var(--ease);color:var(--gold-600);}
+.faq__q svg{flex-shrink:0;transition:transform .35s var(--ease);color:var(--bento-blue);}
 .faq__item.is-open .faq__q svg{transform:rotate(180deg);}
 .faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease), padding .45s var(--ease);padding:0 26px;}
 .faq__item.is-open .faq__a{max-height:220px;padding:0 26px 24px;}
-.faq__a p{color:var(--ink-500);line-height:1.7;font-size:.94rem;}
+.faq__a p{color:var(--bento-text-onlight-muted);line-height:1.7;font-size:.94rem;}
 
 /* ==========================================================================
    Final CTA / Contact
