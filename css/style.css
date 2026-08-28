@@ -600,37 +600,25 @@ section[id]{scroll-margin-top:96px;}
    Services (dark panel)
    ========================================================================== */
 .services{background:var(--navy-950);padding:88px 0 110px;position:relative;overflow:hidden;}
-.services{background:var(--white) !important;}
-/* .section__head now sits directly in .container, above .services__card
-   entirely, on the section's own cream background - h2 already falls
-   back to .section__head h2's default dark ink-900 (its "light" class
-   was dropped), just needs its own margin-bottom (was margin:0 auto
-   24px inherited when nested inside .services__card) and the same
-   serif Playfair Display eyebrow treatment used by every other content
-   section's eyebrow (#ingatlanok, .lifestyle, .about). */
+.services{background:var(--bento-bg-light) !important;}
 .services > .container > .section__head{margin-bottom:40px;}
-/* Matched to #ingatlanok's eyebrow/h2 (Exkluzív ajánlatok / Önnek
-   válogatva) - same size, color, and font treatment for both section
-   intros. */
-.services > .container > .section__head > .eyebrow{font-family:"Playfair Display",serif;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:none;color:#3C4748;}
-.services > .container > .section__head h2{font-family:"Fraunces",var(--font-head),Georgia,serif;font-optical-sizing:auto;font-style:normal;}
+/* Bento typography, matching the hero/#ingatlanok phase-1/2 treatment
+   (geometric sans instead of the serif Playfair/Fraunces pairing the
+   rest of the not-yet-redesigned site still uses). */
+.services > .container > .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);}
+.services > .container > .section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);}
 .services .section__desc--light{color:var(--ink-500);}
-/* The navy .services__card and white .services__content wrapper cards
-   are gone - .services__grid now sits directly in .container, so it
-   carries the margin-top that used to live on .services__card to keep
-   the same spacing under the eyebrow/h2. */
-.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:24px;margin-top:32px;margin-bottom:0;position:relative;z-index:1;}
+.services__grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:start;gap:var(--bento-gap);margin-top:32px;margin-bottom:0;position:relative;z-index:1;}
 /* Photo card with a bottom-left overlaid label (photo -> ::after scrim ->
-   text), replacing the old icon-centered card. --service-photo is set
-   per-card via an inline style on .service-card (matches how #heroBg
-   already inlines its own background-image elsewhere on this page). */
+   text). --service-photo is set per-card via an inline style on
+   .service-card (matches how #heroBg already inlines its own
+   background-image elsewhere on this page). Flat bento tile: border
+   instead of a soft drop shadow, no hover lift - only the photo's own
+   subtle zoom, matching the flatter interaction language used across
+   the rest of the redesigned sections so far. */
 .service-card{
   position:relative;overflow:hidden;isolation:isolate;
-  border-radius:var(--radius-lg);height:300px;cursor:pointer;
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-.service-card:hover{
-  transform:translateY(-6px);box-shadow:0 20px 40px rgba(6,10,20,.28);
+  border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);height:300px;cursor:pointer;
 }
 .service-card__photo{
   position:absolute;inset:0;z-index:0;
@@ -668,20 +656,32 @@ section[id]{scroll-margin-top:96px;}
 }
 
 .stats{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:24px;
-  border-top:1px solid var(--line);padding-top:52px;position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:var(--bento-gap);
+  border-top:none;padding-top:0;position:relative;z-index:1;
 }
-/* Now a sibling of .services__card (was its last child, sitting on the
-   dark panel) - moved below the whole card instead, onto the section's
-   own white background, so needs dark text/line colors instead of the
-   light-on-dark ones tuned for sitting on the navy card. */
 .stats--outside{margin-top:52px;}
-.stat{text-align:center;}
-.stat__num{font-family:var(--font-head);font-size:clamp(2rem,3.4vw,2.8rem);font-weight:700;color:var(--ink-900);margin-bottom:6px;}
+/* Each stat is its own small accent-color bento tile now, cycling
+   through the palette (blue/mint/violet/peach) instead of five plain
+   text columns on the section's white background - matches the hero's
+   stat-tile pattern (phase 1). Mint/peach keep dark text (fail
+   contrast with white at this saturation, per the palette's contrast
+   rule); blue/violet get white text. */
+.stat{text-align:center;padding:26px 16px;border-radius:var(--bento-radius-lg);}
+.stat:nth-child(5n+1){background:var(--bento-blue);}
+.stat:nth-child(5n+2){background:var(--bento-mint);}
+.stat:nth-child(5n+3){background:var(--bento-violet);}
+.stat:nth-child(5n+4){background:var(--bento-peach);}
+.stat:nth-child(5n+5){background:var(--bento-blue);}
+.stat:nth-child(5n+1) .stat__num,.stat:nth-child(5n+1) .stat__label,
+.stat:nth-child(5n+3) .stat__num,.stat:nth-child(5n+3) .stat__label,
+.stat:nth-child(5n+5) .stat__num,.stat:nth-child(5n+5) .stat__label{color:var(--white);}
+.stat:nth-child(5n+2) .stat__num,.stat:nth-child(5n+2) .stat__label,
+.stat:nth-child(5n+4) .stat__num,.stat:nth-child(5n+4) .stat__label{color:var(--bento-text-onlight);}
+.stat__num{font-family:var(--font-body);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:6px;}
 .stat__num::after{content:attr(data-suffix);}
-.stat__label{color:var(--ink-500);font-size:.86rem;font-weight:500;}
+.stat__label{font-size:.84rem;font-weight:600;}
 
-@media (max-width:980px){.services__grid{grid-template-columns:repeat(2,1fr);}.stats{grid-template-columns:repeat(2,1fr);row-gap:40px;}}
+@media (max-width:980px){.services__grid{grid-template-columns:repeat(2,1fr);}.stats{grid-template-columns:repeat(2,1fr);row-gap:var(--bento-gap);}}
 @media (max-width:560px){.services__grid{grid-template-columns:1fr;}}
 
 /* ==========================================================================
