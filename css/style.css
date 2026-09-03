@@ -367,6 +367,7 @@ section[id]{scroll-margin-top:96px;}
    over anything here otherwise. */
 .hero--bento{background:var(--bento-bg-light) !important;padding:106px 0 32px;}
 .hero-grid{
+  position:relative;
   display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);
   gap:var(--bento-gap);
 }
@@ -470,6 +471,59 @@ section[id]{scroll-margin-top:96px;}
 .btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
 @media (prefers-reduced-motion: reduce){
   .hero-tile--search,.hero-tile--search::before{transition:none;}
+}
+
+/* Floating stacked-card widget - "A honap top ingatlana" teaser,
+   overlapping the top-right corner of the photo tile. Lives as a
+   sibling of .hero-tile--photo inside .hero-grid (not nested inside
+   it), since that tile has overflow:hidden which would clip the
+   overhang. Revives the pre-bento hero's .hero__float-stack mechanic
+   (fan offset via translate/rotate, front/middle/back layering, a
+   gentle bob) restyled to the bento tokens/typography. */
+.hero-float-stack{
+  position:absolute;top:56px;right:24px;z-index:3;width:230px;
+}
+.hero-float-card{
+  width:230px;background:var(--bento-bg-light);border-radius:var(--bento-radius-lg);overflow:hidden;
+  box-shadow:0 24px 48px -12px rgba(11,11,18,.25);position:relative;
+  animation:floatCard 5s ease-in-out infinite;
+}
+.hero-float-card--front{z-index:3;}
+.hero-float-card--middle{
+  position:absolute;top:0;left:0;z-index:2;width:212px;opacity:.95;
+  box-shadow:0 16px 34px -10px rgba(11,11,18,.22);
+  translate:-14px -10px;rotate:-3deg;animation-delay:.25s;
+}
+.hero-float-card--back{
+  position:absolute;top:0;left:0;z-index:1;width:196px;opacity:.88;
+  box-shadow:0 10px 22px -8px rgba(11,11,18,.18);
+  translate:-28px -20px;rotate:-6deg;animation-delay:.5s;
+}
+@keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.hero-float-card img{width:100%;height:140px;object-fit:cover;display:block;}
+.hero-float-card__like{
+  position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:var(--bento-text-onlight-muted);
+  transition:color .25s ease, transform .25s ease;
+}
+.hero-float-card__like:hover{color:#e0455f;transform:scale(1.08);}
+.hero-float-card__body{padding:14px 16px 16px;}
+.hero-float-card__tag{font-family:var(--font-body);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bento-blue);margin-bottom:6px;}
+.hero-float-card__body h3{font-family:var(--font-body);font-size:.94rem;font-weight:700;color:var(--bento-text-onlight);margin-bottom:6px;line-height:1.3;}
+.hero-float-card__price{font-family:var(--font-body);font-weight:800;color:var(--bento-text-onlight);font-size:.98rem;}
+.hero-float-card__price span{font-weight:500;color:var(--bento-text-onlight-muted);font-size:.82rem;}
+@media (max-width:900px){
+  .hero-float-stack{top:40px;right:0;width:180px;}
+  .hero-float-card{width:180px;}
+  .hero-float-card--middle{width:166px;}
+  .hero-float-card--back{width:154px;}
+  .hero-float-card img{height:110px;}
+}
+@media (max-width:640px){
+  .hero-float-stack{display:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-float-card{animation:none;}
 }
 
 /* Tiles C/D - single-stat accent tiles, 1 row each, ~4/12 wide. */
