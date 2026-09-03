@@ -330,14 +330,15 @@ section[id]{scroll-margin-top:96px;}
    white page-top, not a dark one. Dark text throughout, transparent at
    top, light-frosted once scrolled - the opposite assumption from the
    old single-full-bleed-photo hero. */
-.header.is-scrolled{
-  background:rgba(255,255,255,.8);
-  border-color:var(--bento-border);
-  backdrop-filter:blur(16px) saturate(160%);
-  -webkit-backdrop-filter:blur(16px) saturate(160%);
-  padding:8px 0;
-  box-shadow:var(--bento-shadow);
-}
+/* Header stays fully transparent in every scroll state now - no more
+   frosted .is-scrolled background/blur. The .is-scrolled class is
+   still toggled by script.js (harmless) in case a future design wants
+   it back, but nothing here reacts to it anymore. NOTE: since the
+   header floats fixed at a constant viewport position, this reintroduces
+   a real legibility risk wherever a dark section (the contact panel,
+   footer, property-of-the-month card) happens to scroll under it -
+   the header's text stays dark-on-transparent throughout, so it can
+   go dark-on-dark there. Flagged for follow-up if that reads poorly. */
 
 .brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
@@ -355,11 +356,17 @@ section[id]{scroll-margin-top:96px;}
 .brand__name em{font-style:normal;margin-left:2px;}
 .brand--footer{color:var(--white);}
 
-.nav{display:flex;align-items:center;gap:34px;}
-.nav a{color:var(--bento-text-onlight-muted);font-size:.94rem;font-weight:500;position:relative;padding:4px 0;transition:color .25s ease;}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--bento-blue);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease);}
-.nav a:hover{color:var(--bento-text-onlight);}
-.nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+/* Pill container, matching the reference: light-gray rounded bar,
+   each link its own smaller pill, current page gets a filled white
+   pill highlight instead of the old slide-in underline. */
+.nav{display:flex;align-items:center;gap:2px;background:var(--bento-surface-light);border-radius:999px;padding:6px;}
+.nav a{
+  color:var(--bento-text-onlight-muted);font-size:.9rem;font-weight:500;
+  padding:8px 16px;border-radius:999px;transition:color .25s ease, background-color .25s ease;
+}
+.nav a:hover{color:var(--bento-text-onlight);background:rgba(11,11,18,.06);}
+.nav a.is-active{background:var(--bento-bg-light);color:var(--bento-text-onlight);box-shadow:0 1px 3px rgba(11,11,18,.15);}
+.nav a.is-active:hover{background:var(--bento-bg-light);}
 
 .header__actions{display:flex;align-items:center;gap:10px;}
 .header__cta{height:44px;padding:0 18px;font-size:.8rem;background:linear-gradient(135deg,var(--navy-950),var(--navy-700));color:var(--white);transition:none;}
@@ -1179,14 +1186,18 @@ section[id]{scroll-margin-top:96px;}
   .nav{
     position:fixed;top:0;right:0;height:100vh;width:min(320px,84vw);background:var(--bento-bg-dark);
     flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:40px;
+    border-radius:0;
     transform:translateX(100%);transition:transform .45s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);
   }
   .nav.is-open{transform:translateX(0);}
   /* The drawer's own background is always dark navy, regardless of header
      scroll state, so its links stay light — overrides the transparent-
-     header dark-text default above. */
-  .nav a{font-size:1.1rem;color:#dfe3ee;}
-  .nav a:hover{color:var(--white);}
+     header dark-text default above. The pill-bar hover/active fills
+     from the desktop nav don't read well on a full dark panel, so
+     reset back to a plain color-only treatment here. */
+  .nav a{font-size:1.1rem;color:#dfe3ee;padding:4px 0;background:none;box-shadow:none;}
+  .nav a:hover{color:var(--white);background:none;}
+  .nav a.is-active{color:var(--bento-blue);background:none;box-shadow:none;font-weight:700;}
   .header__phone{display:none;}
   .hamburger{display:flex;}
 }
