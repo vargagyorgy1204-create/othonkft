@@ -59,44 +59,63 @@
           <h1>Ahol az álmok <br>otthonná válnak</h1>
           <p>Fedezze fel Magyarország legkiválóbb ingatlanjait egy szakértő csapattal.</p>
         </div>
-
-        <div class="hero-tile--search" data-reveal="fade" data-delay="80">
-          <form action="#ingatlanok" onsubmit="return false;">
-            <label class="sr-only" for="heroDeal">Eladó vagy kiadó</label>
-            <select id="heroDeal" aria-label="Eladó vagy kiadó">
-              <option>Eladó</option>
-              <option>Kiadó</option>
-            </select>
-            <label class="sr-only" for="heroType">Ingatlantípus</label>
-            <select id="heroType" aria-label="Ingatlantípus">
-              <option>Lakás</option>
-              <option>Családi ház</option>
-              <option>Villa</option>
-            </select>
-            <label class="sr-only" for="heroLoc">Város, kerület, városrész</label>
-            <input id="heroLoc" type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
-            <label class="sr-only" for="heroPrice">Ár M Ft</label>
-            <input id="heroPrice" type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
-            <button class="btn btn--bento" type="submit">Keresés</button>
-          </form>
-        </div>
       </article>
 
-      <!-- Floating stacked card, same listing already featured in the
-           Property of the Month section below - "A honap top ingatlana"
-           teaser for the hero. -->
+      <!-- Floating card cluster, upper-right: TOP Ingatlan (same listing
+           already featured in the Property of the Month section below)
+           + 2 stat cards. "300+ Eladott ingatlan" is a PLACEHOLDER figure -
+           no such stat exists elsewhere on the site yet; swap in the real
+           number when available. "10+ Ev tapasztalat" matches the real
+           figure already used in #szolgaltatasok. -->
       <div class="hero-float-stack" data-reveal="left" data-delay="300">
         <article class="hero-float-card hero-float-card--front">
           <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=500&q=80" alt="Modern építészetű luxusvilla medencével naplementében">
           <button class="hero-float-card__like" aria-label="Kedvencekhez adás"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.6 4c2.1-.3 3.9.8 6.4 3.4C14.5 4.8 16.3 3.7 18.4 4c3.6.5 5.1 4 3.6 7.2-2.5 4.7-10 9.3-10 9.3Z" stroke="currentColor" stroke-width="1.6"/></svg></button>
           <div class="hero-float-card__body">
-            <p class="hero-float-card__tag">A hónap top ingatlana</p>
+            <p class="hero-float-card__tag">TOP Ingatlan</p>
             <h3>Modern Építészetű Luxusvilla</h3>
-            <p class="hero-float-card__price">248 M Ft <span>· Budapest, II. kerület</span></p>
+            <div class="hero-float-card__foot">
+              <p class="hero-float-card__price">248 M Ft <span>· Budapest, II. kerület</span></p>
+              <a href="#ingatlanok" class="hero-float-card__arrow" aria-label="Ingatlanok megtekintése"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </article>
+        <div class="hero-stat-row">
+          <div class="hero-stat-card" data-reveal="pop" data-delay="380">
+            <p class="hero-stat-card__num">10+</p>
+            <p class="hero-stat-card__label">Év tapasztalat</p>
+          </div>
+          <div class="hero-stat-card" data-reveal="pop" data-delay="440">
+            <p class="hero-stat-card__num">300+</p>
+            <p class="hero-stat-card__label">Eladott ingatlan</p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ QUICK SEARCH ============ -->
+<section class="hero-search-section" id="gyorskereses">
+  <div class="container">
+    <form class="hero-search-section__bar" action="#ingatlanok" onsubmit="return false;">
+      <label class="sr-only" for="heroDeal">Eladó vagy kiadó</label>
+      <select id="heroDeal" aria-label="Eladó vagy kiadó">
+        <option>Eladó</option>
+        <option>Kiadó</option>
+      </select>
+      <label class="sr-only" for="heroType">Ingatlantípus</label>
+      <select id="heroType" aria-label="Ingatlantípus">
+        <option>Lakás</option>
+        <option>Családi ház</option>
+        <option>Villa</option>
+      </select>
+      <label class="sr-only" for="heroLoc">Város, kerület, városrész</label>
+      <input id="heroLoc" type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
+      <label class="sr-only" for="heroPrice">Ár M Ft</label>
+      <input id="heroPrice" type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
+      <button class="btn btn--bento" type="submit">Keresés</button>
+    </form>
   </div>
 </section>
 
