@@ -421,7 +421,7 @@ section[id]{scroll-margin-top:96px;}
    overhang. The 2 stat cards moved out of this cluster and into
    .hero-tile__copy, under the subtitle - see .hero-stat-row above. */
 .hero-float-stack{
-  position:absolute;top:140px;right:24px;z-index:3;width:280px;
+  position:absolute;top:220px;right:24px;z-index:3;width:280px;
   display:flex;flex-direction:column;gap:12px;
 }
 .hero-float-card,.hero-stat-card{
@@ -430,8 +430,10 @@ section[id]{scroll-margin-top:96px;}
   box-shadow:0 24px 48px -12px rgba(11,11,18,.35);position:relative;
   animation:floatCard 5s ease-in-out infinite;
 }
+/* No border, just a light/small shadow instead of the heavier one above. */
+.hero-float-card{border:none;box-shadow:0 4px 14px -2px rgba(11,11,18,.25);}
 @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.hero-float-card img{width:100%;height:140px;object-fit:cover;display:block;}
+.hero-float-card img{width:100%;height:200px;object-fit:cover;display:block;}
 .hero-float-card__like{
   position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;
   background:rgba(255,255,255,.16);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--bento-text-ondark);
