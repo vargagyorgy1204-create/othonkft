@@ -318,7 +318,7 @@ section[id]{scroll-margin-top:96px;}
      same width as the photo card it overlaps. */
   width:min(calc(100% - 48px),1712px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
 }
-.header__inner{display:flex;align-items:center;justify-content:center;gap:72px;padding-inline:22px;}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
 
 .brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
