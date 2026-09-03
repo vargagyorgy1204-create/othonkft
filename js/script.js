@@ -22,21 +22,13 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* -------------------------------------------------
-     Header: scrolled state + mobile nav
+     Header: mobile nav
+     (No more scroll-linked "is-scrolled" toggle - the header is a
+     normal in-flow element now, not position:fixed, so it scrolls
+     away with the hero instead of staying pinned across the page.)
   ------------------------------------------------- */
-  var header = document.getElementById("header");
   var hamburger = document.getElementById("hamburger");
   var mainNav = document.getElementById("mainNav");
-
-  function onScrollHeader() {
-    if (window.scrollY > 40) {
-      header.classList.add("is-scrolled");
-    } else {
-      header.classList.remove("is-scrolled");
-    }
-  }
-  onScrollHeader();
-  window.addEventListener("scroll", onScrollHeader, { passive: true });
 
   if (hamburger && mainNav) {
     hamburger.addEventListener("click", function () {

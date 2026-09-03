@@ -307,39 +307,14 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Header
    ========================================================================== */
+/* In-flow now, not position:fixed - sits at the top of the hero and
+   scrolls away with it like any normal element, instead of staying
+   pinned to the viewport across every section below. */
 .header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
+  position:relative;z-index:10;
   width:min(calc(100% - 48px),1240px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
-  transition:background-color .4s var(--ease), border-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
-  /* Forces its own GPU compositing layer - works around a known
-     mobile Safari bug where position:fixed + backdrop-filter (used on
-     .is-scrolled below) can visually detach and drift during momentum
-     scrolling instead of staying pinned. backface-visibility (not
-     transform/will-change:transform) specifically, since .nav (the
-     mobile drawer, position:fixed;height:100vh) is a DESCENDANT of
-     .header - giving .header an actual transform would make it the
-     containing block for .nav's fixed positioning too, breaking the
-     drawer's full-viewport sizing. backface-visibility triggers the
-     same GPU-layer promotion without that containing-block side effect. */
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
 }
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
-/* The bento hero's dark photo tile only covers the left ~7/12 of the
-   grid, not the header's full width (the search/stat tiles beside and
-   below it are light) - so most of the header actually sits over a
-   white page-top, not a dark one. Dark text throughout, transparent at
-   top, light-frosted once scrolled - the opposite assumption from the
-   old single-full-bleed-photo hero. */
-/* Header stays fully transparent in every scroll state now - no more
-   frosted .is-scrolled background/blur. The .is-scrolled class is
-   still toggled by script.js (harmless) in case a future design wants
-   it back, but nothing here reacts to it anymore. NOTE: since the
-   header floats fixed at a constant viewport position, this reintroduces
-   a real legibility risk wherever a dark section (the contact panel,
-   footer, property-of-the-month card) happens to scroll under it -
-   the header's text stays dark-on-transparent throughout, so it can
-   go dark-on-dark there. Flagged for follow-up if that reads poorly. */
 
 .brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
@@ -352,8 +327,8 @@ section[id]{scroll-margin-top:96px;}
 .brand__mark-img{width:100%;height:100%;object-fit:contain;display:block;}
 .brand__name{font-family:var(--font-body);font-size:1.3rem;font-weight:400;letter-spacing:-.01em;}
 /* "Kft." intentionally has no color of its own — it inherits from .brand
-   (or .brand--footer / .header.is-scrolled .brand) so it always matches
-   "Othon" exactly, in every header/footer state, with one source of truth. */
+   (or .brand--footer) so it always matches "Othon" exactly, in every
+   header/footer state, with one source of truth. */
 .brand__name em{font-style:normal;margin-left:2px;}
 .brand--footer{color:var(--white);}
 
