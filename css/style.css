@@ -370,7 +370,11 @@ section[id]{scroll-margin-top:96px;}
 .nav a.is-active:hover{background:var(--bento-bg-light);}
 
 .header__actions{display:flex;align-items:center;gap:10px;}
-.header__cta{height:auto;padding:8px 16px;font-size:.9rem;font-weight:500;background:linear-gradient(135deg,var(--navy-950),var(--navy-700));color:var(--white);transition:none;}
+.header__cta{
+  height:auto;padding:8px 16px;font-size:.9rem;font-weight:500;
+  background:var(--bento-bg-light);color:var(--bento-text-onlight);
+  box-shadow:0 1px 3px rgba(11,11,18,.15);transition:none;
+}
 .header__cta:hover{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));transform:none;}
 .header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
 .header__phone svg{color:var(--bento-blue);}
