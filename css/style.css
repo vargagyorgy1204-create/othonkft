@@ -425,17 +425,18 @@ section[id]{scroll-margin-top:96px;}
   font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.06;margin-bottom:14px;color:var(--bento-text-ondark);
 }
 .hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
+.hero-tile__copy .hero-stat-row{margin-top:24px;max-width:340px;}
 
 .btn--bento{background:var(--bento-blue);color:var(--white);}
 .btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
 
-/* Floating dark-glass card cluster, upper-right: TOP Ingatlan (same
-   listing already featured in the Property of the Month section
-   below) + 2 stat cards, read as one grouped unit. Lives as a sibling
-   of .hero-tile--photo inside .hero-grid (not nested inside it),
-   since that tile has overflow:hidden which would clip the overhang. */
+/* Floating dark-glass TOP Ingatlan card, upper-right. Lives as a
+   sibling of .hero-tile--photo inside .hero-grid (not nested inside
+   it), since that tile has overflow:hidden which would clip the
+   overhang. The 2 stat cards moved out of this cluster and into
+   .hero-tile__copy, under the subtitle - see .hero-stat-row above. */
 .hero-float-stack{
-  position:absolute;top:40px;right:24px;z-index:3;width:280px;
+  position:absolute;top:140px;right:24px;z-index:3;width:280px;
   display:flex;flex-direction:column;gap:12px;
 }
 .hero-float-card,.hero-stat-card{
@@ -468,7 +469,7 @@ section[id]{scroll-margin-top:96px;}
 .hero-stat-card__num{font-family:var(--font-body);font-weight:800;font-size:1.3rem;color:var(--bento-text-ondark);line-height:1.1;margin-bottom:2px;}
 .hero-stat-card__label{font-size:.72rem;color:var(--bento-text-ondark-muted);font-weight:500;}
 @media (max-width:900px){
-  .hero-float-stack{top:32px;right:16px;width:230px;}
+  .hero-float-stack{top:100px;right:16px;width:230px;}
   .hero-float-card img{height:120px;}
   .hero-stat-card{padding:12px 14px;}
 }
