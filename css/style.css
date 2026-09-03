@@ -100,12 +100,13 @@ main > #gyorskereses{order:2;}
 main > #ingatlanok{order:3;}
 main > .strip{order:4;}
 main > #szolgaltatasok{order:5;}
-main > #rolunk{order:6;}
-main > .lifestyle{order:7;}
-main > #velemenyek{order:8;}
-main > .showcase{order:9;}
+main > #team{order:6;}
+main > #velemenyek{order:7;}
+main > .lifestyle{order:8;}
+main > #partnerbankok{order:9;}
 main > #gyik{order:10;}
 main > #kapcsolat{order:11;}
+main > #rolunk{order:12;}
 section[id]{scroll-margin-top:96px;}
 
 @media (prefers-reduced-motion: reduce){
@@ -828,6 +829,31 @@ section[id]{scroll-margin-top:96px;}
 @media (max-width:560px){.services__grid{grid-template-columns:1fr;}}
 
 /* ==========================================================================
+   Team
+   ========================================================================== */
+#team{background:var(--bento-bg-light) !important;padding:88px 0;}
+#team .section__head{margin-bottom:48px;}
+#team .section__head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
+#team .section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);}
+.team__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--bento-gap);}
+.team-card{
+  text-align:center;padding:24px;border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);
+  background:var(--bento-bg-light);
+}
+.team-card__photo{width:100px;height:100px;margin:0 auto 16px;border-radius:50%;overflow:hidden;}
+.team-card__photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.team-card h3{font-family:var(--font-body);font-size:1.02rem;font-weight:700;color:var(--bento-text-onlight);margin-bottom:4px;}
+.team-card__role{font-size:.84rem;color:var(--bento-text-onlight-muted);margin-bottom:14px;}
+.team-card__social{display:flex;justify-content:center;gap:10px;}
+.team-card__social a{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--bento-border);display:flex;align-items:center;justify-content:center;
+  color:var(--bento-text-onlight-muted);transition:all .25s ease;
+}
+.team-card__social a:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);}
+@media (max-width:980px){.team__grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.team__grid{grid-template-columns:1fr;}}
+
+/* ==========================================================================
    Lifestyle split
    ========================================================================== */
 /* !important needed: main > section{background:var(--cream)!important}
@@ -911,35 +937,23 @@ section[id]{scroll-margin-top:96px;}
 }
 
 /* ==========================================================================
-   Showcase (property of the month)
+   Partner banks - deliberately calmer/lighter than the surrounding
+   content sections (trust/reassurance strip, not a major content block).
    ========================================================================== */
-.showcase{padding:0 0 110px;background:var(--bento-bg-light) !important;}
-/* Flat bento tile - border instead of the soft drop shadow, bento-bg-dark
-   instead of navy-950 (close in value, but now sourced from the new
-   token so it stays in step if the palette changes later). */
-.showcase__card{
-  display:grid;grid-template-columns:1.1fr 1fr;background:var(--bento-bg-dark);border-radius:var(--bento-radius-lg);
-  border:1px solid var(--bento-border-dark);overflow:hidden;box-shadow:none;
+.partner-banks{background:var(--bento-surface-light) !important;padding:64px 0;}
+.partner-banks .section__head{margin-bottom:32px;}
+.partner-banks .section__head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
+.partner-banks .section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);margin-bottom:10px;}
+.partner-banks .section__desc{margin-inline:auto;}
+.partner-banks__row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.partner-banks__logo{
+  padding:16px 28px;border-radius:var(--bento-radius-md);border:1px solid var(--bento-border);background:var(--bento-bg-light);
+  font-family:var(--font-body);font-weight:700;font-size:.92rem;color:var(--bento-text-onlight-muted);
 }
-.showcase__media{position:relative;min-height:420px;overflow:hidden;}
-.showcase__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
-.showcase__tag{
-  position:absolute;top:24px;left:24px;background:var(--bento-blue);
-  color:var(--white);padding:9px 18px;border-radius:999px;font-weight:700;font-size:.78rem;letter-spacing:.03em;z-index:1;
-}
-.showcase__body{padding:52px 48px;color:var(--bento-text-ondark);display:flex;flex-direction:column;}
-.showcase__body .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;color:var(--bento-blue);}
-.showcase__body h3{font-size:1.9rem;margin-bottom:12px;font-family:var(--font-body);font-weight:800;color:var(--bento-text-ondark);}
-.showcase__body .card__loc{color:var(--bento-text-ondark-muted);margin-bottom:20px;}
-.showcase__desc{color:var(--bento-text-ondark-muted);line-height:1.75;margin-bottom:26px;}
-.showcase__body .card__specs--lg{color:var(--bento-text-ondark);border-bottom-color:var(--bento-border-dark);}
-.showcase__foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:28px;}
-.showcase__price{font-family:var(--font-body);font-size:2rem;font-weight:800;color:var(--bento-peach);}
-
-@media (max-width:900px){
-  .showcase__card{grid-template-columns:1fr;}
-  .showcase__media{min-height:280px;}
-  .showcase__body{padding:36px 28px;}
+@media (max-width:640px){
+  .partner-banks{padding:48px 0;}
+  .partner-banks__row{gap:10px;}
+  .partner-banks__logo{padding:12px 18px;font-size:.84rem;}
 }
 
 /* ==========================================================================
@@ -1081,7 +1095,7 @@ section[id]{scroll-margin-top:96px;}
   border-radius:0;box-shadow:none;
 }
 /* Dark tile - same text-color convention used on every other dark
-   bento panel so far (.showcase__card/.hero-tile--photo). */
+   bento panel so far (.hero-tile--photo). */
 .cta-final__text{
   background:var(--bento-bg-dark);padding:48px;display:flex;flex-direction:column;justify-content:center;
   border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border-dark);
@@ -1214,7 +1228,6 @@ section[id]{scroll-margin-top:96px;}
   .section{padding:76px 0;}
   #ingatlanok{padding:48px 0;}
   .services{padding:40px 0 76px;}
-  .lifestyle,.showcase{padding-top:76px;}
-  .showcase{padding-bottom:76px;}
+  .lifestyle{padding-top:76px;}
   .cta-final{padding:80px 0;}
 }
