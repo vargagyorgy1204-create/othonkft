@@ -379,7 +379,10 @@ section[id]{scroll-margin-top:96px;}
 .header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
 .header__phone svg{color:var(--bento-blue);}
 
-.hamburger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;background:linear-gradient(135deg,var(--navy-950),var(--navy-700));border:1px solid var(--bento-border-dark);color:var(--white);}
+/* Hidden on desktop (the pill nav is visible there, so there's nothing
+   to toggle) - shown again at <=1180px where the nav collapses into
+   the off-canvas drawer this button opens. */
+.hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;background:linear-gradient(135deg,var(--navy-950),var(--navy-700));border:1px solid var(--bento-border-dark);color:var(--white);}
 
 /* ==========================================================================
    Hero
