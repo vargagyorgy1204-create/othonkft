@@ -310,6 +310,18 @@ section[id]{scroll-margin-top:96px;}
   position:fixed;top:0;left:0;right:0;z-index:1000;
   width:min(calc(100% - 48px),1240px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
   transition:background-color .4s var(--ease), border-color .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease), backdrop-filter .4s ease;
+  /* Forces its own GPU compositing layer - works around a known
+     mobile Safari bug where position:fixed + backdrop-filter (used on
+     .is-scrolled below) can visually detach and drift during momentum
+     scrolling instead of staying pinned. backface-visibility (not
+     transform/will-change:transform) specifically, since .nav (the
+     mobile drawer, position:fixed;height:100vh) is a DESCENDANT of
+     .header - giving .header an actual transform would make it the
+     containing block for .nav's fixed positioning too, breaking the
+     drawer's full-viewport sizing. backface-visibility triggers the
+     same GPU-layer promotion without that containing-block side effect. */
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
 /* The bento hero's dark photo tile only covers the left ~7/12 of the
