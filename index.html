@@ -99,22 +99,28 @@
 <section class="hero-search-section" id="gyorskereses">
   <div class="container">
     <form class="hero-search-section__bar" action="#ingatlanok" onsubmit="return false;">
-      <label class="sr-only" for="heroDeal">Eladó vagy kiadó</label>
-      <select id="heroDeal" aria-label="Eladó vagy kiadó">
-        <option>Eladó</option>
-        <option>Kiadó</option>
-      </select>
-      <label class="sr-only" for="heroType">Ingatlantípus</label>
-      <select id="heroType" aria-label="Ingatlantípus">
-        <option>Lakás</option>
-        <option>Családi ház</option>
-        <option>Villa</option>
-      </select>
-      <label class="sr-only" for="heroLoc">Város, kerület, városrész</label>
-      <input id="heroLoc" type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
-      <label class="sr-only" for="heroPrice">Ár M Ft</label>
-      <input id="heroPrice" type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
-      <button class="btn btn--bento" type="submit">Keresés</button>
+      <div class="hero-search-section__head">
+        <p class="eyebrow">Gyors keresés</p>
+        <h2>Találja meg álmai otthonát még ma</h2>
+      </div>
+      <div class="hero-search-section__fields">
+        <label class="sr-only" for="heroDeal">Eladó vagy kiadó</label>
+        <select id="heroDeal" aria-label="Eladó vagy kiadó">
+          <option>Eladó</option>
+          <option>Kiadó</option>
+        </select>
+        <label class="sr-only" for="heroType">Ingatlantípus</label>
+        <select id="heroType" aria-label="Ingatlantípus">
+          <option>Lakás</option>
+          <option>Családi ház</option>
+          <option>Villa</option>
+        </select>
+        <label class="sr-only" for="heroLoc">Város, kerület, városrész</label>
+        <input id="heroLoc" type="text" placeholder="Város, kerület, városrész" aria-label="Város, kerület, városrész">
+        <label class="sr-only" for="heroPrice">Ár M Ft</label>
+        <input id="heroPrice" type="text" placeholder="Ár M Ft" aria-label="Ár M Ft">
+        <button class="btn btn--bento" type="submit">Keresés</button>
+      </div>
     </form>
   </div>
 </section>

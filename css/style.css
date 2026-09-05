@@ -318,7 +318,7 @@ section[id]{scroll-margin-top:96px;}
      same width as the photo card it overlaps. */
   width:min(calc(100% - 48px),1712px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
 }
-.header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:22px;}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:0;}
 
 .brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
@@ -396,7 +396,7 @@ section[id]{scroll-margin-top:96px;}
    since the overlay is position:absolute, but min-height is bumped a
    bit so the overlay panel has clearance below the headline. */
 .hero-tile--photo{
-  grid-column:span 12;min-height:680px;
+  grid-column:span 12;min-height:670px;
   background-size:cover;background-position:center;border:none;
   display:flex;align-items:center;
 }
@@ -421,7 +421,7 @@ section[id]{scroll-margin-top:96px;}
    overhang. The 2 stat cards moved out of this cluster and into
    .hero-tile__copy, under the subtitle - see .hero-stat-row above. */
 .hero-float-stack{
-  position:absolute;top:220px;right:24px;z-index:3;width:280px;
+  position:absolute;bottom:28px;right:28px;z-index:3;width:280px;
   display:flex;flex-direction:column;gap:12px;
 }
 .hero-float-card,.hero-stat-card{
@@ -433,7 +433,7 @@ section[id]{scroll-margin-top:96px;}
 /* No border, just a light/small shadow instead of the heavier one above. */
 .hero-float-card{border:none;box-shadow:0 4px 14px -2px rgba(11,11,18,.25);}
 @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.hero-float-card img{width:100%;height:200px;object-fit:cover;display:block;}
+.hero-float-card img{width:100%;height:250px;object-fit:cover;display:block;}
 .hero-float-card__like{
   position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;
   background:rgba(255,255,255,.16);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--bento-text-ondark);
@@ -456,8 +456,8 @@ section[id]{scroll-margin-top:96px;}
 .hero-stat-card__num{font-family:var(--font-body);font-weight:800;font-size:1.3rem;color:var(--bento-text-ondark);line-height:1.1;margin-bottom:2px;}
 .hero-stat-card__label{font-size:.72rem;color:var(--bento-text-ondark-muted);font-weight:500;}
 @media (max-width:900px){
-  .hero-float-stack{top:100px;right:16px;width:230px;}
-  .hero-float-card img{height:120px;}
+  .hero-float-stack{bottom:16px;right:16px;width:230px;}
+  .hero-float-card img{height:150px;}
   .hero-stat-card{padding:12px 14px;}
 }
 @media (max-width:640px){
@@ -473,33 +473,39 @@ section[id]{scroll-margin-top:96px;}
 /* ==========================================================================
    Quick search (own section, right after the hero)
    ========================================================================== */
-#gyorskereses{background:var(--bento-bg-light) !important;padding:64px 0;}
-.hero-search-section__bar{
-  display:flex;align-items:center;gap:12px;max-width:1000px;margin-inline:auto;
-  background:var(--bento-bg-light);border:1px solid var(--bento-border);border-radius:var(--bento-radius-lg);
-  padding:14px;box-shadow:var(--bento-shadow);
+#gyorskereses{background:var(--bento-bg-light) !important;padding:2px 0 64px;}
+.hero-search-section__head{text-align:left;margin-bottom:18px;}
+.hero-search-section__head > .eyebrow{
+  display:inline-flex;font-family:var(--font-body);font-size:.72rem;font-weight:700;
+  letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);margin-bottom:6px;
 }
-.hero-search-section__bar select,.hero-search-section__bar input{
-  width:100%;padding:12px 14px;border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);
+.hero-search-section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;font-size:1.15rem;color:var(--bento-text-onlight);}
+.hero-search-section__bar{
+  display:flex;flex-direction:column;gap:14px;max-width:1000px;margin-inline:auto;
+  background:var(--bento-bg-light);border:1px solid var(--bento-border);border-radius:var(--bento-radius-lg);
+  padding:20px;box-shadow:var(--bento-shadow);
+}
+.hero-search-section__fields{display:flex;align-items:center;gap:14px;}
+.hero-search-section__fields select,.hero-search-section__fields input{
+  width:100%;flex:1 1 0;padding:16px 16px;border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);
   background:var(--bento-surface-light);color:var(--bento-text-onlight);font-size:.9rem;font-weight:500;
   font-family:var(--font-body);min-width:0;
 }
-.hero-search-section__bar select{
-  flex:0 1 150px;appearance:none;padding-right:30px;
+.hero-search-section__fields select{
+  appearance:none;padding-right:30px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%230b0b12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-position:calc(100% - 10px) 50%;background-size:12px 12px;background-repeat:no-repeat;
 }
-.hero-search-section__bar input{flex:1 1 auto;}
-.hero-search-section__bar input::placeholder{color:var(--bento-text-onlight-muted);}
-.hero-search-section__bar select:focus-visible,.hero-search-section__bar input:focus-visible{outline:2px solid var(--bento-blue);outline-offset:1px;}
-.hero-search-section__bar .btn--bento{
-  flex:0 0 auto;white-space:nowrap;
+.hero-search-section__fields input::placeholder{color:var(--bento-text-onlight-muted);}
+.hero-search-section__fields select:focus-visible,.hero-search-section__fields input:focus-visible{outline:2px solid var(--bento-blue);outline-offset:1px;}
+.hero-search-section__fields .btn--bento{
+  flex:0 0 auto;white-space:nowrap;padding:16px 28px;
   background:linear-gradient(135deg,var(--navy-950),var(--navy-700));
 }
-.hero-search-section__bar .btn--bento:hover{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));}
+.hero-search-section__fields .btn--bento:hover{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));}
 @media (max-width:640px){
   #gyorskereses{padding:40px 0;}
-  .hero-search-section__bar{flex-direction:column;align-items:stretch;}
+  .hero-search-section__fields{flex-direction:column;align-items:stretch;}
 }
 
 /* Tiles C/D - single-stat accent tiles, 1 row each, ~4/12 wide. */
@@ -1216,7 +1222,7 @@ section[id]{scroll-margin-top:96px;}
 @media (max-width:640px){
   .header__actions .btn{display:none;}
   .header{width:calc(100% - 24px);margin-top:8px;}
-  .header__inner{padding-inline:16px;}
+  .header__inner{padding-inline:8px;}
 }
 
 /* ==========================================================================
