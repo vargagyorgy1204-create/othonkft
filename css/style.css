@@ -931,7 +931,7 @@ section[id]{scroll-margin-top:96px;}
   display:grid;grid-template-columns:2fr 1fr;align-items:stretch;gap:var(--bento-gap);
   border-radius:0;box-shadow:none;
 }
-.lifestyle__media{position:relative;height:100%;min-height:657px;border-radius:var(--bento-radius-lg);box-shadow:0 16px 40px -12px rgba(11,11,18,.22);overflow:hidden;}
+.lifestyle__media{position:relative;height:100%;min-height:591px;border-radius:var(--bento-radius-lg);box-shadow:0 16px 40px -12px rgba(11,11,18,.22);overflow:hidden;}
 .lifestyle__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
 /* Dark-at-the-bottom scrim (same recipe as .service-card::after) so the
    location pill/badge stay legible regardless of the photo underneath -
@@ -951,11 +951,14 @@ section[id]{scroll-margin-top:96px;}
    z-index:2 here lifts the badge above that scrim, same layer as the
    location pill. */
 .lifestyle__media .card__badge{z-index:2;}
-.lifestyle__media .card__badge--sale{background:var(--bento-blue);}
-.lifestyle__media-loc--bottom{
-  position:absolute;bottom:20px;left:20px;top:auto;z-index:2;display:flex;align-items:center;gap:6px;
+.lifestyle__media .card__badge--sale{background:var(--bento-peach);}
+.lifestyle__media-badges{
+  position:absolute;bottom:20px;left:20px;right:20px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;
+}
+.lifestyle__media-pill{
+  display:flex;align-items:center;gap:6px;
   background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  color:var(--white);font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;
+  color:var(--white);font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;white-space:nowrap;
 }
 /* Own flat bento tile now (border + bento-shadow instead of the old
    plain cream panel that only made sense as one half of a merged
@@ -987,7 +990,7 @@ section[id]{scroll-margin-top:96px;}
 
 @media (max-width:640px){
   .lifestyle__media-wrap{grid-template-columns:1fr;}
-  .lifestyle__media{height:425px;min-height:0;}
+  .lifestyle__media{height:383px;min-height:0;}
   .lifestyle__booking{padding:28px;}
   .lifestyle__media-head{margin-bottom:18px;}
   .lifestyle__booking{margin:14px;padding:22px;}
@@ -1078,11 +1081,11 @@ section[id]{scroll-margin-top:96px;}
 .testi{
   width:100%;background:var(--bento-bg-light);padding:44px 48px;border-radius:var(--bento-radius-lg);
   border:1px solid var(--bento-border);box-shadow:none;text-align:left;overflow:hidden;
-  position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .5s ease;
+  position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);
+  transition:opacity .55s var(--ease), transform .55s var(--ease), visibility .55s var(--ease);
 }
 .testi.is-active{
-  position:relative;inset:auto;opacity:1;visibility:visible;pointer-events:auto;
+  position:relative;inset:auto;opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
 }
 .testi__top{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;}
 /* fill:currentColor - the star SVGs have no fill attribute of their own,
@@ -1118,7 +1121,7 @@ section[id]{scroll-margin-top:96px;}
    they stay centered on the card even though the dots row sits below it. */
 .testimonials__card-wrap{position:relative;}
 .testimonials__nav{
-  position:absolute;top:50%;left:-58px;right:-58px;transform:translateY(-50%);
+  position:absolute;top:50%;left:-82px;right:-82px;transform:translateY(-50%);
   display:flex;justify-content:space-between;pointer-events:none;z-index:2;
 }
 .testimonials__nav button{
