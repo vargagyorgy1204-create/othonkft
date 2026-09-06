@@ -433,19 +433,22 @@ section[id]{scroll-margin-top:96px;}
 .hero-tile--photo{
   grid-column:span 12;min-height:670px;
   background-size:cover;background-position:center;border:none;
-  display:flex;align-items:center;
+  display:flex;align-items:stretch;
 }
 .hero-tile__scrim{
   position:absolute;inset:0;
   background:linear-gradient(180deg, rgba(11,11,18,.2) 0%, rgba(11,11,18,.1) 35%, rgba(11,11,18,.35) 100%);
 }
-.hero-tile__copy{position:relative;z-index:1;padding:40px;color:var(--bento-text-ondark);}
+/* Full tile height + flex column so the stat row (margin-top:auto, see
+   below) can be pinned to the card's bottom edge instead of sitting
+   right under the paragraph, while h1/p stay put near the top. */
+.hero-tile__copy{position:relative;z-index:1;padding:40px;color:var(--bento-text-ondark);height:100%;display:flex;flex-direction:column;justify-content:center;}
 .hero-tile__copy h1{
   font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;
   font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.06;margin-bottom:14px;color:var(--bento-text-ondark);
 }
 .hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
-.hero-tile__copy .hero-stat-row{margin-top:24px;max-width:520px;}
+.hero-tile__copy .hero-stat-row{margin-top:auto;padding-top:24px;max-width:520px;}
 
 .btn--bento{background:var(--bento-blue);color:var(--white);}
 .btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
