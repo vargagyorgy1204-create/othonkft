@@ -369,7 +369,7 @@
   var track = document.getElementById("testiTrack");
   if (track) {
     var slides = track.children.length;
-    var index = 0;
+    var index = 2; // Tóth Bence starts as the centered/active avatar by default
     var prevBtn = document.getElementById("testiPrev");
     var nextBtn = document.getElementById("testiNext");
     var avatarBtns = document.querySelectorAll(".avatars__item[data-index]");
