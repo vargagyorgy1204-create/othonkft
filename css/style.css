@@ -318,7 +318,14 @@ section[id]{scroll-margin-top:96px;}
      same width as the photo card it overlaps. */
   width:min(calc(100% - 48px),1712px);margin:28px auto 0;padding:8px 0;background:transparent;border:1px solid transparent;border-radius:999px;box-shadow:none;
 }
-.header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:0;}
+/* Grid, not flex space-between: the nav pill sits truly centered on the
+   header regardless of how wide the logo vs. Kapcsolat button are -
+   flex space-between only centers it when both side elements happen
+   to match in width. */
+.header__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding-inline:0;}
+.header__inner .brand{justify-self:start;}
+.header__inner .nav{justify-self:center;}
+.header__inner .header__actions{justify-self:end;}
 
 .brand{display:flex;align-items:center;gap:10px;color:var(--bento-text-onlight);transition:color .3s ease;}
 /* No background/color of its own anymore - the logo image (leonlogo.png)
@@ -349,12 +356,40 @@ section[id]{scroll-margin-top:96px;}
 .nav a.is-active:hover{background:var(--bento-bg-light);}
 
 .header__actions{display:flex;align-items:center;gap:10px;background:var(--bento-surface-light);border-radius:999px;padding:6px;}
+/* Uiverse.io "Li-Deheng" button, recolored to the site's navy and
+   rescaled to fit the header pill instead of the original's big
+   2em hero-button sizing - text + a triple-chevron arrow that slides
+   out and flashes in sequence on hover, with a soft pulsing ripple. */
 .header__cta{
-  height:auto;padding:8px 16px;font-size:.9rem;font-weight:500;
-  background:#000080;color:var(--white);
-  box-shadow:0 1px 3px rgba(11,11,18,.15);transition:none;
+  --color-background:#000080;--color-background-hover:#1a1ab3;--color-outline:#0000801a;--color-shadow:#00000033;
+  height:auto;padding:8px 18px 8px 16px;font-size:.9rem;font-weight:500;
+  background:var(--color-background);color:var(--white);
+  box-shadow:0 0 .3em 0 var(--color-background);transition:1s;
 }
-.header__cta:hover{background:#000060;transform:none;}
+.header__cta span{transition:.5s;}
+.header__cta svg{height:.8em;fill:var(--white);margin-left:2px;position:relative;transition:.5s;}
+.header__cta svg polygon:nth-child(1){transition:.4s;transform:translateX(-60%);}
+.header__cta svg polygon:nth-child(2){transition:.5s;transform:translateX(-30%);}
+.header__cta:hover{
+  background:var(--color-background);transform:none;
+  outline:.1em solid transparent;outline-offset:.2em;box-shadow:0 0 1em 0 var(--color-background);
+}
+.header__cta:hover span{text-shadow:2px 2px 3px var(--color-shadow);}
+.header__cta:hover svg{margin-left:8px;filter:drop-shadow(2px 2px 2px var(--color-shadow));}
+.header__cta:hover svg polygon:nth-child(1),.header__cta:hover svg polygon:nth-child(2){transform:translateX(0%);}
+@media (prefers-reduced-motion: no-preference){
+  .header__cta:hover{animation:headerCtaRipple 1s linear infinite, headerCtaColorize 1s infinite;}
+  .header__cta:hover svg polygon:nth-child(1){animation:headerCtaOpacity 1s infinite .6s;}
+  .header__cta:hover svg polygon:nth-child(2){animation:headerCtaOpacity 1s infinite .4s;}
+  .header__cta:hover svg polygon:nth-child(3){animation:headerCtaOpacity 1s infinite .2s;}
+}
+@keyframes headerCtaOpacity{0%{opacity:1;}50%{opacity:0;}100%{opacity:1;}}
+@keyframes headerCtaColorize{0%{background:var(--color-background);}50%{background:var(--color-background-hover);}100%{background:var(--color-background);}}
+@keyframes headerCtaRipple{
+  0%{outline:0em solid transparent;outline-offset:-.1em;}
+  50%{outline:.2em solid var(--color-outline);outline-offset:.15em;}
+  100%{outline:.3em solid transparent;outline-offset:.3em;}
+}
 .header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
 .header__phone svg{color:var(--bento-blue);}
 
@@ -410,7 +445,7 @@ section[id]{scroll-margin-top:96px;}
   font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.06;margin-bottom:14px;color:var(--bento-text-ondark);
 }
 .hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
-.hero-tile__copy .hero-stat-row{margin-top:24px;max-width:340px;}
+.hero-tile__copy .hero-stat-row{margin-top:24px;max-width:520px;}
 
 .btn--bento{background:var(--bento-blue);color:var(--white);}
 .btn--bento:hover{background:#3d68f0;transform:translateY(-2px);}
@@ -451,8 +486,12 @@ section[id]{scroll-margin-top:96px;}
   display:flex;align-items:center;justify-content:center;transition:background-color .25s ease, transform .25s ease;
 }
 .hero-float-card__arrow:hover{background:#3d68f0;transform:translateX(2px);}
-.hero-stat-row{display:flex;gap:12px;}
+.hero-stat-row{display:flex;flex-wrap:wrap;gap:12px;}
 .hero-stat-card{flex:1;animation-delay:.3s;padding:14px 16px;}
+.hero-stat-card__icon{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;margin-bottom:8px;}
+.hero-stat-card:nth-child(1) .hero-stat-card__icon{background:rgba(74,111,240,.18);color:var(--bento-blue);}
+.hero-stat-card:nth-child(2) .hero-stat-card__icon{background:rgba(31,179,131,.18);color:var(--bento-mint);}
+.hero-stat-card:nth-child(3) .hero-stat-card__icon{background:rgba(124,77,224,.18);color:var(--bento-violet);}
 .hero-stat-card__num{font-family:var(--font-body);font-weight:800;font-size:1.3rem;color:var(--bento-text-ondark);line-height:1.1;margin-bottom:2px;}
 .hero-stat-card__label{font-size:.72rem;color:var(--bento-text-ondark-muted);font-weight:500;}
 @media (max-width:900px){
@@ -1185,8 +1224,9 @@ section[id]{scroll-margin-top:96px;}
 /* Bento typography, matching phases 1-5. Left-aligned now that the
    heading lives in .faq-intro instead of a centered
    .section__head--center above the whole section. */
-#gyik .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-blue);text-align:left;}
-#gyik .section__head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);text-align:left;}
+#gyik .section__head > .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);text-align:left;}
+#gyik .section__head h2{font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);text-align:left;}
+#gyik .section__head .section__desc{color:var(--bento-text-onlight-muted);text-align:left;max-width:460px;margin-top:14px;}
 
 /* Two-column split: photo+intro card left, FAQ list right. */
 /* !important needed: main > section{background:var(--cream)!important}
@@ -1208,18 +1248,46 @@ section[id]{scroll-margin-top:96px;}
   .faq-intro__media img{height:220px;}
 }
 
-.faq{display:flex;flex-direction:column;gap:var(--bento-gap);}
-.faq__item{background:var(--bento-bg-light);border:1px solid var(--bento-border);border-radius:var(--bento-radius-md);overflow:hidden;transition:border-color .3s ease;}
-.faq__item.is-open{border-color:var(--bento-blue);}
-.faq__q{
-  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:22px 26px;font-weight:600;font-size:.98rem;color:var(--bento-text-onlight);text-align:left;
+/* FAQ as a messenger-style chat thread instead of an accordion - pays
+   off the "Kérdése van?" chat-prompt badge on the photo. Question =
+   dark "sent" bubble on the right (now a clickable button); answer =
+   light "reply" bubble on the left with a small brand-logo avatar,
+   collapsed until clicked, revealed after a brief "typing…" beat -
+   like getting a live reply instead of everything dumped at once. */
+.faq-chat{display:flex;flex-direction:column;gap:20px;}
+.faq-chat__pair{display:flex;flex-direction:column;gap:10px;}
+.faq-chat__q{
+  align-self:flex-end;max-width:80%;background:var(--bento-bg-dark);color:var(--bento-text-ondark);
+  padding:14px 18px;border-radius:18px 18px 4px 18px;font-weight:600;font-size:.94rem;line-height:1.5;
+  border:0;cursor:pointer;text-align:right;transition:background-color .25s ease;
 }
-.faq__q svg{flex-shrink:0;transition:transform .35s var(--ease);color:var(--bento-blue);}
-.faq__item.is-open .faq__q svg{transform:rotate(180deg);}
-.faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease), padding .45s var(--ease);padding:0 26px;}
-.faq__item.is-open .faq__a{max-height:220px;padding:0 26px 24px;}
-.faq__a p{color:var(--bento-text-onlight-muted);line-height:1.7;font-size:.94rem;}
+.faq-chat__q:hover,.faq-chat__q:focus-visible{background:var(--navy-700);}
+.faq-chat__a{
+  align-self:flex-start;max-width:80%;display:flex;gap:10px;align-items:flex-end;
+  max-height:0;opacity:0;overflow:hidden;pointer-events:none;
+  transition:max-height .4s var(--ease), opacity .3s ease;
+}
+.faq-chat__pair.is-open .faq-chat__a{max-height:240px;opacity:1;pointer-events:auto;}
+.faq-chat__avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:1px solid var(--bento-border);background:var(--white);padding:3px;object-fit:contain;}
+.faq-chat__a p{
+  background:var(--bento-bg-light);border:1px solid var(--bento-border);color:var(--bento-text-onlight);
+  padding:14px 18px;border-radius:18px 18px 18px 4px;font-size:.94rem;line-height:1.6;
+}
+/* Typing indicator: 3 bouncing dots shown briefly instead of the answer
+   text while .is-typing, swapped for the real reply once .is-answered. */
+.faq-chat__typing{
+  display:none;align-items:center;gap:4px;
+  background:var(--bento-bg-light);border:1px solid var(--bento-border);border-radius:18px 18px 18px 4px;padding:14px 16px;
+}
+.faq-chat__pair.is-typing .faq-chat__typing{display:flex;}
+.faq-chat__pair.is-typing .faq-chat__a p{display:none;}
+.faq-chat__typing span{width:6px;height:6px;border-radius:50%;background:var(--bento-text-onlight-muted);animation:faqTypingBounce 1.2s ease-in-out infinite;}
+.faq-chat__typing span:nth-child(2){animation-delay:.15s;}
+.faq-chat__typing span:nth-child(3){animation-delay:.3s;}
+@keyframes faqTypingBounce{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-4px);opacity:1;}}
+@media (max-width:640px){
+  .faq-chat__q,.faq-chat__a{max-width:92%;}
+}
 
 /* ==========================================================================
    Final CTA / Contact
@@ -1232,9 +1300,11 @@ section[id]{scroll-margin-top:96px;}
    gap between them, same mechanics as .lifestyle__media-wrap (phase
    4) - instead of one merged card sharing an outer radius/shadow. */
 .cta-final__card{
-  display:grid;grid-template-columns:1.1fr 1fr;gap:var(--bento-gap);
+  display:grid;grid-template-columns:1fr 1.1fr;gap:var(--bento-gap);
   border-radius:0;box-shadow:none;
 }
+.cta-final__text{order:1;}
+.contact-card{order:2;}
 /* Dark tile - same text-color convention used on every other dark
    bento panel so far (.hero-tile--photo). */
 .cta-final__text{
@@ -1251,10 +1321,18 @@ section[id]{scroll-margin-top:96px;}
   color:var(--bento-text-ondark-muted);transition:all .3s ease;
 }
 .cta-final__social a:hover{background:var(--bento-blue);color:var(--white);border-color:var(--bento-blue);transform:translateY(-3px);}
-.cta-final__contacts{display:flex;flex-direction:column;gap:20px;}
-.cta-final__contacts a,.cta-final__contacts span{display:flex;align-items:center;gap:10px;color:var(--bento-text-ondark-muted);font-weight:500;}
-.cta-final__contacts svg{color:var(--bento-blue);flex-shrink:0;}
-.cta-final__contacts a:hover{color:var(--bento-text-ondark);}
+/* Quick-action chips instead of plain text links - each contact method
+   reads as a tappable pill, address included (now a real Google Maps
+   link, not an inert span). */
+.cta-final__actions{display:flex;flex-direction:column;gap:12px;}
+.cta-final__action{
+  display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:999px;width:50%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:var(--bento-text-ondark-muted);
+  font-weight:600;transition:all .25s ease;
+}
+.cta-final__action svg{color:var(--bento-blue);flex-shrink:0;transition:color .25s ease;}
+.cta-final__action:hover{background:var(--bento-blue);border-color:var(--bento-blue);color:var(--white);}
+.cta-final__action:hover svg{color:var(--white);}
 
 /* Light tile - own flat bento border/shadow now (dropped its own
    border-radius/box-shadow/transform:scale(.9) 10%-shrink from an
@@ -1262,7 +1340,7 @@ section[id]{scroll-margin-top:96px;}
    flavor, now that it's a standalone tile again, not one half of a
    merged card). */
 .contact-card{
-  background:var(--bento-bg-light);padding:48px;
+  background:var(--bento-bg-light);padding:48px;min-height:620px;
   border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);box-shadow:var(--bento-shadow);
   display:flex;flex-direction:column;gap:16px;
 }
@@ -1275,6 +1353,27 @@ section[id]{scroll-margin-top:96px;}
 .contact-card input:focus,.contact-card textarea:focus{outline:none;border-color:var(--bento-blue);box-shadow:0 0 0 4px rgba(79,124,255,.15);}
 .contact-card__note{font-size:.76rem;color:var(--bento-text-onlight-muted);text-align:center;}
 .contact-card__note a{color:var(--bento-blue);font-weight:600;}
+
+/* Two-step flow: pick a purpose chip first, then the contact fields
+   appear. Step 2 stays in the DOM (not re-rendered) so nothing is lost
+   if the user goes back and forth. */
+.contact-card__prompt{font-weight:700;font-size:.9rem;color:var(--bento-text-onlight);margin-bottom:12px;}
+.contact-card__chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;}
+/* Chips now live on the dark panel - translucent-on-dark variant,
+   matching .cta-final__action's recipe instead of the light-card one.
+   Equal-width and centered instead of hugging their own text. */
+.contact-card__chip{
+  flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);
+  font-family:var(--font-body);font-weight:600;font-size:.9rem;color:var(--bento-text-ondark-muted);transition:all .25s ease;
+}
+.contact-card__chip:hover{border-color:var(--bento-blue);}
+.contact-card__chip.is-selected{background:var(--bento-blue);border-color:var(--bento-blue);color:var(--white);}
+.contact-card__step--2{display:none;flex-direction:column;gap:16px;}
+.contact-card.is-step2 .contact-card__step--1{display:none;}
+.contact-card.is-step2 .contact-card__step--2{display:flex;}
+.contact-card__back{align-self:flex-start;background:none;border:0;color:var(--bento-text-onlight-muted);font-size:.85rem;font-weight:600;cursor:pointer;padding:0;}
+.contact-card__back:hover{color:var(--bento-blue);}
 
 @media (max-width:900px){
   .cta-final__card{grid-template-columns:1fr;}

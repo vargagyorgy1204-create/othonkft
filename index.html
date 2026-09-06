@@ -41,7 +41,14 @@
       <button class="hamburger" id="hamburger" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mainNav">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-7 8-7s8 3.1 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
-      <a href="#kapcsolat" class="btn btn--dark header__cta">Kapcsolat</a>
+      <a href="#kapcsolat" class="btn btn--dark header__cta">
+        <span>Kapcsolat</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 43">
+          <polygon points="39.58,4.46 44.11,0 66,21.5 44.11,43 39.58,38.54 56.94,21.5"></polygon>
+          <polygon points="19.79,4.46 24.32,0 46.21,21.5 24.32,43 19.79,38.54 37.15,21.5"></polygon>
+          <polygon points="0,4.46 4.53,0 26.42,21.5 4.53,43 0,38.54 17.36,21.5"></polygon>
+        </svg>
+      </a>
     </div>
 
   </div>
@@ -58,18 +65,25 @@
         <div class="hero-tile__copy">
           <h1>Ahol az álmok <br>otthonná válnak</h1>
           <p>Fedezze fel Magyarország legkiválóbb ingatlanjait egy szakértő csapattal.</p>
-          <!-- "300+ Eladott ingatlan" is a PLACEHOLDER figure - no such
-               stat exists elsewhere on the site yet; swap in the real
-               number when available. "10+ Ev tapasztalat" matches the
-               real figure already used in #szolgaltatasok. -->
+          <!-- "300+ Eladott ingatlan" and "4.9★ Vásárlói értékelés" are
+               PLACEHOLDER figures - swap in the real numbers when
+               available. "10+ Ev tapasztalat" matches the real figure
+               already used in #szolgaltatasok. -->
           <div class="hero-stat-row">
             <div class="hero-stat-card" data-reveal="pop" data-delay="200">
+              <span class="hero-stat-card__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <p class="hero-stat-card__num">10+</p>
               <p class="hero-stat-card__label">Év tapasztalat</p>
             </div>
             <div class="hero-stat-card" data-reveal="pop" data-delay="260">
+              <span class="hero-stat-card__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7M6 10v9h12v-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <p class="hero-stat-card__num">300+</p>
               <p class="hero-stat-card__label">Eladott ingatlan</p>
+            </div>
+            <div class="hero-stat-card" data-reveal="pop" data-delay="320">
+              <span class="hero-stat-card__icon"><svg width="15" height="15" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="currentColor"/></svg></span>
+              <p class="hero-stat-card__num">4.9★</p>
+              <p class="hero-stat-card__label">Vásárlói értékelés</p>
             </div>
           </div>
         </div>
@@ -673,49 +687,40 @@
     <div class="faq-split">
       <div class="faq-intro">
         <div class="section__head">
+          <p class="eyebrow" data-reveal="eyebrow" data-delay="0">GYÍK</p>
           <h2 data-reveal="curtain" data-delay="200">Gyakran ismételt kérdések</h2>
-        </div>
-        <div class="faq-intro__media" data-reveal="left" data-delay="0">
-          <img src="https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=700&q=80" alt="Ügyfélszolgálati munkatárs telefonos konzultáció közben">
-          <span class="faq-intro__badge" data-reveal="pop" data-delay="150">Kérdése van?</span>
+          <p class="section__desc" data-reveal="up" data-delay="220">Az ingatlanvásárlással és -eladással kapcsolatos leggyakoribb kérdéseket gyűjtöttük össze, hogy már a döntés előtt tiszta képet kapjon a folyamatról, a díjakról és a határidőkről. Ha olyasmire kíváncsi, ami itt nem szerepel, keressen minket bizalommal — csapatunk szívesen válaszol személyesen is.</p>
         </div>
       </div>
 
-    <div class="faq" data-reveal="up" data-delay="250">
-      <div class="faq__item is-open">
-        <button class="faq__q" aria-expanded="true">
-          Mennyi idő alatt találhatok megfelelő ingatlant?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="faq__a"><p>Ügyfeleink átlagosan 3–6 hét alatt találják meg a számukra ideális otthont, hiszen szűrt, előzetesen ellenőrzött kínálatot mutatunk be igényeik alapján.</p></div>
+    <div class="faq-chat" data-reveal="up" data-delay="250">
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Mennyi idő alatt találhatok megfelelő ingatlant?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Ügyfeleink átlagosan 3–6 hét alatt találják meg a számukra ideális otthont, hiszen szűrt, előzetesen ellenőrzött kínálatot mutatunk be igényeik alapján.</p></div>
       </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false">
-          Milyen díjakkal kell számolnom ingatlanközvetítés esetén?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="faq__a"><p>A jutalék mértékéről minden esetben az első, díjmentes konzultáción tájékoztatjuk — nincsenek rejtett költségek, minden szerződésben rögzítésre kerül.</p></div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Milyen díjakkal kell számolnom ingatlanközvetítés esetén?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>A jutalék mértékéről minden esetben az első, díjmentes konzultáción tájékoztatjuk — nincsenek rejtett költségek, minden szerződésben rögzítésre kerül.</p></div>
       </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false">
-          Segítenek a hitelügyintézésben is?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="faq__a"><p>Igen, partner pénzügyi tanácsadóinkkal együttműködve segítünk a legkedvezőbb hitelkonstrukció megtalálásában és a teljes ügyintézésben.</p></div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Segítenek a hitelügyintézésben is?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Igen, partner pénzügyi tanácsadóinkkal együttműködve segítünk a legkedvezőbb hitelkonstrukció megtalálásában és a teljes ügyintézésben.</p></div>
       </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false">
-          Vidéki ingatlanokkal is foglalkoznak?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="faq__a"><p>Igen — Budapest mellett Debrecenben, a Balaton régióban és több nagyvárosban is aktívan közvetítünk lakó- és befektetési ingatlanokat.</p></div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Vidéki ingatlanokkal is foglalkoznak?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Igen — Budapest mellett Debrecenben, a Balaton régióban és több nagyvárosban is aktívan közvetítünk lakó- és befektetési ingatlanokat.</p></div>
       </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false">
-          Hogyan zajlik az otthonom értékesítése Önökkel?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="faq__a"><p>Ingyenes értékbecsléssel indulunk, majd professzionális fotózás, célzott marketing és szűrt érdeklődői kör segítségével gyorsítjuk fel az értékesítést.</p></div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Hogyan zajlik az otthonom értékesítése Önökkel?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Ingyenes értékbecsléssel indulunk, majd professzionális fotózás, célzott marketing és szűrt érdeklődői kör segítségével gyorsítjuk fel az értékesítést.</p></div>
+      </div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Van lehetőség videós vagy online bemutatóra?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Igen, távolról érdeklődő ügyfeleinknek élő videóhívásos bemutatót és részletes felvételeket is biztosítunk.</p></div>
+      </div>
+      <div class="faq-chat__pair">
+        <button type="button" class="faq-chat__q" aria-expanded="false">Mennyi előleget kell fizetni egy ingatlan lefoglalásakor?</button>
+        <div class="faq-chat__a"><img class="faq-chat__avatar" src="images/leonlogo.png" alt=""><span class="faq-chat__typing"><span></span><span></span><span></span></span><p>Jellemzően a vételár 5–10%-át kérjük foglalóként, amelyet a végleges adásvételi szerződésben rögzítünk.</p></div>
       </div>
     </div>
     </div>
@@ -728,36 +733,50 @@
     <div class="cta-final__card">
       <form class="contact-card" data-reveal="left" onsubmit="return false;">
         <h3>Díjmentes Konzultáció</h3>
-        <label>Teljes név
-          <input type="text" placeholder="Az Ön neve" required>
-        </label>
-        <label>E-mail cím
-          <input type="email" placeholder="nev@pelda.hu" required>
-        </label>
-        <label>Telefonszám
-          <input type="tel" placeholder="+36 30 000 0000">
-        </label>
-        <label>Üzenet
-          <textarea rows="3" placeholder="Meséljen az elképzeléseiről..."></textarea>
-        </label>
-        <button type="submit" class="btn btn--bento btn--block">Üzenet Küldése</button>
-        <!-- TODO: same missing Adatvédelmi Tájékoztató page as in the footer — link both to the real URL once it exists. -->
-        <p class="contact-card__note">Elküldéssel elfogadja <a href="#">Adatvédelmi Tájékoztatónkat</a>.</p>
+        <input type="hidden" name="purpose" id="contactPurpose">
+
+        <div class="contact-card__step contact-card__step--1">
+          <p class="contact-card__prompt">Válasszon egy lehetőséget a mellette lévő kártyán a kezdéshez.</p>
+        </div>
+
+        <div class="contact-card__step contact-card__step--2">
+          <button type="button" class="contact-card__back">← Vissza</button>
+          <label>Teljes név
+            <input type="text" placeholder="Az Ön neve" required>
+          </label>
+          <label>E-mail cím
+            <input type="email" placeholder="nev@pelda.hu" required>
+          </label>
+          <label>Telefonszám
+            <input type="tel" placeholder="+36 30 000 0000">
+          </label>
+          <label>Üzenet
+            <textarea rows="3" placeholder="Meséljen az elképzeléseiről..."></textarea>
+          </label>
+          <button type="submit" class="btn btn--bento btn--block">Üzenet Küldése</button>
+          <!-- TODO: same missing Adatvédelmi Tájékoztató page as in the footer — link both to the real URL once it exists. -->
+          <p class="contact-card__note">Elküldéssel elfogadja <a href="#">Adatvédelmi Tájékoztatónkat</a>.</p>
+        </div>
       </form>
 
       <div class="cta-final__text">
         <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Vegye fel velünk a kapcsolatot</p>
         <h2 data-reveal="curtain" data-delay="150">Találjuk Meg Együtt <br>Álmai Otthonát</h2>
+        <div class="contact-card__chips" data-reveal="up" data-delay="200">
+          <button type="button" class="contact-card__chip" data-purpose="Vásárolnék"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7M6 10v9h12v-9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Vásárolnék</button>
+          <button type="button" class="contact-card__chip" data-purpose="Eladnék"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v14M7 12l5 5 5-5M4 21h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Eladnék</button>
+          <button type="button" class="contact-card__chip" data-purpose="Bérelnék"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.7"/><path d="m11 12 8-8M15 8l3 3M18 5l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Bérelnék</button>
+        </div>
         <!-- TODO: placeholder social links (href="#") — swap in the client's real Facebook / Instagram / LinkedIn profile URLs before launch (same as the footer's). -->
         <div class="cta-final__social" data-reveal="up" data-delay="250">
           <a href="#" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.4c-.3 0-1.5-.1-2.8-.1-2.8 0-4.6 1.7-4.6 4.7v2.5H6.8V16h2.8v8h3.3v-8h2.7l.4-3.5h-3.1V10c0-1 .3-1.5 1.5-1.5Z" fill="currentColor"/></svg></a>
           <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5v6M8 7.8v.1M12 16.5v-3.7c0-1.2.9-2 2-2s2 .8 2 2v3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
         </div>
-        <div class="cta-final__contacts" data-reveal="up" data-delay="380">
-          <a href="tel:+36301234567"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> +36 30 123 4567</a>
-          <a href="mailto:info@othonkft.hu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> info@othonkft.hu</a>
-          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg> 1051 Budapest, Váci utca 12.</span>
+        <div class="cta-final__actions" data-reveal="up" data-delay="380">
+          <a href="tel:+36301234567" class="cta-final__action"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.5.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> +36 30 123 4567</a>
+          <a href="mailto:info@othonkft.hu" class="cta-final__action"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> info@othonkft.hu</a>
+          <a href="https://maps.google.com/?q=1051+Budapest,+V%C3%A1ci+utca+12" target="_blank" rel="noopener" class="cta-final__action"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg> 2051 Bp., Váci u.12</a>
         </div>
       </div>
     </div>

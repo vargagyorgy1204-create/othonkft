@@ -427,20 +427,52 @@
   }
 
   /* -------------------------------------------------
-     FAQ accordion
+     Final contact form: purpose chip -> step 2
   ------------------------------------------------- */
-  document.querySelectorAll(".faq__item").forEach(function (item) {
-    var q = item.querySelector(".faq__q");
-    q.addEventListener("click", function () {
-      var isOpen = item.classList.contains("is-open");
-      item.closest(".faq").querySelectorAll(".faq__item").forEach(function (i) {
-        i.classList.remove("is-open");
-        i.querySelector(".faq__q").setAttribute("aria-expanded", "false");
+  var contactForm = document.querySelector(".contact-card");
+  if (contactForm) {
+    var purposeInput = document.getElementById("contactPurpose");
+    var backBtn = contactForm.querySelector(".contact-card__back");
+    // Chips now live on the dark contact panel, not inside the form itself.
+    document.querySelectorAll(".contact-card__chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        document.querySelectorAll(".contact-card__chip").forEach(function (c) {
+          c.classList.remove("is-selected");
+        });
+        chip.classList.add("is-selected");
+        if (purposeInput) purposeInput.value = chip.dataset.purpose || "";
+        contactForm.classList.add("is-step2");
       });
-      if (!isOpen) {
-        item.classList.add("is-open");
-        q.setAttribute("aria-expanded", "true");
+    });
+    if (backBtn) {
+      backBtn.addEventListener("click", function () {
+        contactForm.classList.remove("is-step2");
+      });
+    }
+  }
+
+  /* -------------------------------------------------
+     FAQ chat: click a question to reveal its answer,
+     with a brief "typing…" beat first.
+  ------------------------------------------------- */
+  document.querySelectorAll(".faq-chat__pair").forEach(function (pair) {
+    var q = pair.querySelector(".faq-chat__q");
+    var a = pair.querySelector(".faq-chat__a");
+    if (!q || !a) return;
+    q.addEventListener("click", function () {
+      if (pair.classList.contains("is-typing")) return; // ignore mid-animation clicks
+      if (pair.classList.contains("is-open")) {
+        // Second click: close it again, answer disappears.
+        pair.classList.remove("is-open", "is-answered");
+        q.setAttribute("aria-expanded", "false");
+        return;
       }
+      q.setAttribute("aria-expanded", "true");
+      pair.classList.add("is-open", "is-typing");
+      setTimeout(function () {
+        pair.classList.remove("is-typing");
+        pair.classList.add("is-answered");
+      }, reduceMotion ? 0 : 650);
     });
   });
 
