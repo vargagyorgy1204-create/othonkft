@@ -445,7 +445,7 @@
           </span>
           <span class="lifestyle__media-pill">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Nyílt nap
+            Nyílt hét
           </span>
           <span class="lifestyle__media-pill">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m4 12 6 6L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -454,6 +454,10 @@
           <span class="lifestyle__media-pill">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Hitelezhető
+          </span>
+          <span class="lifestyle__media-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 17h14M6 17v-5.5a2 2 0 0 1 .4-1.2L8.2 7.6A2 2 0 0 1 9.8 7h4.4a2 2 0 0 1 1.6.8l1.8 2.7a2 2 0 0 1 .4 1.2V17M7.5 17v2M16.5 17v2M6 13.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            2026 építésű
           </span>
         </div>
       </div>
@@ -464,6 +468,9 @@
         </label>
         <label>Email
           <input type="email" placeholder="nev@pelda.hu" required>
+        </label>
+        <label>Kívánt nap
+          <input type="date" required>
         </label>
         <label>Üzenet
           <textarea rows="3" placeholder="Meséljen az elképzeléseiről..."></textarea>
@@ -480,40 +487,44 @@
      launch. -->
 <section class="partner-banks" id="partnerbankok">
   <div class="container">
-    <div class="partner-banks__split">
-      <div class="partner-banks__photo" data-reveal="left" data-delay="0">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=80" alt="Pénzügyi tanácsadónk portréja" loading="lazy">
-        <span class="partner-banks__badge">Ingyenes hiteltanácsadás</span>
-        <span class="partner-banks__photo-caption">Kovács Márk · Hiteltanácsadó</span>
+    <div class="partner-banks__intro" data-reveal="rise">
+      <div class="partner-banks__avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=80" alt="Kovács Márk portréja" loading="lazy"></div>
+      <div class="partner-banks__intro-text">
+        <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Hitelezés</p>
+        <h2 data-reveal="curtain" data-delay="150">Finanszírozási ügynök</h2>
+        <p class="partner-banks__desc" data-reveal="up" data-delay="200">Partner bankjaink segítségével gyorsan és kedvező feltételekkel intézzük ügyfeleink jelzáloghitelét — már az első konzultáción felmérjük, melyik bank kínálja Önnek a legjobb konstrukciót.</p>
+        <p class="partner-banks__desc" data-reveal="up" data-delay="220">Minden ügyfelünk mellé személyre szabott ajánlatot állítunk össze, és az első egyeztetéstől egészen a folyósításig végigkísérjük a folyamatot.</p>
+        <p class="partner-banks__advisor" data-reveal="up" data-delay="240">Kovács Márk <span>· Hiteltanácsadó, 10+ év tapasztalat</span></p>
+        <a href="#kapcsolat" class="btn btn--bento" data-reveal="up" data-delay="260">Ingyenes konzultáció kérése</a>
       </div>
-      <div class="partner-banks__content">
-        <div class="section__head">
-          <p class="eyebrow" data-reveal="eyebrow" data-delay="0">Partnerbankjaink</p>
-          <h2 data-reveal="curtain" data-delay="150">Finanszírozási partnereink</h2>
-          <p class="section__desc" data-reveal="up" data-delay="200">Partner bankjaink segítségével gyorsan és kedvező feltételekkel intézzük ügyfeleink jelzáloghitelét — már az első konzultáción felmérjük, melyik bank kínálja Önnek a legjobb konstrukciót.</p>
+    </div>
+    <div class="partner-banks__row" data-reveal="up" data-delay="300">
+      <span class="partner-banks__logo"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Otp_bank_Logo.svg" alt="OTP Bank" loading="lazy"></span>
+      <span class="partner-banks__logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/K%26H_logo.svg" alt="K&amp;H Bank" loading="lazy"></span>
+      <span class="partner-banks__logo"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Erste_Bank_Logo.svg" alt="Erste Bank" loading="lazy"></span>
+      <span class="partner-banks__logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Unicredit_logo.svg" alt="UniCredit" loading="lazy"></span>
+      <span class="partner-banks__logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/MKB_Bank_logo.svg" alt="MKB Bank" loading="lazy"></span>
+    </div>
+    <div class="partner-banks__calc" data-reveal="up" data-delay="350">
+      <h3>Hiteltörlesztő kalkulátor</h3>
+      <div class="partner-banks__calc-body">
+        <div class="partner-banks__calc-fields">
+          <label>Hitelösszeg (M Ft)
+            <input type="number" id="calcAmount" value="30" min="1" max="500" step="1">
+          </label>
+          <label>Futamidő (év)
+            <input type="number" id="calcYears" value="20" min="1" max="35" step="1">
+          </label>
+          <label>Kamat (%)
+            <input type="number" id="calcRate" value="6.5" min="0" max="20" step="0.1">
+          </label>
         </div>
-        <ol class="partner-banks__steps" data-reveal="up" data-delay="250">
-          <li>
-            <span class="partner-banks__step-num">1</span>
-            <div><strong>Konzultáció</strong><p>Ingyenes egyeztetés, ahol felmérjük az igényeit és lehetőségeit.</p></div>
-          </li>
-          <li>
-            <span class="partner-banks__step-num">2</span>
-            <div><strong>Dokumentáció</strong><p>Segítünk összeállítani és benyújtani a hitelkérelemhez szükséges papírokat.</p></div>
-          </li>
-          <li>
-            <span class="partner-banks__step-num">3</span>
-            <div><strong>Folyósítás</strong><p>Partnerbankunk gyors elbírálással folyósítja a jóváhagyott hitelt.</p></div>
-          </li>
-        </ol>
-        <div class="partner-banks__row" data-reveal="up" data-delay="300">
-          <span class="partner-banks__logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>OTP Bank</span>
-          <span class="partner-banks__logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>K&amp;H Bank</span>
-          <span class="partner-banks__logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Erste Bank</span>
-          <span class="partner-banks__logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>UniCredit</span>
-          <span class="partner-banks__logo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10 12 4l9 6M4 10v9M20 10v9M9 19v-6h6v6M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>MKB Bank</span>
+        <div class="partner-banks__calc-result">
+          <span class="partner-banks__calc-result-label">Havi törlesztőrészlet</span>
+          <span class="partner-banks__calc-result-value" id="calcResult">0 Ft</span>
         </div>
       </div>
+      <p class="partner-banks__calc-note">Tájékoztató jellegű becslés, nem minősül hivatalos hitelajánlatnak.</p>
     </div>
   </div>
 </section>

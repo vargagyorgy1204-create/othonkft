@@ -401,6 +401,32 @@
   }
 
   /* -------------------------------------------------
+     Loan calculator (#partnerbankok)
+  ------------------------------------------------- */
+  var calcAmount = document.getElementById("calcAmount");
+  var calcYears = document.getElementById("calcYears");
+  var calcRate = document.getElementById("calcRate");
+  var calcResult = document.getElementById("calcResult");
+  if (calcAmount && calcYears && calcRate && calcResult) {
+    var updateCalc = function () {
+      var principal = (parseFloat(calcAmount.value) || 0) * 1000000;
+      var months = (parseFloat(calcYears.value) || 0) * 12;
+      var monthlyRate = (parseFloat(calcRate.value) || 0) / 100 / 12;
+      var payment = 0;
+      if (principal > 0 && months > 0) {
+        payment = monthlyRate === 0
+          ? principal / months
+          : principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+      }
+      calcResult.textContent = Math.round(payment).toLocaleString("hu-HU") + " Ft";
+    };
+    [calcAmount, calcYears, calcRate].forEach(function (el) {
+      el.addEventListener("input", updateCalc);
+    });
+    updateCalc();
+  }
+
+  /* -------------------------------------------------
      FAQ accordion
   ------------------------------------------------- */
   document.querySelectorAll(".faq__item").forEach(function (item) {

@@ -351,10 +351,10 @@ section[id]{scroll-margin-top:96px;}
 .header__actions{display:flex;align-items:center;gap:10px;background:var(--bento-surface-light);border-radius:999px;padding:6px;}
 .header__cta{
   height:auto;padding:8px 16px;font-size:.9rem;font-weight:500;
-  background:var(--bento-bg-light);color:var(--bento-text-onlight);
+  background:#000080;color:var(--white);
   box-shadow:0 1px 3px rgba(11,11,18,.15);transition:none;
 }
-.header__cta:hover{background:linear-gradient(135deg,var(--navy-950),var(--navy-700));transform:none;}
+.header__cta:hover{background:#000060;transform:none;}
 .header__phone{display:flex;align-items:center;gap:8px;color:var(--bento-text-onlight);font-weight:600;font-size:.9rem;transition:color .3s ease;}
 .header__phone svg{color:var(--bento-blue);}
 
@@ -953,12 +953,12 @@ section[id]{scroll-margin-top:96px;}
 .lifestyle__media .card__badge{z-index:2;}
 .lifestyle__media .card__badge--sale{background:var(--bento-peach);}
 .lifestyle__media-badges{
-  position:absolute;bottom:20px;left:20px;right:20px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;
+  position:absolute;bottom:20px;left:20px;right:20px;z-index:2;display:flex;flex-wrap:wrap;gap:10px;
 }
 .lifestyle__media-pill{
   display:flex;align-items:center;gap:6px;
   background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  color:var(--white);font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;white-space:nowrap;
+  color:var(--white);font-size:.76rem;font-weight:600;padding:6px 13px;border-radius:999px;white-space:nowrap;
 }
 /* Own flat bento tile now (border + bento-shadow instead of the old
    plain cream panel that only made sense as one half of a merged
@@ -1001,51 +1001,89 @@ section[id]{scroll-margin-top:96px;}
    content sections (trust/reassurance strip, not a major content block).
    ========================================================================== */
 .partner-banks{background:var(--bento-surface-light) !important;padding:64px 0;}
-.partner-banks .section__head{margin-bottom:20px;}
-.partner-banks .section__head .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
-.partner-banks .section__head h2{font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);margin-bottom:10px;}
 
-/* Split layout, same proportions as #gyik's .faq-split: photo card
-   left, heading + process + bank pills right. */
-.partner-banks__split{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:var(--bento-gap);align-items:stretch;}
-.partner-banks__photo{position:relative;min-height:320px;border-radius:var(--bento-radius-lg);overflow:hidden;box-shadow:var(--bento-shadow);}
-.partner-banks__photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.partner-banks__badge{
-  position:absolute;top:16px;left:16px;padding:7px 15px;border-radius:999px;
-  background:var(--bento-blue);color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.02em;
+/* Intro row: small circular advisor avatar (same recipe as .avatars__item
+   img / .team-card__photo) beside the heading, light on-page colors -
+   no more full photo background. */
+.partner-banks__intro{display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;}
+.partner-banks__avatar{
+  width:512px;height:512px;border-radius:var(--bento-radius-sm);overflow:hidden;flex-shrink:0;
+  border:1px solid var(--bento-border);box-shadow:var(--bento-shadow);
 }
-.partner-banks__photo-caption{
-  position:absolute;bottom:16px;left:16px;display:flex;align-items:center;gap:6px;
-  background:rgba(6,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  color:var(--white);font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:999px;
+.partner-banks__avatar img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;}
+.partner-banks__intro-text .eyebrow{font-family:var(--font-body);font-size:.82rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--bento-text-onlight-muted);}
+.partner-banks__intro-text h2{
+  font-family:var(--font-body);font-optical-sizing:auto;font-style:normal;
+  font-size:clamp(1.9rem,3vw,2.7rem);font-weight:800;letter-spacing:-.02em;color:var(--bento-text-onlight);
+  text-align:left;margin-bottom:6px;
 }
-.partner-banks__content{display:flex;flex-direction:column;gap:28px;justify-content:center;}
+.partner-banks__desc{color:var(--bento-text-onlight-muted);line-height:1.6;max-width:620px;margin-bottom:12px;}
+.partner-banks__advisor{font-family:var(--font-body);font-weight:700;color:var(--bento-text-onlight);margin:8px 0 20px;}
+.partner-banks__advisor span{font-weight:500;color:var(--bento-text-onlight-muted);}
+.partner-banks__intro-text .btn{margin-top:32px;}
 
-.partner-banks__steps{display:flex;flex-direction:column;gap:16px;list-style:none;padding:0;margin:0;}
-.partner-banks__steps li{display:flex;gap:14px;align-items:flex-start;}
+/* Horizontal connected stepper: each step is a numbered circle with a
+   line drawn to the next one's circle, product-onboarding style. */
+.partner-banks__stepper{display:flex;align-items:flex-start;list-style:none;padding:0;margin:0 0 32px;}
+.partner-banks__stepper li{flex:1;position:relative;text-align:center;padding-top:0;}
+.partner-banks__stepper li:not(:last-child)::after{
+  content:"";position:absolute;top:16px;left:calc(50% + 22px);right:calc(-50% + 22px);height:2px;
+  background:var(--bento-border);z-index:0;
+}
 .partner-banks__step-num{
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
+  position:relative;z-index:1;display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;margin:0 auto 10px;border-radius:50%;
   background:rgba(74,111,240,.12);color:var(--bento-blue);font-family:var(--font-body);font-weight:800;font-size:.9rem;
 }
-.partner-banks__steps strong{display:block;font-family:var(--font-body);font-weight:700;color:var(--bento-text-onlight);margin-bottom:2px;}
-.partner-banks__steps p{font-size:.88rem;color:var(--bento-text-onlight-muted);line-height:1.5;}
+.partner-banks__stepper strong{display:block;font-family:var(--font-body);font-weight:700;font-size:.92rem;color:var(--bento-text-onlight);}
 
-.partner-banks__row{display:flex;flex-wrap:wrap;gap:12px;}
+.partner-banks__row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;}
 .partner-banks__logo{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 20px;border-radius:var(--bento-radius-md);border:1px solid var(--bento-border);background:var(--bento-bg-light);
-  font-family:var(--font-body);font-weight:700;font-size:.88rem;color:var(--bento-text-onlight-muted);
+  display:inline-flex;align-items:center;justify-content:center;
+  height:56px;padding:10px 22px;border-radius:var(--bento-radius-md);border:1px solid var(--bento-border);background:var(--bento-bg-light);
 }
-.partner-banks__logo svg{flex-shrink:0;color:var(--bento-blue);}
+.partner-banks__logo img{height:100%;max-height:26px;width:auto;max-width:110px;object-fit:contain;display:block;}
 
-@media (max-width:980px){
-  .partner-banks__split{grid-template-columns:1fr;gap:32px;}
-  .partner-banks__photo{min-height:220px;}
+/* Loan calculator card - reuses the quick-search bar's field recipe
+   (padding/border/radius/background) instead of inventing new input
+   styling. */
+.partner-banks__calc{
+  margin-top:32px;background:var(--bento-bg-light);border:1px solid var(--bento-border);
+  border-radius:var(--bento-radius-lg);box-shadow:var(--bento-shadow);padding:28px;
 }
+.partner-banks__calc h3{font-family:var(--font-body);font-weight:800;color:var(--bento-text-onlight);margin-bottom:18px;}
+.partner-banks__calc-body{display:flex;align-items:stretch;gap:16px;flex-wrap:wrap;}
+.partner-banks__calc-fields{display:flex;gap:14px;flex:1 1 420px;flex-wrap:wrap;}
+.partner-banks__calc-fields label{
+  flex:1 1 120px;display:flex;flex-direction:column;gap:6px;
+  font-family:var(--font-body);font-size:.82rem;font-weight:700;color:var(--bento-text-onlight-muted);
+}
+.partner-banks__calc-fields input{
+  padding:12px 14px;border:1px solid var(--bento-border);border-radius:var(--bento-radius-sm);
+  background:var(--bento-surface-light);font-size:.95rem;color:var(--bento-text-onlight);font-family:var(--font-body);
+}
+.partner-banks__calc-fields input:focus-visible{outline:2px solid var(--bento-blue);outline-offset:1px;}
+.partner-banks__calc-result{
+  flex:0 0 auto;min-width:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;
+  padding:16px 24px;border-radius:var(--bento-radius-md);background:rgba(74,111,240,.1);
+}
+.partner-banks__calc-result-label{font-family:var(--font-body);font-size:.8rem;font-weight:600;color:var(--bento-text-onlight-muted);}
+.partner-banks__calc-result-value{font-family:var(--font-body);font-weight:800;font-size:1.6rem;color:var(--bento-blue);}
+.partner-banks__calc-note{margin-top:14px;font-size:.78rem;color:var(--bento-text-onlight-muted);}
+
 @media (max-width:640px){
   .partner-banks{padding:48px 0;}
+  .partner-banks__intro{align-items:flex-start;gap:14px;}
+  .partner-banks__stepper{flex-direction:column;align-items:flex-start;gap:16px;}
+  .partner-banks__stepper li{text-align:left;display:flex;align-items:center;gap:12px;}
+  .partner-banks__stepper li::after{display:none;}
+  .partner-banks__calc{padding:20px;}
+  .partner-banks__calc-body{flex-direction:column;}
+  .partner-banks__calc-result{align-items:flex-start;width:100%;}
+  .partner-banks__step-num{margin:0;}
   .partner-banks__row{gap:10px;}
-  .partner-banks__logo{padding:10px 16px;font-size:.82rem;}
+  .partner-banks__logo{height:44px;padding:8px 16px;}
+  .partner-banks__logo img{max-height:20px;}
 }
 
 /* ==========================================================================
