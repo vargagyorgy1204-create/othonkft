@@ -1,4 +1,18 @@
 /* ==========================================================================
+   Lucide icons - size via class, never inline width/height; color always
+   inherits currentColor from context (dark card / light card / accent).
+   ========================================================================== */
+.icon,.icon--sm,.icon--lg{
+  display:inline-block;flex-shrink:0;vertical-align:middle;
+  color:currentColor;stroke:currentColor;fill:none;
+}
+.icon{width:24px;height:24px;}
+.icon--sm{width:18px;height:18px;}
+.icon--lg{width:32px;height:32px;}
+/* Rating stars are filled, not outlined. */
+.icon--fill{fill:currentColor;stroke:none;}
+
+/* ==========================================================================
    Othon Kft. — Design tokens
    ========================================================================== */
 :root{
@@ -445,7 +459,7 @@ section[id]{scroll-margin-top:96px;}
 .hero-tile__copy{position:relative;z-index:1;padding:40px;color:var(--bento-text-ondark);height:100%;display:flex;flex-direction:column;justify-content:center;}
 .hero-tile__copy h1{
   font-family:var(--font-body);font-weight:800;letter-spacing:-.02em;
-  font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.06;margin-bottom:14px;color:var(--bento-text-ondark);
+  font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.06;margin-top:auto;margin-bottom:14px;color:var(--bento-text-ondark);
 }
 .hero-tile__copy p{font-size:1.02rem;line-height:1.6;color:var(--bento-text-ondark-muted);max-width:440px;}
 .hero-tile__copy .hero-stat-row{margin-top:auto;padding-top:24px;max-width:520px;}
@@ -735,9 +749,40 @@ section[id]{scroll-margin-top:96px;}
    prev/next arrows) with a real grid: one large "feature" tile + 5
    regular tiles, matching the hero's big-tile-plus-small-tiles bento
    pattern. */
-.listings{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--bento-gap);}
+/* One-screen bento mosaic: 4 cols x 3 rows = 12 cells, split into 6
+   uniquely-shaped regions (1 large 2x2, 2 tall 1x2, 1 wide 2x1, 2 small
+   1x1) instead of 6 equal cells - biggest tile goes to the priciest
+   listing, same "size = prominence" idea the old .card--feature (now
+   unused, repurposed here) used for a single feature card. */
+.listings{
+  display:grid;gap:var(--bento-gap);
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  grid-template-areas:
+    "f f b g"
+    "f f c d"
+    "e e c d";
+  height:min(78vh,760px);
+}
+#ingatlanok .listings .card:nth-child(1){grid-area:g;} /* Design Loft - small */
+#ingatlanok .listings .card:nth-child(2){grid-area:f;} /* Balatoni Villa - large feature */
+#ingatlanok .listings .card:nth-child(3){grid-area:c;} /* Új Építésű Lakás - tall */
+#ingatlanok .listings .card:nth-child(4){grid-area:b;} /* Elegáns Társasházi - small */
+#ingatlanok .listings .card:nth-child(5){grid-area:e;} /* Családi Ház - wide */
+#ingatlanok .listings .card:nth-child(6){grid-area:d;} /* Modern Nyaraló - tall */
 #ingatlanok .card{border-radius:var(--bento-radius-lg);border:1px solid var(--bento-border);box-shadow:none;}
 #ingatlanok .card:hover{box-shadow:var(--bento-shadow);border-color:var(--navy-900);}
+/* Tiles now have real, different heights instead of content-driven
+   ones - the card fills its cell and the photo absorbs the leftover
+   space instead of a fixed 210px media height. */
+#ingatlanok .listings .card{height:100%;display:flex;flex-direction:column;}
+#ingatlanok .listings .card__media{height:auto;flex:1 1 0;min-height:40px;}
+#ingatlanok .listings .card__body{flex-shrink:0;}
+/* The 2 small 1x1 tiles don't have room for the full body - drop the
+   specs row and tighten padding there. */
+#ingatlanok .listings .card--compact .card__specs{display:none;}
+#ingatlanok .listings .card--compact .card__body{padding:16px 18px 18px;}
+#ingatlanok .listings .card--compact .card__loc{margin-bottom:10px;}
 /* Badges cycle through the bento accent palette per card (matching the
    stat-tile rotation used elsewhere) instead of a fixed blue/violet
    split by sale-vs-rent - mint/peach get dark text, same contrast
@@ -747,23 +792,60 @@ section[id]{scroll-margin-top:96px;}
 #ingatlanok .listings .card:nth-child(4n+3) .card__badge{background:var(--bento-violet);color:var(--white);}
 #ingatlanok .listings .card:nth-child(4n+4) .card__badge{background:var(--bento-peach);color:var(--bento-text-onlight);}
 #ingatlanok .card__link{color:var(--navy-900);}
-.card--feature{grid-column:span 2;}
-.card--feature .card__media{height:320px;}
 
 @media (max-width:980px){
-  .listings{grid-template-columns:repeat(2,1fr);}
-  .card--feature{grid-column:span 2;}
+  /* Width-only trigger - deliberately NOT viewport-height-based, so
+     toggling browser fullscreen (which only changes height, not width)
+     can't flip the layout between the mosaic and this fallback; both
+     windowed and fullscreen show the same card sizes/shapes. Cramming
+     6 full property cards only makes sense on a normal-or-bigger
+     desktop width - below that, drop the mosaic and go back to a
+     plain auto-height stacked grid with full content and normal page
+     scrolling. */
+  .listings{
+    grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-template-areas:none;height:auto;
+  }
+  /* :nth-child(n) here matches the same specificity as the mosaic's
+     own #ingatlanok .listings .card:nth-child(N){grid-area:...} rules
+     above, so this reset actually wins instead of losing to them by
+     specificity - without it the named grid-area assignments would
+     keep affecting placement even after grid-template-areas is gone. */
+  #ingatlanok .listings .card:nth-child(n){grid-area:auto;height:auto;}
+  #ingatlanok .listings .card__media{height:210px;flex:none;}
+  #ingatlanok .listings .card--compact .card__specs{display:flex;}
+  #ingatlanok .listings .card--compact .card__body{padding:22px 22px 24px;}
+  #ingatlanok .listings .card--compact .card__loc{margin-bottom:16px;}
+  /* Top row (first 2 cards) reads bigger/more prominent, everything
+     below it steps down - same "size = prominence" idea as the
+     desktop mosaic, adapted to this simple 2-column fallback. */
+  #ingatlanok .listings .card:nth-child(-n+2) .card__media{height:420px;}
+  #ingatlanok .listings .card:nth-child(-n+2) .card__body h3{font-size:1.6rem;}
+  #ingatlanok .listings .card:nth-child(-n+2) .card__price{font-size:1.5rem;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__media{height:90px;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__body{padding:12px 14px 14px;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__body h3{font-size:.86rem;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__loc{font-size:.74rem;margin-bottom:8px;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__price{font-size:.92rem;}
+  #ingatlanok .listings .card:nth-child(n+3) .card__link{font-size:.78rem;}
+  #ingatlanok .listings .card:nth-child(n+3).card--compact .card__body{padding:10px 12px 12px;}
 }
 @media (max-width:640px){
   .listings{grid-template-columns:1fr;}
-  .card--feature{grid-column:span 1;}
-  .card--feature .card__media{height:210px;}
+  /* Családi Ház (the wide compact card) splits horizontally instead
+     of stacking - photo left, text right - here in the single-column
+     mobile view. */
+  #ingatlanok .listings .card:nth-child(5){flex-direction:row;align-items:stretch;}
+  #ingatlanok .listings .card:nth-child(5) .card__media{width:42%;height:auto;flex:none;}
+  #ingatlanok .listings .card:nth-child(5) .card__body{flex:1;min-width:0;padding:14px 16px;}
+  #ingatlanok .listings .card:nth-child(5) .card__body h3{font-size:1rem;}
+  #ingatlanok .listings .card:nth-child(5) .card__loc{font-size:.78rem;}
+  #ingatlanok .listings .card:nth-child(5) .card__price{font-size:1rem;}
 }
 
 /* ==========================================================================
    Services (dark panel)
    ========================================================================== */
-.services{background:var(--bento-bg-light);padding:88px 0 110px;position:relative;overflow:hidden;}
+.services{background:var(--bento-bg-light) !important;padding:88px 0 110px;position:relative;overflow:hidden;}
 .services > .container > .section__head{margin-bottom:40px;}
 /* Bento typography, matching the hero/#ingatlanok phase-1/2 treatment
    (geometric sans instead of the serif Playfair/Fraunces pairing the
@@ -853,7 +935,8 @@ section[id]{scroll-margin-top:96px;}
 .stat__label{position:relative;z-index:1;font-size:.84rem;font-weight:600;}
 /* Decorative watermark - big, faint, bottom-right, purely ornamental - kept
    neutral/quiet now that tiles are white instead of colored. */
-.stat__glyph{position:absolute;right:-16px;bottom:-16px;z-index:0;opacity:.06;color:var(--bento-text-onlight);pointer-events:none;}
+.stat__glyph{position:absolute;right:-16px;bottom:-16px;z-index:0;width:90px;height:90px;opacity:.06;color:var(--bento-text-onlight);pointer-events:none;}
+.stat--hero .stat__glyph{width:120px;height:120px;}
 
 @media (max-width:980px){
   .services__grid{grid-template-columns:repeat(2,1fr);}

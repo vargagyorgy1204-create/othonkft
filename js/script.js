@@ -4,6 +4,18 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* -------------------------------------------------
+     Lucide icons - render every <i data-lucide="..."> placeholder.
+     stroke-width:1.75 is the site-wide default; actual pixel size is
+     controlled entirely by the .icon/.icon--sm/.icon--lg CSS classes
+     already on each placeholder, not by attributes here.
+  ------------------------------------------------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.lucide) {
+      lucide.createIcons({ attrs: { "stroke-width": 1.75 } });
+    }
+  });
+
+  /* -------------------------------------------------
      Loader
   ------------------------------------------------- */
   window.addEventListener("load", function () {
